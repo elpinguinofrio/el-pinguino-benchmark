@@ -1,4 +1,4 @@
-# Penguin e-foil SVG benchmark
+# El Pinguino Benchmark
 
 A fresh replacement for the saturated "pelican riding a bicycle" test. It checks spatial composition and whether the model knows what an e-foil is.
 

@@ -1,8 +1,10 @@
-# Penguin e-foil SVG benchmark
+# El Pinguino Benchmark
+
+My own take on the "pelican riding a bicycle" test. English and Russian.
 
 One prompt, 12 AI models: **"Generate an SVG of a penguin wearing a sombrero riding an e-foil."**
 
-**Gallery:** https://elpinguinofrio.github.io/penguin-efoil/
+**Gallery:** https://elpinguinofrio.github.io/el-pinguino-benchmark/
 
 - `RESULTS.md` — rules, scoring checklist and results table
 - `svg/` — the raw SVGs each model produced

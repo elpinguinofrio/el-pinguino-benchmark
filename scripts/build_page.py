@@ -1,5 +1,7 @@
 """Build page/index.html for the penguin e-foil benchmark from the run list below."""
-import html, os
+import html, os, re
+
+def esc(s): return html.escape(s, quote=True)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "docs", "index.html")
@@ -62,27 +64,132 @@ GROUPS = [
 
 FAMILY = {"claude": "Claude 5.5", "claude-old": "Claude 4.6", "grok": "Grok", "gemini": "Gemini", "open": "Open weights"}
 
-def esc(s): return html.escape(s, quote=True)
+# ---- Russian translation. English stays in the HTML; Russian rides along in data-ru* attributes. ----
+FAMILY_RU = {"open": "Открытые веса"}
+
+def ru_plural(n, one, few, many):
+    if n % 10 == 1 and n % 100 != 11: return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
+    return many
+
+GROUP_RU = {  # group id -> (harness, note)
+ "opus-55": ("субагент Claude Code",
+  "Самая стабильная модель в тесте. В каждом прогоне на среднем уровне есть полный электрофойл: одна мачта, мотор с пропеллером, крыло под водой и пульт в ласте у пингвина. Все четыре рисунка почти неотличимы."),
+ "sonnet-55": ("субагент Claude Code",
+  "Каждый раз один и тот же плоский стиль: мачта и крыло, доска скользит по воде. Ни в одном прогоне нет ни пропеллера, ни пульта; в первом прогоне вместо пульта из ласта свисает трос, как у кайта."),
+ "haiku-55": ("субагент Claude Code",
+  "Самый слабый Claude. Сомбреро превращаются в ковбойские шляпы и панамы, в двух прогонах доска стоит в воде, а в первом весь фойл поднят над морем."),
+ "opus-46": ("Antigravity (agy)",
+  "Маленький пингвин, простая сцена, тонкая мачта с крылом. Ни пропеллера, ни пульта. Рядом с Opus 5.5 это самый заметный разрыв между поколениями в тесте."),
+ "sonnet-46": ("Antigravity (agy)",
+  "Разнообразнее, чем Sonnet 5.5: один динамичный кадр в повороте, один с мотором. Сомбреро выходят похожими на абажуры или чепчики. В третьем прогоне модель вызвала генератор изображений вместо того, чтобы написать SVG, поэтому он не показан."),
+ "grok-47": ("grok CLI",
+  "Самые амбициозные иллюстрации: закаты, освещение, брызги и текстуры. С техникой как повезёт: в третьем прогоне под водой есть мотор с пропеллером, а во втором мачта пропала совсем."),
+ "grok-47bf": ("grok CLI",
+  "Второй прогон — самый полный электрофойл во всём наборе: наклонная мачта, фюзеляж, пропеллер и пульт в руке. В первом и третьем прогонах пингвин обрезан краем кадра."),
+ "grok-46": ("grok CLI",
+  "Тёплые живописные сцены, и каждый раз есть мачта и крыло под водой. Первый прогон — один из немногих рисунков, кроме Opus 5.5, где есть пульт."),
+ "grok-45": ("grok CLI",
+  "Плоский клипарт. Доска нарисована овалом сверху, а море — сбоку; эта путаница с перспективой повторяется во всех трёх прогонах."),
+ "gemini": ("Antigravity (agy), изменённый промпт",
+  "Живые позы в движении, доски наклонены в повороте, каждый раз одна мачта и очень стабильный стиль на низком, среднем и высоком уровне. С обычным промптом модель сначала пыталась запускать команды в терминале и ничего не нарисовала, поэтому здесь к промпту добавлено: «Output the SVG code as text in your reply; do not use any tools.»"),
+ "gpt-oss": ("Antigravity (agy)",
+  "Две симпатичные иллюстрации с яркими узорчатыми сомбреро, но фойла почти не видно. Третий прогон развалился: пингвин в сером прямоугольнике и никакой воды."),
+ "qwen": ("локально, MTPLX на этом Mac",
+  "На среднем уровне электрофойл меняет форму в каждом прогоне: две мачты, доска утоплена по ватерлинию, крыло над поверхностью. На очень высоком уровне получается чистый фойл с одной мачтой над водой — через 29 минут и 29 587 токенов размышлений."),
+}
+EFFORT_RU = {"low": "низкий", "medium": "средний", "high": "высокий", "xhigh": "очень высокий", "default": "по умолчанию"}
+RUN_RU = {"Run": "Прогон", "Earlier": "Ранее", "Low": "Низкий", "Medium": "Средний", "High": "Высокий", "Extra-high": "Очень высокий"}
+
+def run_ru(run):
+    head, _, num = run.partition(" ")
+    return (RUN_RU[head] + (" " + num if num else ""))
+
+def time_ru(t):
+    return t.replace(" min", " мин").replace(" s", " с").replace("n/a", "н/д")
+
+def drawings_ru(n): return f"{n} {ru_plural(n, 'рисунок', 'рисунка', 'рисунков')}"
+
+def ru_attr(name, value): return f' data-ru{"-" + name if name else ""}="{esc(value)}"'
+
+
 
 cards = []
 nav = []
 total = 0
 for gid, name, harness, fam, note, runs in GROUPS:
     total += len(runs)
+    h_ru, note_ru = GROUP_RU[gid]
     nav.append(f'<a class="chip" href="#{gid}" data-fam="{fam}">{esc(name)}</a>')
     figs = []
     for key, run, effort, t in runs:
         alt = f"{name}, {run}: penguin in a sombrero on an e-foil"
+        r_ru, e_ru, t_ru = run_ru(run), EFFORT_RU[effort], time_ru(t)
+        meta_ru = f'{esc(e_ru)} · <span class="t">{esc(t_ru)}</span>'
         figs.append(
-            f'<figure class="shot"><button class="zoom" type="button" data-src="img/{key}.jpg" data-cap="{esc(name)} · {esc(run)} · {esc(effort)} ({esc(t)})" aria-label="Enlarge {esc(name)} {esc(run)}">'
-            f'<img src="img/{key}.jpg" alt="{esc(alt)}" loading="lazy"></button>'
-            f'<figcaption><span class="run">{esc(run)}</span><span class="meta">{esc(effort)} · <span class="t">{esc(t)}</span></span></figcaption></figure>')
+            f'<figure class="shot"><button class="zoom" type="button" data-src="img/{key}.jpg" data-cap="{esc(name)} · {esc(run)} · {esc(effort)} ({esc(t)})"'
+            f'{ru_attr("cap", f"{name} · {r_ru} · {e_ru} ({t_ru})")} aria-label="Enlarge {esc(name)} {esc(run)}"{ru_attr("label", f"Увеличить: {name}, {r_ru}")}>'
+            f'<img src="img/{key}.jpg" alt="{esc(alt)}"{ru_attr("alt", f"{name}, {r_ru}: пингвин в сомбреро на электрофойле")} loading="lazy"></button>'
+            f'<figcaption><span class="run"{ru_attr("", esc(r_ru))}>{esc(run)}</span><span class="meta"{ru_attr("", meta_ru)}>{esc(effort)} · <span class="t">{esc(t)}</span></span></figcaption></figure>')
+    fam_ru = FAMILY_RU.get(fam, FAMILY[fam])
     cards.append(
         f'<section class="model" id="{gid}" data-fam="{fam}"><header class="mh"><div class="mh-top"><h3>{esc(name)}</h3>'
-        f'<span class="fam fam-{fam}">{esc(FAMILY[fam])}</span></div><p class="harness">{esc(harness)} · {len(runs)} drawings</p>'
-        f'<p class="note">{esc(note)}</p></header><div class="shots">{"".join(figs)}</div></section>')
+        f'<span class="fam fam-{fam}"{ru_attr("", esc(fam_ru))}>{esc(FAMILY[fam])}</span></div>'
+        f'<p class="harness"{ru_attr("", esc(h_ru) + " · " + drawings_ru(len(runs)))}>{esc(harness)} · {len(runs)} drawings</p>'
+        f'<p class="note"{ru_attr("", esc(note_ru))}>{esc(note)}</p></header><div class="shots">{"".join(figs)}</div></section>')
+
+# Static page text. Values are HTML (they replace innerHTML), attributes get escaped on insert.
+RU = {
+ "doc_title": "Бенчмарк El Pinguino",
+ "doc_desc": "Один промпт, 12 моделей ИИ: пингвин в сомбреро на электрофойле, нарисованный в SVG.",
+ "title": "Бенчмарк El Pinguino",
+ "hero_eyebrow": "Мой собственный пеликан · 9 ноября 2026",
+ "hero_lead": "Промпт «пеликан на велосипеде» стал настолько известным, что модели, скорее всего, уже обучались на нём. Это свежая замена, которую раньше никто не видел. <strong>Пингвин, сомбреро и электрическая доска на подводном крыле</strong>: легко представить, но трудно нарисовать правильно, если не знаешь, как устроен электрофойл.",
+ "prompt_label": "Промпт дословно",
+ "copy": "Скопировать промпт",
+ "stat_models": "моделей",
+ "stat_drawings": ru_plural(total, "рисунок", "рисунка", "рисунков"),
+ "stat_prompt": "промпт",
+ "diagram": "Схема электрофойла: доска над водой, одна мачта уходит к фюзеляжу с передним и задним крылом и пропеллером, райдер держит пульт в руке",
+ "lbl_remote": "пульт", "lbl_board": "доска", "lbl_one_mast": "одна мачта", "lbl_propeller": "пропеллер",
+ "lbl_front_wing": "переднее крыло", "lbl_rear_wing": "заднее крыло", "lbl_waterline": "ватерлиния",
+ "diagram_cap": "Что нужно для правильного рисунка. Доска летит над водой, всё, что под ней, остаётся под водой.",
+ "find_eyebrow": "Что показывают рисунки",
+ "find_h2": "Пингвина рисуют все. Разницу делает электрофойл.",
+ "find_lead": "Каждая модель ставит пингвина на доску и надевает ему сомбреро. Разница — в технике под доской и в том, может ли модель нарисовать её одинаково дважды.",
+ "f1_t": "Opus 5.5 знает устройство",
+ "f1_p": "Во всех трёх прогонах на среднем уровне есть одна мачта, мотор с пропеллером, крыло под водой и пульт в руке. Ни одна другая модель не собрала всё это даже дважды.",
+ "f2_t": "Grok рисует лучшие картинки",
+ "f2_p": "Grok 4.6 и 4.7 делают настоящие иллюстрации со светом, брызгами и закатами. Техника то появляется, то пропадает, но второй прогон Grok 4.7 Build Fast — самый полный электрофойл в наборе.",
+ "f3_t": "От старого Claude к новому — большой скачок",
+ "f3_p": "Opus 4.6 рисует крошечного пингвина на голой палке. Opus 5.5 каждый раз рисует мотор и пульт. Sonnet 4.6 живее, чем Sonnet 5.5, но не точнее.",
+ "f4_t": "Маленькие модели ошибаются с доской",
+ "f4_p": "Haiku 5.5, Grok 4.5 и прогоны Qwen на среднем уровне топят доску, поднимают крыло из воды или рисуют доску не под тем углом.",
+ "f5_t": "Размышления помогают локальному Qwen, но медленно",
+ "f5_p": "На среднем уровне фойл у Qwen меняет форму в каждом прогоне. На очень высоком он рисует чистый и правильный фойл, но тратит 29 минут на одну картинку.",
+ "f6_t": "Агентные оболочки мешают",
+ "f6_p": "Gemini 3.8 Flash запускал команды в терминале вместо того, чтобы рисовать, поэтому понадобилась лишняя строка «без инструментов». Sonnet 4.6 однажды вызвал генератор изображений. В третьем прогоне GPT-OSS забыл про воду.",
+ "nav_label": "Перейти к модели",
+ "method_eyebrow": "Метод и ограничения",
+ "method_h2": "Как проводился тест",
+ "m1": "<b>Один промпт, одна попытка.</b> Без системного промпта и подсказок по стилю с моей стороны, без повторов, кроме случаев, когда прогон вообще не дал SVG.",
+ "m2": "<b>Средний уровень усилий, где модель это позволяет.</b> Antigravity не принимает настройку усилий для Opus 4.6 и Sonnet 4.6, поэтому они работали со значением по умолчанию.",
+ "m3": "<b>Разные оболочки.</b> Claude 5.5 работал как субагенты Claude Code, Grok — через grok CLI, Gemini, GPT-OSS и Claude 4.6 — через Antigravity, а Qwen — на этом Mac. Grok и Antigravity добавляют собственные системные промпты агента, которые нельзя отключить.",
+ "m4": "<b>Время — реальное, по часам</b>, включает запуск, а для пакета в VM — ещё и параллельные прогоны. Это не тест скорости.",
+ "m5": "<b>Gemini нельзя сравнивать напрямую.</b> В его промпте было одно дополнительное предложение с просьбой ответить текстом без инструментов.",
+ "m6": "<b>Три пробы на модель — это подсказка, а не рейтинг.</b> Один локальный прогон Qwen уже выглядел совсем не так, как следующий.",
+ "m7": "<b>Безопасность.</b> Перед рендерингом каждый SVG проверялся на скрипты, обработчики событий и ссылки. Ничего такого не нашлось.",
+ "lightbox": "Увеличенный рисунок",
+ "close": "Закрыть",
+}
+I18N_ATTR = {"": "", "-label": "label", "-content": "content"}
 
 page = open(os.path.join(HERE, "page_template.html")).read()
 page = page.replace("{{NAV}}", "".join(nav)).replace("{{MODELS}}", "".join(cards)).replace("{{TOTAL}}", str(total))
+used = set()
+def tag(m):
+    used.add(m[2]); return ru_attr(I18N_ATTR[m[1]], RU[m[2]]).lstrip()
+page = re.sub(r'data-i18n(|-label|-content)="(\w+)"', tag, page)
+assert used == set(RU), sorted(set(RU) - used)
 open(OUT, "w").write(page)
 print("wrote", OUT, "drawings:", total)
