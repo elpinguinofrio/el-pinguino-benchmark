@@ -1,0 +1,111 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky -->
+  <rect width="600" height="600" fill="#cdeffd"/>
+
+  <!-- Sun -->
+  <circle cx="510" cy="80" r="45" fill="#ffd93b"/>
+
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="110" cy="80" rx="45" ry="18"/>
+    <ellipse cx="140" cy="70" rx="35" ry="15"/>
+    <ellipse cx="420" cy="150" rx="40" ry="15"/>
+    <ellipse cx="450" cy="140" rx="30" ry="13"/>
+  </g>
+
+  <!-- Water -->
+  <rect x="0" y="450" width="600" height="150" fill="#1e7fd4"/>
+  <path d="M0 450 Q 30 442 60 450 T 120 450 T 180 450 T 240 450 T 300 450 T 360 450 T 420 450 T 480 450 T 540 450 T 600 450 V 470 H 0 Z" fill="#2f96e8"/>
+  <path d="M0 480 Q 40 472 80 480 T 160 480 T 240 480 T 320 480 T 400 480 T 480 480 T 560 480 T 640 480" fill="none" stroke="#8fd4ff" stroke-width="4" opacity="0.7"/>
+  <path d="M0 530 Q 50 522 100 530 T 200 530 T 300 530 T 400 530 T 500 530 T 600 530" fill="none" stroke="#8fd4ff" stroke-width="4" opacity="0.5"/>
+
+  <!-- ===== Hydrofoil (underwater) ===== -->
+  <g>
+    <!-- main strut -->
+    <rect x="294" y="445" width="12" height="95" rx="5" fill="#c0c8d0"/>
+    <!-- main wing -->
+    <path d="M235 538 Q 300 522 365 538 Q 300 556 235 538 Z" fill="#e74c3c" stroke="#a93226" stroke-width="3"/>
+    <!-- front canard -->
+    <rect x="296" y="498" width="8" height="14" fill="#c0c8d0"/>
+    <path d="M262 505 Q 300 494 338 505 Q 300 517 262 505 Z" fill="#e74c3c" stroke="#a93226" stroke-width="3"/>
+    <!-- propeller thruster -->
+    <ellipse cx="405" cy="452" rx="14" ry="9" fill="#555f6b"/>
+    <circle cx="405" cy="452" r="4" fill="#2e3540"/>
+    <path d="M405 452 L428 440 L428 464 Z" fill="#555f6b"/>
+    <!-- bubbles -->
+    <g fill="#ffffff" opacity="0.7">
+      <circle cx="430" cy="470" r="5"/>
+      <circle cx="445" cy="485" r="4"/>
+      <circle cx="438" cy="500" r="3"/>
+      <circle cx="370" cy="560" r="4"/>
+      <circle cx="250" cy="565" r="3"/>
+    </g>
+  </g>
+
+  <!-- ===== E-foil board ===== -->
+  <g>
+    <path d="M165 432 Q 300 414 435 432 L 428 450 Q 300 436 172 450 Z" fill="#f5f7fa" stroke="#3a4a5a" stroke-width="3"/>
+    <path d="M180 434 Q 300 420 420 434" fill="none" stroke="#e74c3c" stroke-width="4"/>
+    <!-- mast base on board -->
+    <rect x="293" y="420" width="14" height="14" rx="3" fill="#8a97a5"/>
+  </g>
+
+  <!-- ===== Penguin ===== -->
+  <g>
+    <!-- feet -->
+    <ellipse cx="268" cy="432" rx="22" ry="9" fill="#f39c12"/>
+    <ellipse cx="332" cy="432" rx="22" ry="9" fill="#f39c12"/>
+
+    <!-- left flipper -->
+    <path d="M248 350 Q 210 380 215 425 Q 240 415 252 380 Z" fill="#1a1a1a"/>
+    <!-- right flipper -->
+    <path d="M352 350 Q 390 380 385 425 Q 360 415 348 380 Z" fill="#1a1a1a"/>
+
+    <!-- body -->
+    <ellipse cx="300" cy="385" rx="55" ry="72" fill="#1a1a1a"/>
+    <!-- belly -->
+    <ellipse cx="300" cy="396" rx="37" ry="54" fill="#ffffff"/>
+
+    <!-- head -->
+    <circle cx="300" cy="312" r="37" fill="#1a1a1a"/>
+    <!-- face patch -->
+    <ellipse cx="286" cy="306" rx="14" ry="11" fill="#ffffff"/>
+    <ellipse cx="314" cy="306" rx="14" ry="11" fill="#ffffff"/>
+    <!-- eyes -->
+    <circle cx="286" cy="305" r="5" fill="#1a1a1a"/>
+    <circle cx="314" cy="305" r="5" fill="#1a1a1a"/>
+    <circle cx="288" cy="303" r="1.8" fill="#ffffff"/>
+    <circle cx="316" cy="303" r="1.8" fill="#ffffff"/>
+    <!-- beak -->
+    <path d="M287 318 L 313 318 L 300 334 Z" fill="#f39c12"/>
+    <line x1="289" y1="321" x2="311" y2="321" stroke="#c87f0a" stroke-width="2"/>
+
+    <!-- ===== Sombrero ===== -->
+    <g>
+      <!-- brim -->
+      <path d="M205 278 Q 300 258 395 278 Q 300 296 205 278 Z" fill="#e8b96a" stroke="#b9822e" stroke-width="3"/>
+      <!-- brim decorative band -->
+      <path d="M228 277 Q 300 262 372 277 Q 300 291 228 277 Z" fill="none" stroke="#e74c3c" stroke-width="3"/>
+      <!-- crown -->
+      <path d="M258 272 L 266 240 Q 300 224 334 240 L 342 272 Q 300 284 258 272 Z" fill="#fdf6e3" stroke="#b9822e" stroke-width="3"/>
+      <!-- crown band -->
+      <path d="M262 266 Q 300 278 338 266 L 336 258 Q 300 270 264 258 Z" fill="#e74c3c"/>
+      <!-- small rosette -->
+      <circle cx="300" cy="244" r="5" fill="#3f7fbf"/>
+    </g>
+  </g>
+
+  <!-- Splash around board -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="165" cy="445" r="8"/>
+    <circle cx="150" cy="438" r="5"/>
+    <circle cx="440" cy="445" r="8"/>
+    <circle cx="455" cy="438" r="5"/>
+    <circle cx="185" cy="452" r="4"/>
+    <circle cx="420" cy="452" r="4"/>
+  </g>
+
+  <!-- Splash arcs -->
+  <path d="M155 448 Q 140 430 148 415" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M450 448 Q 465 430 457 415" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+</svg>

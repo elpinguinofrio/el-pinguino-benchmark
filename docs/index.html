@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="One prompt, 12 AI models: a penguin in a sombrero riding an e-foil, drawn as SVG.">
+<title>Penguin E-Foil Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column for the story, then a wide gallery of model sections, 3-4 drawings per row. */
+:root {
+  --sea: #eaf3f2;        /* page ground: pale sea glass */
+  --foam: #ffffff;       /* cards */
+  --ink: #0f2b33;        /* text */
+  --muted: #4c6670;      /* secondary text */
+  --line: #cfe0de;       /* hairlines */
+  --board: #d9561f;      /* accent: e-foil board orange */
+  --straw: #b7861c;      /* sombrero straw */
+  --deep: #0e4f63;       /* deep water */
+  --chip: #dcebe9;
+  --f-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body: "Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --sea: #0a1a20; --foam: #112830; --ink: #e2eeec; --muted: #9db4b9; --line: #23414a;
+  --board: #f07a45; --straw: #e0b24e; --deep: #5fb7cf; --chip: #17343d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --sea: #0a1a20; --foam: #112830; --ink: #e2eeec; --muted: #9db4b9; --line: #23414a;
+  --board: #f07a45; --straw: #e0b24e; --deep: #5fb7cf; --chip: #17343d; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--sea); color: var(--ink); font: 400 16px/1.6 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px }
+.wrap { max-width: 1180px; margin: 0 auto }
+.read { max-width: 68ch }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em }
+h1 { font-weight: 800; font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: 0.98 }
+h2 { font-weight: 800; font-size: clamp(1.5rem, 3.5vw, 2.1rem); line-height: 1.1 }
+h3 { font-weight: 600; font-size: 1.3rem; line-height: 1.2 }
+p { margin: 0 }
+a { color: var(--deep) }
+:focus-visible { outline: 3px solid var(--board); outline-offset: 2px; border-radius: 4px }
+.eyebrow { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted) }
+
+/* hero */
+.hero { padding-block: 48px 32px; display: grid; gap: 28px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center }
+.hero-text { display: grid; gap: 18px; min-width: 0 }
+.lead { font-size: 1.12rem; color: var(--muted); max-width: 56ch }
+.lead strong { color: var(--ink); font-weight: 600 }
+.prompt { background: var(--foam); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px }
+.prompt code { font: 500 0.98rem/1.5 var(--f-mono); color: var(--ink); overflow-wrap: anywhere }
+.prompt-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap }
+.copy { font: 600 0.85rem var(--f-body); background: var(--ink); color: var(--sea); border: 0; border-radius: 999px; padding: 7px 14px; cursor: pointer }
+.stats { display: flex; gap: 28px; flex-wrap: wrap }
+.stat b { display: block; font: 800 1.9rem/1 var(--f-display); font-variant-numeric: tabular-nums }
+.stat span { font-size: 0.85rem; color: var(--muted) }
+
+/* anatomy diagram */
+.anatomy { background: var(--foam); border: 1px solid var(--line); border-radius: 14px; padding: 14px; min-width: 0 }
+.anatomy svg { display: block; width: 100%; height: auto }
+.anatomy figcaption { font-size: 0.85rem; color: var(--muted); padding: 6px 4px 0 }
+.a-label { font: 500 12px var(--f-mono); fill: var(--ink) }
+.a-lead { stroke: var(--muted); stroke-width: 1; fill: none }
+
+/* findings */
+.section { padding-block: 36px; border-top: 1px solid var(--line); display: grid; gap: 20px }
+.findings { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) }
+.findings li { background: var(--foam); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; min-width: 0 }
+.findings b { font-family: var(--f-display); font-weight: 600; font-size: 1.08rem }
+.findings p { color: var(--muted); font-size: 0.95rem }
+
+/* nav chips */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--sea); padding-block: 10px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line) }
+.nav::-webkit-scrollbar { display: none }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sea) }
+.chip { flex: 0 0 auto; text-decoration: none; color: var(--ink); background: var(--chip); border-radius: 999px; padding: 6px 12px; font-size: 0.85rem; font-weight: 500; white-space: nowrap }
+.chip:hover { background: var(--line) }
+
+/* models */
+.models { display: grid; gap: 44px; padding-top: 28px }
+.model { display: grid; gap: 14px; scroll-margin-top: 64px }
+.mh { display: grid; gap: 6px; max-width: 76ch }
+.mh-top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap }
+.fam { font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted) }
+.fam-claude { color: var(--board); border-color: var(--board) }
+.fam-claude-old { color: var(--straw); border-color: var(--straw) }
+.harness { font: 400 0.8rem var(--f-mono); color: var(--muted) }
+.note { font-size: 0.98rem }
+.shots { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)) }
+.shot { margin: 0; background: var(--foam); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto auto }
+.zoom { all: unset; cursor: zoom-in; display: block; aspect-ratio: 4 / 3; background: var(--foam) }
+.zoom img { width: 100%; height: 100%; object-fit: contain; display: block }
+.shot figcaption { display: flex; justify-content: space-between; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); font-size: 0.85rem }
+.run { font-weight: 600 }
+.meta { color: var(--muted); font-family: var(--f-mono); font-size: 0.78rem; font-variant-numeric: tabular-nums }
+
+/* method */
+.method { display: grid; gap: 10px; color: var(--muted); font-size: 0.95rem }
+.method ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px }
+.method b { color: var(--ink) }
+
+/* lightbox */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(96vw, 1000px); width: 100% }
+dialog::backdrop { background: rgba(5, 18, 24, 0.82) }
+.lb { background: var(--foam); border-radius: 12px; overflow: hidden; display: grid }
+.lb img { width: 100%; max-height: 78vh; object-fit: contain; background: var(--foam) }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font-size: 0.9rem }
+.lb-close { font: 600 0.85rem var(--f-body); background: var(--chip); color: var(--ink); border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 32px 20px }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .zoom img { transition: transform .25s ease }
+  .zoom:hover img { transform: scale(1.03) }
+}
+</style>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">My own pelican · 9 Nov 2026</span>
+      <h1>Penguin E-Foil Test</h1>
+      <p class="lead">The “pelican riding a bicycle” prompt is now so famous that models have likely trained on it. This is a fresh replacement nobody has seen before. <strong>A penguin, a sombrero and an electric hydrofoil board</strong>: easy to picture, hard to draw right without knowing how an e-foil works.</p>
+      <div class="prompt">
+        <div class="prompt-row"><span class="eyebrow">The prompt, verbatim</span><button class="copy" id="copy-prompt" type="button">Copy prompt</button></div>
+        <code id="prompt-text">Generate an SVG of a penguin wearing a sombrero riding an e-foil.</code>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>12</b><span>models</span></div>
+        <div class="stat"><b>44</b><span>drawings</span></div>
+        <div class="stat"><b>1</b><span>prompt</span></div>
+      </div>
+    </div>
+    <figure class="anatomy">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Diagram of an e-foil: board above the water, one mast down to a fuselage with front wing, rear wing and propeller, rider holding a hand remote">
+        <rect x="0" y="0" width="420" height="300" fill="none"/>
+        <rect x="0" y="150" width="420" height="150" fill="var(--deep)" opacity="0.16"/>
+        <path d="M0 150 Q35 144 70 150 T140 150 T210 150 T280 150 T350 150 T420 150" fill="none" stroke="var(--deep)" stroke-width="2"/>
+        <path d="M110 112 H300 Q318 112 320 120 Q318 126 300 126 H118 Q106 126 106 119 Q106 112 110 112 Z" fill="var(--board)"/>
+        <rect x="206" y="126" width="7" height="104" rx="2" fill="var(--ink)"/>
+        <rect x="150" y="228" width="140" height="8" rx="4" fill="var(--ink)"/>
+        <path d="M232 232 Q270 220 304 232 Q270 242 232 236 Z" fill="var(--ink)"/>
+        <path d="M146 232 Q160 226 174 232 Q160 238 146 234 Z" fill="var(--ink)"/>
+        <rect x="190" y="196" width="34" height="13" rx="6.5" fill="var(--muted)"/>
+        <ellipse cx="187" cy="202.5" rx="3" ry="12" fill="var(--straw)"/>
+        <rect x="236" y="64" width="12" height="8" rx="2" fill="var(--board)"/>
+        <path d="M252 60 L300 40" class="a-lead"/><text x="304" y="44" class="a-label">remote</text>
+        <path d="M300 112 L330 92" class="a-lead"/><text x="334" y="96" class="a-label">board</text>
+        <path d="M213 170 L262 170" class="a-lead"/><text x="266" y="174" class="a-label">one mast</text>
+        <path d="M186 192 L120 176" class="a-lead"/><text x="38" y="180" class="a-label">propeller</text>
+        <path d="M300 236 L330 262" class="a-lead"/><text x="296" y="278" class="a-label">front wing</text>
+        <path d="M150 236 L104 262" class="a-lead"/><text x="40" y="278" class="a-label">rear wing</text>
+        <path d="M60 150 L60 132" class="a-lead"/><text x="16" y="126" class="a-label">waterline</text>
+      </svg>
+      <figcaption>What a correct drawing needs. The board flies; everything below it stays under water.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <div class="read" style="display:grid;gap:10px">
+      <span class="eyebrow">What the drawings show</span>
+      <h2>Everyone draws the penguin. The e-foil separates them.</h2>
+      <p class="lead">Every model puts a penguin on a board with a sombrero on its head. The difference is in the hardware under the board, and in whether a model draws it the same way twice.</p>
+    </div>
+    <ul class="findings">
+      <li><b>Opus 5.5 knows the machine</b><p>All three medium runs have one mast, a motor and propeller, an underwater wing and a hand remote. No other model gets all of these even twice.</p></li>
+      <li><b>Grok draws the best pictures</b><p>Grok 4.6 and 4.7 make real illustrations with light, spray and sunsets. The hardware comes and goes, but Grok 4.7 Build Fast run 2 is the most complete e-foil in the set.</p></li>
+      <li><b>Old to new Claude is a big jump</b><p>Opus 4.6 draws a tiny penguin on a bare stick. Opus 5.5 draws the motor and the remote every time. Sonnet 4.6 is livelier than Sonnet 5.5 but no more accurate.</p></li>
+      <li><b>Small models get the board wrong</b><p>Haiku 5.5, Grok 4.5 and the medium Qwen runs sink the board, lift the wing out of the water, or draw the board from the wrong angle.</p></li>
+      <li><b>Thinking fixes local Qwen, slowly</b><p>At medium, Qwen's foil changes shape every run. At extra-high it draws a clean, correct foil, but takes 29 minutes for one picture.</p></li>
+      <li><b>Agent harnesses get in the way</b><p>Gemini 3.8 Flash ran shell commands instead of drawing, so it needed an extra “no tools” line. Sonnet 4.6 once called an image generator. GPT-OSS run 3 forgot the water.</p></li>
+    </ul>
+  </section>
+
+  <nav class="nav" aria-label="Jump to model"><a class="chip" href="#opus-55" data-fam="claude">Claude Opus 5.5</a><a class="chip" href="#sonnet-55" data-fam="claude">Claude Sonnet 5.5</a><a class="chip" href="#haiku-55" data-fam="claude">Claude Haiku 5.5</a><a class="chip" href="#opus-46" data-fam="claude-old">Claude Opus 4.6</a><a class="chip" href="#sonnet-46" data-fam="claude-old">Claude Sonnet 4.6</a><a class="chip" href="#grok-47" data-fam="grok">Grok 4.7</a><a class="chip" href="#grok-47bf" data-fam="grok">Grok 4.7 Build Fast</a><a class="chip" href="#grok-46" data-fam="grok">Grok 4.6</a><a class="chip" href="#grok-45" data-fam="grok">Grok 4.5</a><a class="chip" href="#gemini" data-fam="gemini">Gemini 3.8 Flash</a><a class="chip" href="#gpt-oss" data-fam="open">GPT-OSS 120B</a><a class="chip" href="#qwen" data-fam="open">Qwen3.8-27B abliterated</a></nav>
+
+  <div class="models"><section class="model" id="opus-55" data-fam="claude"><header class="mh"><div class="mh-top"><h3>Claude Opus 5.5</h3><span class="fam fam-claude">Claude 5.5</span></div><p class="harness">Claude Code subagent · 4 drawings</p><p class="note">The most consistent model in the test. Every medium run has the full e-foil: one mast, a motor pod with a propeller, an underwater wing, and a throttle remote in the penguin&#x27;s flipper. The four drawings look almost interchangeable.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/opus-5.5_medium.jpg" data-cap="Claude Opus 5.5 · Run 1 · medium (23 s)" aria-label="Enlarge Claude Opus 5.5 Run 1"><img src="img/opus-5.5_medium.jpg" alt="Claude Opus 5.5, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">23 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/opus-5.5_medium_run2.jpg" data-cap="Claude Opus 5.5 · Run 2 · medium (36 s)" aria-label="Enlarge Claude Opus 5.5 Run 2"><img src="img/opus-5.5_medium_run2.jpg" alt="Claude Opus 5.5, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">36 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/opus-5.5_medium_run3.jpg" data-cap="Claude Opus 5.5 · Run 3 · medium (34 s)" aria-label="Enlarge Claude Opus 5.5 Run 3"><img src="img/opus-5.5_medium_run3.jpg" alt="Claude Opus 5.5, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">34 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/opus-5.5_default.jpg" data-cap="Claude Opus 5.5 · Earlier · default (n/a)" aria-label="Enlarge Claude Opus 5.5 Earlier"><img src="img/opus-5.5_default.jpg" alt="Claude Opus 5.5, Earlier: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Earlier</span><span class="meta">default · <span class="t">n/a</span></span></figcaption></figure></div></section><section class="model" id="sonnet-55" data-fam="claude"><header class="mh"><div class="mh-top"><h3>Claude Sonnet 5.5</h3><span class="fam fam-claude">Claude 5.5</span></div><p class="harness">Claude Code subagent · 3 drawings</p><p class="note">Same flat style every time: mast and wing, board skimming the water. No propeller and no remote in any run; run 1 hangs a kite-style cable from the flipper instead.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/sonnet_medium.jpg" data-cap="Claude Sonnet 5.5 · Run 1 · medium (14 s)" aria-label="Enlarge Claude Sonnet 5.5 Run 1"><img src="img/sonnet_medium.jpg" alt="Claude Sonnet 5.5, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">14 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/sonnet-5.5_medium_run2.jpg" data-cap="Claude Sonnet 5.5 · Run 2 · medium (19 s)" aria-label="Enlarge Claude Sonnet 5.5 Run 2"><img src="img/sonnet-5.5_medium_run2.jpg" alt="Claude Sonnet 5.5, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">19 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/sonnet-5.5_medium_run3.jpg" data-cap="Claude Sonnet 5.5 · Run 3 · medium (17 s)" aria-label="Enlarge Claude Sonnet 5.5 Run 3"><img src="img/sonnet-5.5_medium_run3.jpg" alt="Claude Sonnet 5.5, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">17 s</span></span></figcaption></figure></div></section><section class="model" id="haiku-55" data-fam="claude"><header class="mh"><div class="mh-top"><h3>Claude Haiku 5.5</h3><span class="fam fam-claude">Claude 5.5</span></div><p class="harness">Claude Code subagent · 3 drawings</p><p class="note">The weakest Claude. The hats drift toward cowboy and sun hats, the board sits in the water in two runs, and run 1 lifts the whole foil out of the sea.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/haiku_medium.jpg" data-cap="Claude Haiku 5.5 · Run 1 · medium (23 s)" aria-label="Enlarge Claude Haiku 5.5 Run 1"><img src="img/haiku_medium.jpg" alt="Claude Haiku 5.5, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">23 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/haiku-5.5_medium_run2.jpg" data-cap="Claude Haiku 5.5 · Run 2 · medium (18 s)" aria-label="Enlarge Claude Haiku 5.5 Run 2"><img src="img/haiku-5.5_medium_run2.jpg" alt="Claude Haiku 5.5, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">18 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/haiku-5.5_medium_run3.jpg" data-cap="Claude Haiku 5.5 · Run 3 · medium (25 s)" aria-label="Enlarge Claude Haiku 5.5 Run 3"><img src="img/haiku-5.5_medium_run3.jpg" alt="Claude Haiku 5.5, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">25 s</span></span></figcaption></figure></div></section><section class="model" id="opus-46" data-fam="claude-old"><header class="mh"><div class="mh-top"><h3>Claude Opus 4.6</h3><span class="fam fam-claude-old">Claude 4.6</span></div><p class="harness">Antigravity (agy) · 3 drawings</p><p class="note">Small penguin, simple scene, a thin mast with a wing. No propeller, no remote. Next to Opus 5.5 this is the clearest generation gap in the test.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/claude-opus-4.6_default.jpg" data-cap="Claude Opus 4.6 · Run 1 · default (48 s)" aria-label="Enlarge Claude Opus 4.6 Run 1"><img src="img/claude-opus-4.6_default.jpg" alt="Claude Opus 4.6, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">default · <span class="t">48 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/claude-opus-4.6_default_run2.jpg" data-cap="Claude Opus 4.6 · Run 2 · default (38 s)" aria-label="Enlarge Claude Opus 4.6 Run 2"><img src="img/claude-opus-4.6_default_run2.jpg" alt="Claude Opus 4.6, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">default · <span class="t">38 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/claude-opus-4.6_default_run3.jpg" data-cap="Claude Opus 4.6 · Run 3 · default (41 s)" aria-label="Enlarge Claude Opus 4.6 Run 3"><img src="img/claude-opus-4.6_default_run3.jpg" alt="Claude Opus 4.6, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">default · <span class="t">41 s</span></span></figcaption></figure></div></section><section class="model" id="sonnet-46" data-fam="claude-old"><header class="mh"><div class="mh-top"><h3>Claude Sonnet 4.6</h3><span class="fam fam-claude-old">Claude 4.6</span></div><p class="harness">Antigravity (agy) · 3 drawings</p><p class="note">More varied than Sonnet 5.5: one dynamic carving shot, one with a motor pod. The sombreros come out as lampshades or bonnets. Run 3 called an image generator instead of writing SVG and is not shown.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/claude-sonnet-4.6_default.jpg" data-cap="Claude Sonnet 4.6 · Run 1 · default (57 s)" aria-label="Enlarge Claude Sonnet 4.6 Run 1"><img src="img/claude-sonnet-4.6_default.jpg" alt="Claude Sonnet 4.6, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">default · <span class="t">57 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/claude-sonnet-4.6_default_run2.jpg" data-cap="Claude Sonnet 4.6 · Run 2 · default (235 s)" aria-label="Enlarge Claude Sonnet 4.6 Run 2"><img src="img/claude-sonnet-4.6_default_run2.jpg" alt="Claude Sonnet 4.6, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">default · <span class="t">235 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/claude-sonnet-4.6_default_run4.jpg" data-cap="Claude Sonnet 4.6 · Run 4 · default (52 s)" aria-label="Enlarge Claude Sonnet 4.6 Run 4"><img src="img/claude-sonnet-4.6_default_run4.jpg" alt="Claude Sonnet 4.6, Run 4: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 4</span><span class="meta">default · <span class="t">52 s</span></span></figcaption></figure></div></section><section class="model" id="grok-47" data-fam="grok"><header class="mh"><div class="mh-top"><h3>Grok 4.7</h3><span class="fam fam-grok">Grok</span></div><p class="harness">grok CLI · 3 drawings</p><p class="note">The most ambitious illustrations: sunsets, lighting, spray and texture. The hardware is hit and miss: run 3 has a pod and propeller under water, run 2 loses the mast entirely.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7_medium.jpg" data-cap="Grok 4.7 · Run 1 · medium (233 s)" aria-label="Enlarge Grok 4.7 Run 1"><img src="img/grok-4.7_medium.jpg" alt="Grok 4.7, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">233 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7_medium_run2.jpg" data-cap="Grok 4.7 · Run 2 · medium (383 s)" aria-label="Enlarge Grok 4.7 Run 2"><img src="img/grok-4.7_medium_run2.jpg" alt="Grok 4.7, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">383 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7_medium_run3.jpg" data-cap="Grok 4.7 · Run 3 · medium (276 s)" aria-label="Enlarge Grok 4.7 Run 3"><img src="img/grok-4.7_medium_run3.jpg" alt="Grok 4.7, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">276 s</span></span></figcaption></figure></div></section><section class="model" id="grok-47bf" data-fam="grok"><header class="mh"><div class="mh-top"><h3>Grok 4.7 Build Fast</h3><span class="fam fam-grok">Grok</span></div><p class="harness">grok CLI · 3 drawings</p><p class="note">Run 2 is the single most complete e-foil in the whole set: angled mast, fuselage, propeller, and a remote in hand. Runs 1 and 3 crop the penguin at the edge of the frame.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7-build-fast_medium.jpg" data-cap="Grok 4.7 Build Fast · Run 1 · medium (276 s)" aria-label="Enlarge Grok 4.7 Build Fast Run 1"><img src="img/grok-4.7-build-fast_medium.jpg" alt="Grok 4.7 Build Fast, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">276 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7-build-fast_medium_run2.jpg" data-cap="Grok 4.7 Build Fast · Run 2 · medium (139 s)" aria-label="Enlarge Grok 4.7 Build Fast Run 2"><img src="img/grok-4.7-build-fast_medium_run2.jpg" alt="Grok 4.7 Build Fast, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">139 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.7-build-fast_medium_run3.jpg" data-cap="Grok 4.7 Build Fast · Run 3 · medium (302 s)" aria-label="Enlarge Grok 4.7 Build Fast Run 3"><img src="img/grok-4.7-build-fast_medium_run3.jpg" alt="Grok 4.7 Build Fast, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">302 s</span></span></figcaption></figure></div></section><section class="model" id="grok-46" data-fam="grok"><header class="mh"><div class="mh-top"><h3>Grok 4.6</h3><span class="fam fam-grok">Grok</span></div><p class="harness">grok CLI · 3 drawings</p><p class="note">Warm, painterly scenes with a mast and an underwater wing every time. Run 1 is one of the few drawings outside Opus 5.5 with a remote.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.6_medium.jpg" data-cap="Grok 4.6 · Run 1 · medium (98 s)" aria-label="Enlarge Grok 4.6 Run 1"><img src="img/grok-4.6_medium.jpg" alt="Grok 4.6, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">98 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.6_medium_run2.jpg" data-cap="Grok 4.6 · Run 2 · medium (115 s)" aria-label="Enlarge Grok 4.6 Run 2"><img src="img/grok-4.6_medium_run2.jpg" alt="Grok 4.6, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">115 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.6_medium_run3.jpg" data-cap="Grok 4.6 · Run 3 · medium (116 s)" aria-label="Enlarge Grok 4.6 Run 3"><img src="img/grok-4.6_medium_run3.jpg" alt="Grok 4.6, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">116 s</span></span></figcaption></figure></div></section><section class="model" id="grok-45" data-fam="grok"><header class="mh"><div class="mh-top"><h3>Grok 4.5</h3><span class="fam fam-grok">Grok</span></div><p class="harness">grok CLI · 3 drawings</p><p class="note">Flat clip-art. The board is drawn as an oval seen from above while the sea is seen from the side, a perspective mix-up that repeats in all three runs.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.5_medium.jpg" data-cap="Grok 4.5 · Run 1 · medium (64 s)" aria-label="Enlarge Grok 4.5 Run 1"><img src="img/grok-4.5_medium.jpg" alt="Grok 4.5, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">64 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.5_medium_run2.jpg" data-cap="Grok 4.5 · Run 2 · medium (65 s)" aria-label="Enlarge Grok 4.5 Run 2"><img src="img/grok-4.5_medium_run2.jpg" alt="Grok 4.5, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">65 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/grok-4.5_medium_run3.jpg" data-cap="Grok 4.5 · Run 3 · medium (76 s)" aria-label="Enlarge Grok 4.5 Run 3"><img src="img/grok-4.5_medium_run3.jpg" alt="Grok 4.5, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">76 s</span></span></figcaption></figure></div></section><section class="model" id="gemini" data-fam="gemini"><header class="mh"><div class="mh-top"><h3>Gemini 3.8 Flash</h3><span class="fam fam-gemini">Gemini</span></div><p class="harness">Antigravity (agy), modified prompt · 9 drawings</p><p class="note">Lively action poses, boards tilted mid-carve, a single mast every time, and a very stable style across low, medium and high effort. With the plain prompt it tried to run shell commands first and produced nothing, so these used the prompt plus “Output the SVG code as text in your reply; do not use any tools.”</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_low_textprompt.jpg" data-cap="Gemini 3.8 Flash · Low 1 · low (35 s)" aria-label="Enlarge Gemini 3.8 Flash Low 1"><img src="img/gemini-3.8-flash_low_textprompt.jpg" alt="Gemini 3.8 Flash, Low 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Low 1</span><span class="meta">low · <span class="t">35 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_low_textprompt_run2.jpg" data-cap="Gemini 3.8 Flash · Low 2 · low (70 s)" aria-label="Enlarge Gemini 3.8 Flash Low 2"><img src="img/gemini-3.8-flash_low_textprompt_run2.jpg" alt="Gemini 3.8 Flash, Low 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Low 2</span><span class="meta">low · <span class="t">70 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_low_textprompt_run3.jpg" data-cap="Gemini 3.8 Flash · Low 3 · low (55 s)" aria-label="Enlarge Gemini 3.8 Flash Low 3"><img src="img/gemini-3.8-flash_low_textprompt_run3.jpg" alt="Gemini 3.8 Flash, Low 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Low 3</span><span class="meta">low · <span class="t">55 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_medium_textprompt.jpg" data-cap="Gemini 3.8 Flash · Medium 1 · medium (94 s)" aria-label="Enlarge Gemini 3.8 Flash Medium 1"><img src="img/gemini-3.8-flash_medium_textprompt.jpg" alt="Gemini 3.8 Flash, Medium 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Medium 1</span><span class="meta">medium · <span class="t">94 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_medium_textprompt_run2.jpg" data-cap="Gemini 3.8 Flash · Medium 2 · medium (96 s)" aria-label="Enlarge Gemini 3.8 Flash Medium 2"><img src="img/gemini-3.8-flash_medium_textprompt_run2.jpg" alt="Gemini 3.8 Flash, Medium 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Medium 2</span><span class="meta">medium · <span class="t">96 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_medium_textprompt_run3.jpg" data-cap="Gemini 3.8 Flash · Medium 3 · medium (90 s)" aria-label="Enlarge Gemini 3.8 Flash Medium 3"><img src="img/gemini-3.8-flash_medium_textprompt_run3.jpg" alt="Gemini 3.8 Flash, Medium 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Medium 3</span><span class="meta">medium · <span class="t">90 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_high_textprompt.jpg" data-cap="Gemini 3.8 Flash · High 1 · high (112 s)" aria-label="Enlarge Gemini 3.8 Flash High 1"><img src="img/gemini-3.8-flash_high_textprompt.jpg" alt="Gemini 3.8 Flash, High 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">High 1</span><span class="meta">high · <span class="t">112 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_high_textprompt_run2.jpg" data-cap="Gemini 3.8 Flash · High 2 · high (153 s)" aria-label="Enlarge Gemini 3.8 Flash High 2"><img src="img/gemini-3.8-flash_high_textprompt_run2.jpg" alt="Gemini 3.8 Flash, High 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">High 2</span><span class="meta">high · <span class="t">153 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gemini-3.8-flash_high_textprompt_run3.jpg" data-cap="Gemini 3.8 Flash · High 3 · high (171 s)" aria-label="Enlarge Gemini 3.8 Flash High 3"><img src="img/gemini-3.8-flash_high_textprompt_run3.jpg" alt="Gemini 3.8 Flash, High 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">High 3</span><span class="meta">high · <span class="t">171 s</span></span></figcaption></figure></div></section><section class="model" id="gpt-oss" data-fam="open"><header class="mh"><div class="mh-top"><h3>GPT-OSS 120B</h3><span class="fam fam-open">Open weights</span></div><p class="harness">Antigravity (agy) · 3 drawings</p><p class="note">Two pleasant illustrations with bold, patterned sombreros, but the foil is barely there. Run 3 collapses: a penguin in a grey box with no water at all.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/gpt-oss-120b_medium.jpg" data-cap="GPT-OSS 120B · Run 1 · medium (310 s)" aria-label="Enlarge GPT-OSS 120B Run 1"><img src="img/gpt-oss-120b_medium.jpg" alt="GPT-OSS 120B, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">310 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gpt-oss-120b_medium_run2.jpg" data-cap="GPT-OSS 120B · Run 2 · medium (151 s)" aria-label="Enlarge GPT-OSS 120B Run 2"><img src="img/gpt-oss-120b_medium_run2.jpg" alt="GPT-OSS 120B, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">151 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/gpt-oss-120b_medium_run3.jpg" data-cap="GPT-OSS 120B · Run 3 · medium (15 s)" aria-label="Enlarge GPT-OSS 120B Run 3"><img src="img/gpt-oss-120b_medium_run3.jpg" alt="GPT-OSS 120B, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">15 s</span></span></figcaption></figure></div></section><section class="model" id="qwen" data-fam="open"><header class="mh"><div class="mh-top"><h3>Qwen3.8-27B abliterated</h3><span class="fam fam-open">Open weights</span></div><p class="harness">local, MTPLX on this Mac · 4 drawings</p><p class="note">At medium the e-foil changes shape every run: two masts, a board sunk to the waterline, a wing above the surface. At extra-high effort it gets a clean single-mast foil flying over the water, after 29 minutes and 29,587 thinking tokens.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="img/qwen3.8-27b-abliterated-local_medium.jpg" data-cap="Qwen3.8-27B abliterated · Run 1 · medium (113 s)" aria-label="Enlarge Qwen3.8-27B abliterated Run 1"><img src="img/qwen3.8-27b-abliterated-local_medium.jpg" alt="Qwen3.8-27B abliterated, Run 1: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 1</span><span class="meta">medium · <span class="t">113 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/qwen3.8-27b-abliterated-local_medium_run2.jpg" data-cap="Qwen3.8-27B abliterated · Run 2 · medium (145 s)" aria-label="Enlarge Qwen3.8-27B abliterated Run 2"><img src="img/qwen3.8-27b-abliterated-local_medium_run2.jpg" alt="Qwen3.8-27B abliterated, Run 2: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 2</span><span class="meta">medium · <span class="t">145 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/qwen3.8-27b-abliterated-local_medium_run3.jpg" data-cap="Qwen3.8-27B abliterated · Run 3 · medium (159 s)" aria-label="Enlarge Qwen3.8-27B abliterated Run 3"><img src="img/qwen3.8-27b-abliterated-local_medium_run3.jpg" alt="Qwen3.8-27B abliterated, Run 3: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Run 3</span><span class="meta">medium · <span class="t">159 s</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="img/qwen3.8-27b-abliterated-local_xhigh.jpg" data-cap="Qwen3.8-27B abliterated · Extra-high · xhigh (29 min)" aria-label="Enlarge Qwen3.8-27B abliterated Extra-high"><img src="img/qwen3.8-27b-abliterated-local_xhigh.jpg" alt="Qwen3.8-27B abliterated, Extra-high: penguin in a sombrero on an e-foil" loading="lazy"></button><figcaption><span class="run">Extra-high</span><span class="meta">xhigh · <span class="t">29 min</span></span></figcaption></figure></div></section></div>
+
+  <section class="section method">
+    <span class="eyebrow">Method and limits</span>
+    <h2 style="color:var(--ink)">How this was run</h2>
+    <ul>
+      <li><b>Same prompt, one shot each.</b> No system prompt or style hints from me, no retries except where a run produced no SVG at all.</li>
+      <li><b>Medium effort where the model allows it.</b> Antigravity rejects an effort setting for Opus 4.6 and Sonnet 4.6, so those ran at their default.</li>
+      <li><b>Different harnesses.</b> Claude 5.5 ran as Claude Code subagents, Grok through the grok CLI, Gemini, GPT-OSS and the 4.6 Claudes through Antigravity, and Qwen on this Mac. Grok and Antigravity add their own agent system prompts, which can't be turned off.</li>
+      <li><b>Times are wall-clock</b> and include start-up and, for the VM batch, parallel runs. They aren't a speed benchmark.</li>
+      <li><b>Gemini is not directly comparable.</b> Its prompt had one extra sentence asking for text output with no tools.</li>
+      <li><b>Three samples per model is a hint, not a ranking.</b> One local Qwen run already looked very different from the next.</li>
+      <li><b>Safety.</b> Every SVG was scanned for scripts, event handlers and links before rendering. None had any.</li>
+    </ul>
+  </section>
+</div>
+
+<dialog id="lightbox" aria-label="Enlarged drawing">
+  <div class="lb">
+    <img id="lb-img" alt="">
+    <div class="lb-bar"><span id="lb-cap"></span><button class="lb-close" id="lb-close" type="button">Close</button></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById("lightbox"), img = document.getElementById("lb-img"), cap = document.getElementById("lb-cap");
+  document.querySelectorAll(".zoom").forEach(function (b) {
+    b.addEventListener("click", function () {
+      img.src = b.dataset.src; img.alt = b.querySelector("img").alt; cap.textContent = b.dataset.cap;
+      if (dlg.showModal) dlg.showModal();
+    });
+  });
+  document.getElementById("lb-close").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  var btn = document.getElementById("copy-prompt"), txt = document.getElementById("prompt-text");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy prompt"; }, 1600); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(txt); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected, copy it"; };
+    try { navigator.clipboard.writeText(txt.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+</html>

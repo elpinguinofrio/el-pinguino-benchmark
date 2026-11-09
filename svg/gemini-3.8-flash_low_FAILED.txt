@@ -1,0 +1,9 @@
+FAILED 2 times - no SVG produced
+Model: gemini-3.8-flash-low (agy)
+Effort: low
+Prompt: Generate an SVG of a penguin wearing a sombrero riding an e-foil.
+Attempt 1: 6.8 s, first action `date`
+Attempt 2: 5.3 s, first action `ls -la`
+Cause each time: the model's first action was a shell command; agy headless mode auto-denies it and ends with:
+"jetski: no output produced - a tool required the \"command\" permission that headless mode cannot prompt for, so it was auto-denied."
+Not retried further (rule: stop after 2 failures).

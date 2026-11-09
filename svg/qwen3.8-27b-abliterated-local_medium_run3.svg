@@ -1,0 +1,66 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="430" fill="#aee7f5"/>
+  <!-- Sun -->
+  <circle cx="110" cy="90" r="45" fill="#ffd54f"/>
+  <!-- Water -->
+  <rect x="0" y="430" width="800" height="170" fill="#1e88c7"/>
+  <!-- Waves -->
+  <path d="M 0,470 Q 50,460 100,470 T 200,470 T 300,470 T 400,470 T 500,470 T 600,470 T 700,470 T 800,470" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.5"/>
+  <path d="M 0,520 Q 50,510 100,520 T 200,520 T 300,520 T 400,520 T 500,520 T 600,520 T 700,520 T 800,520" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.35"/>
+
+  <!-- Hydrofoil (underwater) -->
+  <g fill="#90a4ae">
+    <!-- Mast -->
+    <rect x="395" y="430" width="10" height="48"/>
+    <!-- Main arm -->
+    <rect x="310" y="472" width="195" height="9" rx="4"/>
+    <!-- Front wing -->
+    <path d="M 312,472 L 288,508 L 340,508 Z"/>
+    <!-- Rear rotor -->
+    <ellipse cx="500" cy="478" rx="24" ry="9"/>
+    <line x1="500" y1="460" x2="500" y2="496" stroke="#607d8b" stroke-width="6"/>
+    <line x1="482" y1="470" x2="518" y2="486" stroke="#607d8b" stroke-width="6"/>
+    <line x1="518" y1="470" x2="482" y2="486" stroke="#607d8b" stroke-width="6"/>
+  </g>
+
+  <!-- E-foil board -->
+  <path d="M 265,412 Q 400,392 535,412 Q 525,432 400,434 Q 275,432 265,412 Z" fill="#ff7043" stroke="#e64a19" stroke-width="3"/>
+  <path d="M 300,414 Q 400,402 500,414" fill="none" stroke="#ffd54f" stroke-width="5"/>
+
+  <!-- Splash -->
+  <ellipse cx="265" cy="425" rx="20" ry="8" fill="#ffffff" opacity="0.7"/>
+  <ellipse cx="535" cy="425" rx="20" ry="8" fill="#ffffff" opacity="0.7"/>
+
+  <!-- Penguin -->
+  <g>
+    <!-- Feet -->
+    <ellipse cx="365" cy="406" rx="22" ry="9" fill="#ff8f00"/>
+    <ellipse cx="435" cy="406" rx="22" ry="9" fill="#ff8f00"/>
+    <!-- Left flipper -->
+    <path d="M 332,250 C 298,280 288,332 300,362 C 316,342 332,300 338,265 Z" fill="#263238"/>
+    <!-- Right flipper (waving) -->
+    <path d="M 468,252 C 498,238 520,212 532,186 C 506,198 484,226 464,246 Z" fill="#263238"/>
+    <!-- Body -->
+    <ellipse cx="400" cy="300" rx="75" ry="110" fill="#263238"/>
+    <!-- Belly -->
+    <ellipse cx="400" cy="312" rx="50" ry="85" fill="#ffffff"/>
+    <!-- Face -->
+    <ellipse cx="400" cy="218" rx="32" ry="38" fill="#ffffff"/>
+    <!-- Eyes -->
+    <circle cx="386" cy="220" r="7" fill="#ffffff"/>
+    <circle cx="414" cy="220" r="7" fill="#ffffff"/>
+    <circle cx="386" cy="220" r="3.5" fill="#000000"/>
+    <circle cx="414" cy="220" r="3.5" fill="#000000"/>
+    <!-- Beak -->
+    <path d="M 388,234 L 412,234 L 400,254 Z" fill="#ff8f00"/>
+    <!-- Sombrero brim -->
+    <ellipse cx="400" cy="182" rx="118" ry="16" fill="#ffb300" stroke="#f57f17" stroke-width="3"/>
+    <!-- Sombrero crown -->
+    <path d="M 358,180 C 358,142 374,124 400,124 C 426,124 442,142 442,180 Z" fill="#ffb300" stroke="#f57f17" stroke-width="3"/>
+    <!-- Sombrero band -->
+    <path d="M 359,172 Q 400,184 441,172 L 440,181 Q 400,192 360,181 Z" fill="#d32f2f"/>
+    <!-- Zigzag decoration on brim -->
+    <path d="M 300,178 L 320,172 L 340,178 L 360,172 L 380,178 L 400,172 L 420,178 L 440,172 L 460,178 L 480,172 L 500,178" fill="none" stroke="#d32f2f" stroke-width="3"/>
+  </g>
+</svg>

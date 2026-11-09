@@ -1,0 +1,125 @@
+Prompt: Generate an SVG of a penguin wearing a sombrero riding an e-foil.
+Meta: rc=0 wall=41.2s svg=yes
+SVG source: agy tool call write_file in the agent workspace
+--- stdout ---
+Here's your penguin on an e-foil! 🐧🏄‍♂️
+--- stderr ---
+--- SVG from tool call ---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0077be"/>
+      <stop offset="50%" stop-color="#00a6ed"/>
+      <stop offset="100%" stop-color="#0077be"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#c9e9f6"/>
+    </linearGradient>
+    <linearGradient id="boardGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2c2c2c"/>
+      <stop offset="50%" stop-color="#444"/>
+      <stop offset="100%" stop-color="#2c2c2c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="500" height="320" fill="url(#sky)"/>
+
+  <!-- Sun -->
+  <circle cx="420" cy="70" r="35" fill="#FFD700" opacity="0.9"/>
+
+  <!-- Water -->
+  <ellipse cx="250" cy="400" rx="300" ry="130" fill="url(#water)"/>
+  <rect x="0" y="320" width="500" height="180" fill="url(#water)"/>
+
+  <!-- Waves -->
+  <path d="M0 340 Q30 330 60 340 Q90 350 120 340 Q150 330 180 340 Q210 350 240 340 Q270 330 300 340 Q330 350 360 340 Q390 330 420 340 Q450 350 500 340 L500 350 Q450 360 420 350 Q390 340 360 350 Q330 360 300 350 Q270 340 240 350 Q210 360 180 350 Q150 340 120 350 Q90 360 60 350 Q30 340 0 350 Z" fill="#0099dd" opacity="0.5"/>
+  <path d="M0 360 Q40 350 80 360 Q120 370 160 360 Q200 350 240 360 Q280 370 320 360 Q360 350 400 360 Q440 370 500 360 L500 370 Q440 380 400 370 Q360 360 320 370 Q280 380 240 370 Q200 360 160 370 Q120 380 80 370 Q40 360 0 370 Z" fill="#0088cc" opacity="0.4"/>
+
+  <!-- Spray/splash behind board -->
+  <path d="M140 300 Q130 280 145 290 Q135 270 155 285 Q148 265 160 280" fill="none" stroke="white" stroke-width="2" opacity="0.7"/>
+  <path d="M340 305 Q350 285 335 295 Q345 275 330 288 Q340 268 325 282" fill="none" stroke="white" stroke-width="2" opacity="0.7"/>
+  <ellipse cx="150" cy="310" rx="20" ry="8" fill="white" opacity="0.4"/>
+  <ellipse cx="340" cy="312" rx="18" ry="7" fill="white" opacity="0.4"/>
+
+  <!-- E-Foil Mast (underwater) -->
+  <rect x="243" y="310" width="6" height="70" fill="#555" rx="2"/>
+
+  <!-- E-Foil Hydrofoil Wing (underwater) -->
+  <ellipse cx="246" cy="385" rx="50" ry="6" fill="#666"/>
+  <ellipse cx="246" cy="385" rx="45" ry="4" fill="#777"/>
+
+  <!-- E-Foil Board -->
+  <path d="M150 300 Q155 290 245 288 Q335 290 345 300 Q350 308 340 312 Q335 315 245 316 Q155 315 152 312 Q148 308 150 300 Z" fill="url(#boardGrad)" stroke="#222" stroke-width="1"/>
+  <!-- Board highlight -->
+  <path d="M170 296 Q245 293 320 296 Q245 299 170 296 Z" fill="#666" opacity="0.5"/>
+  <!-- LED strip on board -->
+  <path d="M165 308 Q245 311 325 308" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+
+  <!-- Penguin Body -->
+  <!-- Back (black) -->
+  <ellipse cx="245" cy="230" rx="42" ry="60" fill="#1a1a1a"/>
+  <!-- Belly (white) -->
+  <ellipse cx="245" cy="235" rx="30" ry="50" fill="#f0f0f0"/>
+
+  <!-- Penguin Head -->
+  <circle cx="245" cy="170" r="30" fill="#1a1a1a"/>
+  <!-- Face patch -->
+  <ellipse cx="245" cy="175" rx="22" ry="20" fill="#f0f0f0"/>
+
+  <!-- Eyes -->
+  <ellipse cx="236" cy="168" rx="5" ry="6" fill="white"/>
+  <ellipse cx="254" cy="168" rx="5" ry="6" fill="white"/>
+  <circle cx="237" cy="169" r="3" fill="#111"/>
+  <circle cx="255" cy="169" r="3" fill="#111"/>
+  <!-- Eye shine -->
+  <circle cx="238" cy="167" r="1.2" fill="white"/>
+  <circle cx="256" cy="167" r="1.2" fill="white"/>
+
+  <!-- Beak -->
+  <path d="M240 178 L245 188 L250 178 Z" fill="#ff8c00" stroke="#e07000" stroke-width="0.5"/>
+
+  <!-- Cheek blush -->
+  <ellipse cx="228" cy="178" rx="5" ry="3" fill="#ffaaaa" opacity="0.4"/>
+  <ellipse cx="262" cy="178" rx="5" ry="3" fill="#ffaaaa" opacity="0.4"/>
+
+  <!-- Sombrero -->
+  <!-- Brim -->
+  <ellipse cx="245" cy="152" rx="55" ry="14" fill="#c8860a"/>
+  <ellipse cx="245" cy="152" rx="55" ry="14" fill="none" stroke="#a06800" stroke-width="1.5"/>
+  <!-- Brim top highlight -->
+  <ellipse cx="245" cy="150" rx="50" ry="10" fill="#d4960e" opacity="0.5"/>
+  <!-- Crown -->
+  <path d="M220 155 Q220 120 245 110 Q270 120 270 155 Z" fill="#c8860a" stroke="#a06800" stroke-width="1"/>
+  <!-- Crown highlight -->
+  <path d="M230 150 Q230 125 245 118 Q255 123 258 140" fill="#d4960e" opacity="0.4"/>
+  <!-- Sombrero band -->
+  <path d="M222 148 Q245 142 268 148" fill="none" stroke="#cc2200" stroke-width="3"/>
+  <!-- Sombrero zigzag decoration -->
+  <path d="M224 145 L228 140 L232 145 L236 140 L240 145 L244 140 L248 145 L252 140 L256 145 L260 140 L264 145" fill="none" stroke="#228B22" stroke-width="1.5"/>
+  <!-- Sombrero pompom -->
+  <circle cx="245" cy="108" r="4" fill="#cc2200"/>
+
+  <!-- Left Flipper (raised for balance) -->
+  <path d="M203 215 Q185 200 180 220 Q178 240 195 255 Q200 250 205 240" fill="#1a1a1a" stroke="#111" stroke-width="1"/>
+
+  <!-- Right Flipper (raised for balance) -->
+  <path d="M287 215 Q305 200 310 220 Q312 240 295 255 Q290 250 285 240" fill="#1a1a1a" stroke="#111" stroke-width="1"/>
+
+  <!-- Penguin Feet (standing on board) -->
+  <ellipse cx="232" cy="290" rx="12" ry="5" fill="#ff8c00" stroke="#e07000" stroke-width="0.5"/>
+  <ellipse cx="258" cy="290" rx="12" ry="5" fill="#ff8c00" stroke="#e07000" stroke-width="0.5"/>
+
+  <!-- Small clouds -->
+  <g opacity="0.8">
+    <ellipse cx="80" cy="60" rx="30" ry="15" fill="white"/>
+    <ellipse cx="60" cy="55" rx="20" ry="12" fill="white"/>
+    <ellipse cx="100" cy="55" rx="22" ry="12" fill="white"/>
+  </g>
+  <g opacity="0.6">
+    <ellipse cx="350" cy="100" rx="25" ry="12" fill="white"/>
+    <ellipse cx="335" cy="96" rx="18" ry="10" fill="white"/>
+    <ellipse cx="368" cy="97" rx="16" ry="9" fill="white"/>
+  </g>
+</svg>

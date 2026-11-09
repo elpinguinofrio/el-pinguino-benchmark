@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfe6ff"/>
+      <stop offset="1" stop-color="#eaf7ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2aa7d8"/>
+      <stop offset="1" stop-color="#0b5f8f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#sky)"/>
+  <circle cx="330" cy="60" r="28" fill="#ffe27a"/>
+  <rect y="250" width="400" height="150" fill="url(#sea)"/>
+  <path d="M0 262 Q25 252 50 262 T100 262 T150 262 T200 262 T250 262 T300 262 T350 262 T400 262" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+  <!-- spray -->
+  <path d="M95 268 q-20 -10 -35 4 q15 -2 35 8z" fill="#fff" opacity=".8"/>
+  <path d="M110 275 q-25 5 -40 18 q20 -8 42 -8z" fill="#fff" opacity=".6"/>
+  <!-- mast and wing underwater -->
+  <rect x="195" y="285" width="8" height="70" fill="#4a4f57"/>
+  <path d="M150 360 Q200 345 250 360 Q200 368 150 360z" fill="#6b7280"/>
+  <rect x="180" y="352" width="40" height="10" rx="5" fill="#4a4f57" opacity=".0"/>
+  <!-- board -->
+  <path d="M100 275 Q100 262 120 262 L295 262 Q315 262 300 278 Q290 288 270 288 L125 288 Q100 288 100 275z" fill="#ff7a3d"/>
+  <path d="M110 270 L290 270" stroke="#fff" stroke-width="3" opacity=".7"/>
+  <!-- feet -->
+  <ellipse cx="185" cy="260" rx="20" ry="7" fill="#ffa726"/>
+  <ellipse cx="225" cy="260" rx="20" ry="7" fill="#ffa726"/>
+  <!-- body -->
+  <ellipse cx="205" cy="190" rx="55" ry="75" fill="#22262e"/>
+  <ellipse cx="212" cy="198" rx="36" ry="58" fill="#fff"/>
+  <!-- flippers -->
+  <path d="M155 160 Q110 175 105 210 Q135 200 160 190z" fill="#22262e"/>
+  <path d="M258 160 Q300 150 318 175 Q290 185 258 190z" fill="#22262e"/>
+  <!-- head -->
+  <circle cx="210" cy="115" r="38" fill="#22262e"/>
+  <ellipse cx="218" cy="122" rx="24" ry="22" fill="#fff"/>
+  <!-- eyes -->
+  <circle cx="208" cy="115" r="7" fill="#fff"/>
+  <circle cx="232" cy="115" r="7" fill="#fff"/>
+  <circle cx="210" cy="116" r="3.5" fill="#000"/>
+  <circle cx="234" cy="116" r="3.5" fill="#000"/>
+  <!-- beak -->
+  <path d="M212 126 L248 132 L214 142z" fill="#ffa726"/>
+  <path d="M212 132 L244 133" stroke="#d97706" stroke-width="1.5"/>
+  <!-- sombrero -->
+  <ellipse cx="210" cy="84" rx="85" ry="16" fill="#e0b050"/>
+  <ellipse cx="210" cy="80" rx="85" ry="14" fill="#f2c96a"/>
+  <path d="M170 80 Q172 35 210 30 Q248 35 250 80z" fill="#f2c96a"/>
+  <path d="M170 80 Q210 90 250 80 L250 70 Q210 80 170 70z" fill="#d6336c"/>
+  <path d="M175 68 L245 68" stroke="#2f9e44" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M130 82 Q210 96 290 82" fill="none" stroke="#c9953a" stroke-width="2"/>
+  <!-- handlebar / tether -->
+  <path d="M262 175 Q285 215 270 258" fill="none" stroke="#333" stroke-width="3"/>
+</svg>

@@ -1,0 +1,184 @@
+Prompt: Generate an SVG of a penguin wearing a sombrero riding an e-foil.
+Meta: rc=0 wall=301.6s svg=yes
+SVG source: inline in reply
+--- stdout ---
+I'll draw a side-view SVG of a penguin in a sombrero standing on an e-foil, with the board above the water and the foil underneath.<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">Penguin in a sombrero riding an e-foil</title>
+  <desc id="desc">A penguin wearing a wide straw sombrero stands on an electric hydrofoil board above the water, facing right. The mast drops through the surface to a front wing, a rear wing, and a spinning propeller at the back.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6eb6dd"/>
+      <stop offset="0.55" stop-color="#d7f1fb"/>
+      <stop offset="1" stop-color="#f3c48a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a8eb2"/>
+      <stop offset="0.28" stop-color="#0c648c"/>
+      <stop offset="1" stop-color="#062838"/>
+    </linearGradient>
+    <linearGradient id="straw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe29a"/>
+      <stop offset="1" stop-color="#e2a428"/>
+    </linearGradient>
+    <linearGradient id="strawDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0a82e"/>
+      <stop offset="1" stop-color="#b47d16"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edf3f7"/>
+      <stop offset="0.45" stop-color="#9aabba"/>
+      <stop offset="1" stop-color="#4d5e6d"/>
+    </linearGradient>
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf3"/>
+      <stop offset="1" stop-color="#d9d3c7"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d4c5e"/>
+      <stop offset="1" stop-color="#1c2733"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff4c8"/>
+      <stop offset="0.6" stop-color="#ffd36a"/>
+      <stop offset="1" stop-color="#ffd36a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#062433" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="720" fill="url(#sky)"/>
+  <circle cx="150" cy="128" r="92" fill="url(#sun)"/>
+  <circle cx="150" cy="128" r="40" fill="#ffe7a0"/>
+
+  <g fill="#ffffff">
+    <ellipse cx="250" cy="92" rx="26" ry="14"/>
+    <ellipse cx="286" cy="86" rx="40" ry="18"/>
+    <ellipse cx="324" cy="94" rx="28" ry="13"/>
+    <ellipse cx="930" cy="78" rx="22" ry="11" opacity="0.9"/>
+    <ellipse cx="958" cy="74" rx="30" ry="13" opacity="0.9"/>
+  </g>
+
+  <g fill="none" stroke="#1c3140" stroke-width="2" stroke-linecap="round" opacity="0.35">
+    <path d="M96 168 q12 -9 24 0 q12 -9 24 0"/>
+    <path d="M150 148 q8 -6 16 0 q8 -6 16 0"/>
+  </g>
+
+  <path d="M0 508 C 160 496, 280 522, 430 508 C 590 492, 740 524, 900 506 C 990 496, 1060 510, 1100 504 L 1100 720 L 0 720 Z" fill="url(#sea)"/>
+  <path d="M0 470 C 120 492, 210 500, 320 486 C 410 474, 470 498, 520 508 L 300 508 C 220 500, 120 490, 0 500 Z" fill="#176888" opacity="0.55"/>
+
+  <g fill="none" stroke="#8fd4ea" stroke-width="2" opacity="0.16">
+    <path d="M40 560 Q 200 546 340 566 T 620 556"/>
+    <path d="M80 630 Q 260 608 460 636 T 780 618"/>
+    <path d="M160 690 Q 380 668 600 700 T 1040 676"/>
+  </g>
+
+  <ellipse cx="690" cy="522" rx="230" ry="11" fill="#041821" opacity="0.22"/>
+
+  <!-- e-foil underwater unit; prop is aft, nose of the board points right -->
+  <g>
+    <rect x="672" y="446" width="16" height="162" rx="4" fill="url(#metal)"/>
+    <rect x="676" y="460" width="4" height="130" rx="2" fill="#ffffff" opacity="0.35"/>
+    <rect x="498" y="596" width="250" height="20" rx="10" fill="url(#metal)"/>
+    <rect x="470" y="590" width="40" height="32" rx="10" fill="#24313c"/>
+    <rect x="478" y="600" width="8" height="12" rx="2" fill="#3ee0c5"/>
+    <path d="M508 584 l10 10 h-7 l6 12" fill="none" stroke="#3ee0c5" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+
+    <path d="M545 636 C 610 612, 800 608, 915 626 L 900 634 C 770 620, 620 626, 555 646 Z" fill="url(#metal)"/>
+    <path d="M560 632 C 680 618, 820 616, 900 628" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
+
+    <path d="M505 614 C 545 600, 630 600, 675 616 L 662 623 C 610 612, 545 612, 514 624 Z" fill="url(#metal)"/>
+
+    <g transform="translate(468 606)" opacity="0.9">
+      <g fill="#d5e4ee">
+        <ellipse cx="0" cy="0" rx="7" ry="30" transform="rotate(18)"/>
+        <ellipse cx="0" cy="0" rx="7" ry="30" transform="rotate(78)"/>
+        <ellipse cx="0" cy="0" rx="7" ry="30" transform="rotate(138)"/>
+      </g>
+      <circle r="8" fill="#24313c"/>
+      <circle r="3" fill="#3ee0c5"/>
+    </g>
+    <circle cx="468" cy="606" r="34" fill="none" stroke="#d5e4ee" stroke-width="2" stroke-dasharray="3 7" opacity="0.45"/>
+  </g>
+
+  <g fill="#e7f7fb" opacity="0.55">
+    <circle cx="430" cy="618" r="4"/>
+    <circle cx="390" cy="632" r="6"/>
+    <circle cx="348" cy="624" r="3"/>
+    <circle cx="300" cy="646" r="5"/>
+    <circle cx="250" cy="636" r="3.5"/>
+    <circle cx="210" cy="658" r="4"/>
+    <circle cx="160" cy="648" r="2.5"/>
+  </g>
+
+  <path d="M0 506 C 160 494, 280 520, 430 506 C 590 490, 740 522, 900 504 C 990 494, 1060 508, 1100 502" fill="none" stroke="#e7f6fb" stroke-width="4" opacity="0.85"/>
+  <path d="M684 508 C 650 492, 628 498, 600 478" fill="none" stroke="#f4fbfe" stroke-width="4" stroke-linecap="round"/>
+  <path d="M684 508 C 714 486, 736 496, 760 472" fill="none" stroke="#f4fbfe" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <path d="M684 510 C 640 518, 560 512, 470 522" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="592" cy="470" r="3" fill="#f4fbfe"/>
+  <circle cx="768" cy="464" r="2.5" fill="#f4fbfe"/>
+  <circle cx="626" cy="488" r="2" fill="#f4fbfe"/>
+
+  <!-- board -->
+  <path d="M358 446 C490 436 660 426 880 412 C928 406 956 418 946 430 C900 438 760 444 640 446 C500 450 420 454 368 450 C340 446 338 444 358 446 Z" fill="url(#hull)"/>
+  <path d="M366 444 C498 434 670 424 900 412 C930 409 948 416 944 424 C860 430 700 436 560 442 C450 446 390 446 366 444 Z" fill="url(#deck)"/>
+  <path d="M390 440 C520 432 700 422 910 412" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M430 446 C560 438 760 430 900 420" fill="none" stroke="#3ee0c5" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <rect x="652" y="444" width="52" height="8" rx="2" fill="#1c2733"/>
+  <rect x="668" y="430" width="28" height="8" rx="2" fill="none" stroke="#24313c" stroke-width="1.5"/>
+
+  <!-- penguin -->
+  <g filter="url(#soft)">
+    <path d="M624 330 C560 348 524 392 546 424 C566 416 600 372 640 348 Z" fill="#1a1c20"/>
+    <path d="M742 322 C792 304 834 318 848 346 C826 356 788 350 746 342 Z" fill="#1a1c20"/>
+    <path d="M612 392 L582 414 L624 420 Z" fill="#1a1c20"/>
+    <ellipse cx="636" cy="438" rx="34" ry="12" fill="#f08a24"/>
+    <ellipse cx="678" cy="342" rx="68" ry="104" fill="#1a1c20"/>
+    <ellipse cx="698" cy="356" rx="44" ry="78" fill="#fffaf4"/>
+    <ellipse cx="708" cy="246" rx="46" ry="42" fill="#1a1c20"/>
+    <ellipse cx="732" cy="258" rx="28" ry="26" fill="#fffaf4"/>
+    <ellipse cx="724" cy="430" rx="30" ry="11" fill="#f08a24"/>
+  </g>
+
+  <g stroke="#d4651a" stroke-width="1.4" stroke-linecap="round">
+    <path d="M616 438 l18 7 M626 432 l16 10 M638 428 l12 11"/>
+    <path d="M706 430 l16 6 M716 424 l14 9 M726 420 l10 10"/>
+  </g>
+  <path d="M756 252 L812 260 L754 262 Z" fill="#ffb15a"/>
+  <path d="M756 262 L806 266 L752 274 Z" fill="#e86f1a"/>
+  <circle cx="744" cy="256" r="9" fill="#fffaf4"/>
+  <circle cx="746" cy="256" r="5.5" fill="#1a1c20"/>
+  <circle cx="748" cy="254" r="2" fill="#ffffff"/>
+  <path d="M732 242 Q744 236 758 244" fill="none" stroke="#1a1c20" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="724" cy="270" rx="6" ry="3.5" fill="#f3a3a0" opacity="0.7"/>
+
+  <g transform="translate(826 324) rotate(16)">
+    <rect x="0" y="0" width="22" height="42" rx="6" fill="#1c1f24"/>
+    <rect x="4" y="6" width="14" height="12" rx="2" fill="#16343a"/>
+    <circle cx="11" cy="12" r="2.3" fill="#3ee0c5"/>
+    <rect x="-7" y="12" width="9" height="14" rx="2" fill="#3a4048"/>
+  </g>
+
+  <!-- sombrero -->
+  <g transform="rotate(6 700 204)" filter="url(#soft)">
+    <ellipse cx="700" cy="214" rx="176" ry="24" fill="url(#strawDark)"/>
+    <ellipse cx="700" cy="204" rx="176" ry="18" fill="url(#straw)"/>
+    <ellipse cx="690" cy="198" rx="110" ry="7" fill="#fff1c4" opacity="0.65"/>
+    <path d="M560 204 Q700 194 840 204" fill="none" stroke="#e2ae30" stroke-width="1.4" opacity="0.55"/>
+    <path d="M590 212 Q700 204 810 212" fill="none" stroke="#c89220" stroke-width="1.2" opacity="0.4"/>
+    <path d="M652 200 C646 128 766 118 760 198 C732 186 680 190 652 200 Z" fill="url(#straw)"/>
+    <path d="M668 190 C678 146 724 136 736 186" fill="#fff1c4" opacity="0.45"/>
+    <path d="M732 146 C756 160 766 186 758 202 C744 176 736 156 732 146 Z" fill="#c88818" opacity="0.35"/>
+    <path d="M648 192 C692 178 748 178 766 196 L762 210 C736 198 682 200 646 210 Z" fill="#c81d25"/>
+    <path d="M656 202 L668 190 L680 202 L692 190 L704 202 L716 190 L728 202 L740 190 L754 202" fill="none" stroke="#f6e27a" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="676" cy="196" r="2.4" fill="#3ee0c5"/>
+    <circle cx="720" cy="192" r="2.4" fill="#3ee0c5"/>
+  </g>
+</svg>
+
+**TL;DR**
+
+- Side-view penguin in a wide red-banded sombrero, standing on an e-foil and facing right.
+- The board sits above the water; the mast, wings, and aft propeller are underwater.
+- Save the snippet as a `.svg` file and open it in a browser to see it.
+--- stderr ---

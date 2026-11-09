@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 720" width="1100" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">Penguin in a sombrero riding an e-foil</title>
+  <desc id="desc">A tuxedoed penguin in a gold sombrero crouches on a white e-foil board, mast and hydrofoil cutting through tropical water with spray and a sunset sky.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFB86B"/>
+      <stop offset="42%" stop-color="#FF8A5B"/>
+      <stop offset="78%" stop-color="#2FA6A0"/>
+      <stop offset="100%" stop-color="#1E7C86"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="22%" cy="22%" r="28%">
+      <stop offset="0%" stop-color="#FFE08A" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#FFB347" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FF7A3C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="waterDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A8A8F"/>
+      <stop offset="35%" stop-color="#0E5E6A"/>
+      <stop offset="100%" stop-color="#062E3A"/>
+    </linearGradient>
+    <linearGradient id="caustic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7FF0E0" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#7FF0E0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="boardDeck" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF6E8"/>
+      <stop offset="55%" stop-color="#F0D7B0"/>
+      <stop offset="100%" stop-color="#D9B48A"/>
+    </linearGradient>
+    <linearGradient id="straw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6D36A"/>
+      <stop offset="100%" stop-color="#C98A22"/>
+    </linearGradient>
+    <linearGradient id="foilMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8EA8B5"/>
+      <stop offset="100%" stop-color="#2C3E4A"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+    <filter id="sprayBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+  </defs>
+
+  <!-- sky + sun -->
+  <rect width="1100" height="720" fill="url(#sky)"/>
+  <circle cx="210" cy="150" r="220" fill="url(#sunGlow)"/>
+  <circle cx="210" cy="148" r="62" fill="#FFE7A3"/>
+  <g fill="none" stroke="#FFE7A3" stroke-opacity="0.45" stroke-width="3">
+    <path d="M210 58 v-28M210 266 v28M112 148 h-28M336 148 h28M138 76 l-18-18M282 220 l18 18M282 76 l18-18M138 220 l-18 18"/>
+  </g>
+
+  <!-- distant land -->
+  <path fill="#1F4E56" opacity="0.55" d="M0 338 C120 318 180 348 280 330 C360 316 410 344 520 328 C640 308 700 342 820 322 C920 308 980 330 1100 318 L1100 372 L0 372 Z"/>
+
+  <!-- water body -->
+  <rect y="360" width="1100" height="360" fill="url(#waterDeep)"/>
+  <path fill="#2BB3B0" d="M0 360 C80 348 140 372 220 358 C320 340 390 374 500 356 C610 338 690 372 800 354 C900 338 980 368 1100 350 L1100 390 C980 402 900 376 800 390 C690 406 610 374 500 392 C390 410 320 376 220 394 C140 406 80 382 0 392 Z"/>
+  <g opacity="0.35" fill="url(#caustic)">
+    <ellipse cx="430" cy="470" rx="160" ry="28"/>
+    <ellipse cx="700" cy="530" rx="210" ry="36"/>
+    <ellipse cx="280" cy="600" rx="180" ry="30"/>
+  </g>
+
+  <!-- underwater light shafts -->
+  <g fill="#9FF5E6" opacity="0.08">
+    <polygon points="480,368 430,720 490,720 530,368"/>
+    <polygon points="620,368 590,720 650,720 670,368"/>
+  </g>
+
+  <!-- wake on surface -->
+  <path fill="none" stroke="#D6FFF7" stroke-width="3" stroke-linecap="round" opacity="0.7"
+        d="M250 382 C340 370 430 394 540 376"/>
+  <path fill="none" stroke="#D6FFF7" stroke-width="2" opacity="0.45"
+        d="M220 396 C330 384 450 410 560 388"/>
+
+  <!-- hydrofoil (underwater) -->
+  <g id="foil" transform="translate(20,8)">
+    <ellipse cx="560" cy="548" rx="90" ry="14" fill="#041820" opacity="0.35" filter="url(#soft)"/>
+    <!-- fuselage -->
+    <path fill="url(#foilMetal)" d="M430 536 C438 528 620 524 668 534 C676 538 674 546 664 548 C610 556 450 554 434 546 C426 542 424 538 430 536Z"/>
+    <!-- front wing -->
+    <path fill="#5E7C88" d="M590 538 C640 512 720 510 762 532 C770 538 766 548 752 550 C700 558 640 556 598 548 C586 546 582 542 590 538Z"/>
+    <path fill="#9BB3BE" d="M602 536 C646 520 710 520 748 534 C742 528 680 518 602 536Z"/>
+    <!-- rear stabilizer -->
+    <path fill="#4A6672" d="M428 538 C402 524 368 526 348 538 C342 542 346 550 358 552 C392 558 422 552 436 546 C440 544 438 540 428 538Z"/>
+    <!-- prop hub + blades -->
+    <g transform="translate(428,542)">
+      <ellipse cx="0" cy="0" rx="16" ry="16" fill="#1C242A"/>
+      <g fill="#C9D6DC" opacity="0.85">
+        <ellipse cx="0" cy="0" rx="28" ry="7" transform="rotate(18)"/>
+        <ellipse cx="0" cy="0" rx="28" ry="7" transform="rotate(78)"/>
+        <ellipse cx="0" cy="0" rx="28" ry="7" transform="rotate(138)"/>
+      </g>
+      <circle r="5" fill="#E85D04"/>
+    </g>
+    <!-- bubbles -->
+    <g fill="#CFFFF6" opacity="0.55">
+      <circle cx="400" cy="560" r="4"/><circle cx="388" cy="582" r="3"/>
+      <circle cx="412" cy="598" r="5"/><circle cx="370" cy="610" r="2.5"/>
+      <circle cx="720" cy="568" r="3"/><circle cx="746" cy="590" r="4"/>
+    </g>
+  </g>
+
+  <!-- mast piercing surface -->
+  <path fill="#1B232A" d="M538 368 L566 368 L582 538 L548 540 Z"/>
+  <path fill="#3A4650" d="M538 368 L548 368 L562 538 L548 540 Z"/>
+  <!-- mast/water intersection splash ring -->
+  <ellipse cx="556" cy="372" rx="34" ry="8" fill="#E8FFFB" opacity="0.7"/>
+
+  <!-- board -->
+  <g id="board">
+    <ellipse cx="560" cy="382" rx="210" ry="16" fill="#041820" opacity="0.25" filter="url(#soft)"/>
+    <path fill="#2A pal" d=""/>
+    <path fill="url(#boardDeck)" stroke="#1A1A1A" stroke-width="3"
+          d="M330 356 C360 338 430 328 560 332 C700 336 790 348 830 360 C842 364 840 374 824 378 C780 390 680 402 560 400 C430 398 360 388 328 374 C316 368 316 360 330 356Z"/>
+    <!-- rail stripe -->
+    <path fill="none" stroke="#E85D04" stroke-width="6" stroke-linecap="round"
+          d="M360 364 C430 348 520 344 620 348 C710 352 780 362 812 370"/>
+    <!-- pad -->
+    <path fill="#2B2B30" opacity="0.85"
+          d="M470 352 C500 346 560 346 610 350 C618 352 618 362 608 366 C560 376 500 376 474 368 C464 364 462 356 470 352Z"/>
+    <!-- nose logo -->
+    <circle cx="780" cy="362" r="8" fill="#1B7A7A"/>
+    <path d="M780 356 l4 10 h-8 z" fill="#F6D36A"/>
+  </g>
+
+  <!-- penguin -->
+  <g id="penguin" transform="translate(548,248) rotate(-14)">
+    <!-- shadow on pad -->
+    <ellipse cx="6" cy="128" rx="46" ry="10" fill="#0B1014" opacity="0.35"/>
+
+    <!-- tail -->
+    <path fill="#141416" d="M-18 86 C-40 96 -46 114 -28 122 C-8 118 6 108 10 96 Z"/>
+
+    <!-- body -->
+    <ellipse cx="4" cy="62" rx="48" ry="66" fill="#16161A"/>
+    <!-- white belly -->
+    <ellipse cx="10" cy="70" rx="32" ry="50" fill="#FFF6EA"/>
+    <!-- belly shading -->
+    <ellipse cx="16" cy="78" rx="18" ry="28" fill="#F0DCC0" opacity="0.45"/>
+
+    <!-- back flipper -->
+    <path fill="#121214" d="M-38 48 C-78 40 -96 62 -84 78 C-70 90 -42 86 -22 74 C-16 70 -18 54 -38 48Z"/>
+    <path fill="#2A2A30" d="M-44 54 C-70 50 -82 64 -74 74 C-62 80 -40 76 -30 68Z"/>
+
+    <!-- front flipper (balance) -->
+    <path fill="#121214" d="M40 52 C86 34 112 52 104 72 C94 88 60 86 38 74 C30 70 28 58 40 52Z"/>
+    <path fill="#2A2A30" d="M48 56 C82 44 98 56 92 68 C80 76 54 74 44 66Z"/>
+
+    <!-- feet -->
+    <g fill="#E07A2F">
+      <ellipse cx="-10" cy="128" rx="18" ry="8" transform="rotate(-18 -10 128)"/>
+      <ellipse cx="28" cy="124" rx="18" ry="8" transform="rotate(12 28 124)"/>
+      <path d="M-26 128 l-10 6 10 1z"/>
+      <path d="M12 128 l-8 7 12 0z"/>
+      <path d="M40 124 l8 7 4-6z"/>
+    </g>
+
+    <!-- head -->
+    <ellipse cx="8" cy="-8" rx="36" ry="34" fill="#16161A"/>
+    <!-- face patches -->
+    <ellipse cx="-4" cy="-6" rx="14" ry="16" fill="#FFF6EA"/>
+    <ellipse cx="22" cy="-8" rx="13" ry="15" fill="#FFF6EA"/>
+    <!-- eyes -->
+    <ellipse cx="-4" cy="-6" rx="6" ry="7" fill="#111"/>
+    <ellipse cx="22" cy="-8" rx="6" ry="7" fill="#111"/>
+    <circle cx="-2" cy="-8" r="2.2" fill="#fff"/>
+    <circle cx="24" cy="-10" r="2.2" fill="#fff"/>
+    <!-- blush -->
+    <ellipse cx="-10" cy="6" rx="6" ry="3.2" fill="#F4A09A" opacity="0.7"/>
+    <ellipse cx="28" cy="4" rx="6" ry="3.2" fill="#F4A09A" opacity="0.7"/>
+    <!-- beak -->
+    <path fill="#F08A28" d="M8 0 C14 2 28 8 22 16 C14 20 4 16 2 10 C0 4 4 -1 8 0Z"/>
+    <path fill="#C45E12" d="M8 8 C16 10 22 12 20 15 C14 16 8 13 8 8Z"/>
+
+    <!-- sombrero -->
+    <g transform="translate(6,-38) rotate(-8)">
+      <!-- brim shadow -->
+      <ellipse cx="0" cy="10" rx="92" ry="16" fill="#8A5A12" opacity="0.35"/>
+      <!-- brim -->
+      <ellipse cx="0" cy="6" rx="96" ry="18" fill="url(#straw)" stroke="#8A5310" stroke-width="3"/>
+      <ellipse cx="0" cy="4" rx="78" ry="12" fill="none" stroke="#E85D04" stroke-width="4"/>
+      <ellipse cx="0" cy="4" rx="64" ry="9" fill="none" stroke="#1B6B3A" stroke-width="3"/>
+      <!-- crown -->
+      <path fill="url(#straw)" stroke="#8A5310" stroke-width="3"
+            d="M-28 2 C-30 -28 -18 -48 0 -52 C18 -48 30 -28 28 2 C16 8 -16 8 -28 2Z"/>
+      <!-- crown band -->
+      <path fill="#C23B22" d="M-27 0 C-16 8 16 8 27 0 L24 10 C12 16 -12 16 -24 10 Z"/>
+      <path fill="none" stroke="#F6D36A" stroke-width="2"
+            d="M-20 6 l6 -6 6 6 6-6 6 6 6-6 6 6"/>
+      <!-- pom poms -->
+      <g>
+        <circle cx="-88" cy="8" r="7" fill="#C23B22"/>
+        <circle cx="88" cy="8" r="7" fill="#1B6B3A"/>
+        <circle cx="-70" cy="16" r="5" fill="#F6D36A"/>
+        <circle cx="70" cy="16" r="5" fill="#C23B22"/>
+      </g>
+      <!-- chin cord -->
+      <path fill="none" stroke="#C98A22" stroke-width="2.2"
+            d="M-30 8 C-36 28 -20 50 6 54"/>
+      <path fill="none" stroke="#C98A22" stroke-width="2.2"
+            d="M30 8 C38 30 24 52 10 54"/>
+    </g>
+  </g>
+
+  <!-- spray + speed lines -->
+  <g fill="#F4FFFD" opacity="0.9" filter="url(#sprayBlur)">
+    <ellipse cx="500" cy="360" rx="8" ry="4"/>
+    <ellipse cx="478" cy="348" rx="5" ry="9" transform="rotate(-30 478 348)"/>
+    <ellipse cx="612" cy="354" rx="6" ry="11" transform="rotate(18 612 354)"/>
+    <ellipse cx="630" cy="338" rx="4" ry="8" transform="rotate(28 630 338)"/>
+    <circle cx="448" cy="368" r="3"/>
+    <circle cx="436" cy="352" r="2"/>
+    <circle cx="590" cy="330" r="2.5"/>
+    <circle cx="668" cy="360" r="3"/>
+    <circle cx="520" cy="340" r="2"/>
+  </g>
+  <g stroke="#FFE7A3" stroke-width="2" stroke-linecap="round" opacity="0.35" fill="none">
+    <path d="M120 300 h70"/>
+    <path d="M90 322 h90"/>
+    <path d="M150 344 h50"/>
+  </g>
+
+  <!-- floating caption ribbon -->
+  <g transform="translate(780,86)">
+    <path fill="#FFF6EA" stroke="#1A1A1A" stroke-width="3"
+          d="M0 18 h210 a18 18 0 0 1 0 36 H0 a18 18 0 0 1 0-36z"/>
+    <text x="105" y="42" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="18" fill="#C23B22" font-style="italic">¡Arriba el foil!</text>
+  </g>
+</svg>

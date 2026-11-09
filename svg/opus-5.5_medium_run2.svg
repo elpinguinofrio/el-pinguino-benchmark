@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fc8f8"/>
+      <stop offset="1" stop-color="#d8f0ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e88c7"/>
+      <stop offset="1" stop-color="#0b4f7c"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a3d"/>
+      <stop offset="1" stop-color="#d94c14"/>
+    </linearGradient>
+    <radialGradient id="belly" cx="0.45" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e4e8ee"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky and sun -->
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="680" cy="90" r="50" fill="#ffe066"/>
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="140" cy="90" rx="60" ry="20"/>
+    <ellipse cx="180" cy="78" rx="40" ry="18"/>
+    <ellipse cx="480" cy="60" rx="50" ry="15"/>
+  </g>
+
+  <!-- Sea -->
+  <rect y="420" width="800" height="180" fill="url(#sea)"/>
+  <path d="M0 420 Q40 410 80 420 T160 420 T240 420 T320 420 T400 420 T480 420 T560 420 T640 420 T720 420 T800 420" fill="none" stroke="#bfe6ff" stroke-width="3"/>
+  <g stroke="#9fd6f5" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M60 470 q20 -6 40 0"/>
+    <path d="M620 480 q25 -7 50 0"/>
+    <path d="M500 540 q20 -6 40 0"/>
+    <path d="M120 560 q25 -7 50 0"/>
+  </g>
+
+  <!-- Wake behind the mast -->
+  <path d="M410 425 Q300 440 120 430 Q300 455 420 435 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M415 428 Q330 448 200 450" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
+
+  <!-- Underwater: mast, fuselage, wings, motor (semi transparent) -->
+  <g opacity="0.85">
+    <rect x="408" y="380" width="14" height="140" rx="4" fill="#2b2f36"/>
+    <rect x="330" y="512" width="190" height="14" rx="7" fill="#2b2f36"/>
+    <path d="M470 519 Q500 505 545 516 Q500 532 470 524 Z" fill="#3a3f48"/>
+    <path d="M325 516 Q340 508 360 514 L360 524 Q340 528 325 522 Z" fill="#3a3f48"/>
+    <rect x="400" y="490" width="34" height="20" rx="9" fill="#4b525c"/>
+    <path d="M400 500 l-10 -10 l0 20 z" fill="#8a929c"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5">
+    <circle cx="380" cy="495" r="3"/><circle cx="368" cy="485" r="2"/><circle cx="375" cy="472" r="2.5"/>
+  </g>
+
+  <!-- Board -->
+  <path d="M250 372 Q260 358 300 356 L560 356 Q610 358 615 372 Q610 386 560 388 L290 388 Q256 386 250 372 Z" fill="url(#board)" stroke="#9e3608" stroke-width="2"/>
+  <path d="M285 366 L585 366" stroke="#ffd2b8" stroke-width="3" opacity="0.7"/>
+  <!-- Mast top under the board -->
+  <rect x="404" y="386" width="22" height="10" fill="#2b2f36"/>
+
+  <!-- Splash at waterline -->
+  <g fill="#ffffff">
+    <ellipse cx="415" cy="423" rx="22" ry="6"/>
+    <circle cx="398" cy="414" r="4"/><circle cx="432" cy="412" r="3.5"/><circle cx="440" cy="418" r="2.5"/>
+  </g>
+
+  <!-- Penguin -->
+  <g>
+    <!-- Feet -->
+    <path d="M375 357 q-6 -8 6 -12 l26 0 q6 6 0 12 z" fill="#f59a1c" stroke="#b86b05" stroke-width="1.5"/>
+    <path d="M440 357 q-4 -8 6 -12 l26 0 q8 6 0 12 z" fill="#f59a1c" stroke="#b86b05" stroke-width="1.5"/>
+
+    <!-- Body (leaning slightly forward) -->
+    <g transform="rotate(-6 425 270)">
+      <ellipse cx="425" cy="270" rx="68" ry="90" fill="#1d2129"/>
+      <ellipse cx="432" cy="285" rx="48" ry="70" fill="url(#belly)"/>
+
+      <!-- Back wing -->
+      <path d="M370 240 Q330 270 318 320 Q345 300 372 285 Z" fill="#14171d"/>
+      <!-- Front wing holding hand controller -->
+      <path d="M478 235 Q530 250 548 290 Q520 285 482 278 Z" fill="#14171d"/>
+      <!-- Hand remote -->
+      <rect x="538" y="278" width="22" height="14" rx="5" fill="#e8e8e8" stroke="#555" stroke-width="1.5"/>
+      <circle cx="553" cy="285" r="3" fill="#e63946"/>
+      <path d="M540 292 Q500 320 440 336" stroke="#555" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+
+      <!-- Head -->
+      <circle cx="430" cy="175" r="48" fill="#1d2129"/>
+      <path d="M408 168 Q430 140 462 165 Q470 200 440 212 Q410 210 408 168 Z" fill="#ffffff"/>
+      <!-- Eyes -->
+      <circle cx="430" cy="172" r="9" fill="#ffffff"/>
+      <circle cx="433" cy="172" r="5" fill="#111"/>
+      <circle cx="435" cy="170" r="1.8" fill="#fff"/>
+      <circle cx="458" cy="170" r="7" fill="#ffffff"/>
+      <circle cx="460" cy="170" r="4" fill="#111"/>
+      <circle cx="461.5" cy="168.5" r="1.4" fill="#fff"/>
+      <!-- Cheeks -->
+      <ellipse cx="420" cy="192" rx="7" ry="4" fill="#ff9aa8" opacity="0.6"/>
+      <!-- Beak -->
+      <path d="M448 185 Q482 186 490 194 Q475 202 448 197 Z" fill="#f59a1c" stroke="#b86b05" stroke-width="1.5"/>
+      <path d="M450 192 Q470 194 488 194" stroke="#b86b05" stroke-width="1.2" fill="none"/>
+    </g>
+
+    <!-- Sombrero -->
+    <g transform="rotate(-10 430 132)">
+      <!-- Brim -->
+      <ellipse cx="430" cy="138" rx="110" ry="22" fill="#e9b949" stroke="#9c7219" stroke-width="2.5"/>
+      <ellipse cx="430" cy="138" rx="92" ry="15" fill="none" stroke="#c0392b" stroke-width="5"/>
+      <g fill="#27ae60">
+        <circle cx="350" cy="140" r="3"/><circle cx="375" cy="149" r="3"/><circle cx="405" cy="153" r="3"/>
+        <circle cx="455" cy="153" r="3"/><circle cx="485" cy="149" r="3"/><circle cx="510" cy="140" r="3"/>
+      </g>
+      <!-- Crown -->
+      <path d="M392 136 Q395 82 430 74 Q465 82 468 136 Z" fill="#f0c75e" stroke="#9c7219" stroke-width="2.5"/>
+      <!-- Band -->
+      <path d="M394 120 Q430 128 466 120 L467 132 Q430 140 393 132 Z" fill="#c0392b"/>
+      <path d="M400 126 l8 -4 l8 4 l8 -4 l8 4 l8 -4 l8 4 l8 -4 l8 4" stroke="#27ae60" stroke-width="2.5" fill="none"/>
+      <!-- Pom-poms -->
+      <circle cx="345" cy="152" r="5" fill="#c0392b"/>
+      <circle cx="515" cy="152" r="5" fill="#c0392b"/>
+    </g>
+  </g>
+
+  <!-- Speed lines -->
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8">
+    <line x1="170" y1="300" x2="240" y2="300"/>
+    <line x1="140" y1="330" x2="230" y2="330"/>
+    <line x1="190" y1="360" x2="235" y2="360"/>
+  </g>
+</svg>

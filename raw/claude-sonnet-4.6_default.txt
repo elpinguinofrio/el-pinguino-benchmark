@@ -1,0 +1,185 @@
+Here's your penguin riding the e-foil! 🐧🏄‍♂️
+
+The SVG includes:
+
+| Element | Details |
+|---|---|
+| **Background** | Sky gradient, sun with rays, fluffy clouds |
+| **Water** | Deep blue gradient with layered wave lines |
+| **E-Foil** | Red board, carbon mast, hydrofoil wings, motor pod + 3-blade propeller |
+| **Wake/Spray** | White spray trail behind the foil |
+| **Penguin** | Classic black & white with orange beak, blush cheeks, and flipped wing for balance |
+| **Sombrero** | Wide brim with pom-poms, decorative band, crown stripes, and triple tassel on top |
+| **Speed lines** | Motion blur lines for that shredding feel |
+
+[penguin_efoil.svg](<agent-workspace>/penguin_efoil.svg) — open it in any browser to view! 🤙
+
+[Nov 9 : 10:11am]
+
+
+--- artifact file penguin_efoil.svg ---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+  <!-- Sky background -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F7FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0077B6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#023E8A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E63946;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C1121F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sombreroGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E9C46A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F4A261;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="500" height="400" fill="url(#skyGrad)" />
+
+  <!-- Sun -->
+  <circle cx="430" cy="60" r="35" fill="#FFD60A" opacity="0.9"/>
+  <line x1="430" y1="15" x2="430" y2="5" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="430" y1="105" x2="430" y2="115" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="385" y1="60" x2="375" y2="60" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="475" y1="60" x2="485" y2="60" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="398" y1="27" x2="391" y2="20" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="462" y1="93" x2="469" y2="100" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="462" y1="27" x2="469" y2="20" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="398" y1="93" x2="391" y2="100" stroke="#FFD60A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Clouds -->
+  <ellipse cx="80" cy="70" rx="40" ry="20" fill="white" opacity="0.85"/>
+  <ellipse cx="110" cy="60" rx="30" ry="18" fill="white" opacity="0.85"/>
+  <ellipse cx="55" cy="65" rx="25" ry="15" fill="white" opacity="0.85"/>
+
+  <ellipse cx="300" cy="50" rx="35" ry="18" fill="white" opacity="0.75"/>
+  <ellipse cx="325" cy="42" rx="25" ry="15" fill="white" opacity="0.75"/>
+  <ellipse cx="278" cy="47" rx="22" ry="13" fill="white" opacity="0.75"/>
+
+  <!-- Water -->
+  <rect x="0" y="260" width="500" height="140" fill="url(#waterGrad)" />
+
+  <!-- Water waves -->
+  <path d="M0,270 Q40,260 80,270 Q120,280 160,270 Q200,260 240,270 Q280,280 320,270 Q360,260 400,270 Q440,280 500,270" 
+        fill="none" stroke="#90E0EF" stroke-width="2.5" opacity="0.6"/>
+  <path d="M0,285 Q50,275 100,285 Q150,295 200,285 Q250,275 300,285 Q350,295 400,285 Q450,275 500,285" 
+        fill="none" stroke="#90E0EF" stroke-width="2" opacity="0.4"/>
+  <path d="M0,300 Q60,292 120,300 Q180,308 240,300 Q300,292 360,300 Q420,308 500,300" 
+        fill="none" stroke="#ADE8F4" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Spray/wake behind foil -->
+  <path d="M390,268 Q420,255 460,262 Q440,270 400,270 Z" fill="white" opacity="0.5"/>
+  <path d="M380,272 Q430,260 470,266 Q450,275 390,274 Z" fill="white" opacity="0.3"/>
+
+  <!-- ===== E-FOIL ===== -->
+
+  <!-- Mast (vertical strut under board) -->
+  <rect x="232" y="270" width="10" height="60" rx="2" fill="#607D8B"/>
+  <!-- Fuselage (horizontal) -->
+  <rect x="195" y="326" width="90" height="8" rx="4" fill="#78909C"/>
+  <!-- Front wing (hydrofoil) -->
+  <ellipse cx="260" cy="330" rx="55" ry="8" fill="#90A4AE" transform="rotate(-5, 260, 330)"/>
+  <!-- Rear stabilizer wing -->
+  <ellipse cx="200" cy="332" rx="28" ry="5" fill="#B0BEC5" transform="rotate(5, 200, 332)"/>
+  <!-- Motor pod -->
+  <ellipse cx="237" cy="334" rx="10" ry="6" fill="#455A64"/>
+  <!-- Propeller -->
+  <ellipse cx="232" cy="334" rx="3" ry="8" fill="#78909C" transform="rotate(30, 232, 334)"/>
+  <ellipse cx="232" cy="334" rx="3" ry="8" fill="#78909C" transform="rotate(90, 232, 334)"/>
+  <ellipse cx="232" cy="334" rx="3" ry="8" fill="#78909C" transform="rotate(150, 232, 334)"/>
+
+  <!-- Board (tilted slightly) -->
+  <rect x="145" y="255" width="190" height="28" rx="12" fill="url(#boardGrad)" transform="rotate(-3, 240, 269)"/>
+  <!-- Board deck pad -->
+  <rect x="195" y="257" width="90" height="12" rx="5" fill="#C1121F" opacity="0.5" transform="rotate(-3, 240, 263)"/>
+  <!-- Board nose -->
+  <ellipse cx="145" cy="264" rx="15" ry="10" fill="#E63946" transform="rotate(-3, 145, 264)"/>
+  <!-- Board tail -->
+  <ellipse cx="335" cy="258" rx="12" ry="9" fill="#C1121F" transform="rotate(-3, 335, 258)"/>
+  <!-- Board logo/stripe -->
+  <line x1="175" y1="263" x2="310" y2="258" stroke="white" stroke-width="2" opacity="0.4"/>
+
+  <!-- ===== PENGUIN ===== -->
+
+  <!-- Penguin feet (on board) -->
+  <ellipse cx="208" cy="257" rx="12" ry="5" fill="#FF6B00" transform="rotate(-3, 208, 257)"/>
+  <ellipse cx="232" cy="255" rx="12" ry="5" fill="#FF6B00" transform="rotate(-3, 232, 255)"/>
+
+  <!-- Penguin legs -->
+  <rect x="204" y="235" width="8" height="22" rx="3" fill="#FF6B00"/>
+  <rect x="228" y="232" width="8" height="23" rx="3" fill="#FF6B00"/>
+
+  <!-- Penguin body -->
+  <ellipse cx="222" cy="195" rx="38" ry="52" fill="#1A1A2E"/>
+  <!-- Penguin belly (white) -->
+  <ellipse cx="222" cy="205" rx="24" ry="38" fill="#F8F9FA"/>
+
+  <!-- Penguin wings -->
+  <!-- Left wing (back, slightly extended) -->
+  <path d="M184,185 Q160,195 162,220 Q175,215 190,215 Z" fill="#1A1A2E"/>
+  <!-- Right wing (front, raised for balance) -->
+  <path d="M260,175 Q285,160 290,185 Q275,195 258,195 Z" fill="#1A1A2E"/>
+
+  <!-- Penguin head -->
+  <ellipse cx="222" cy="143" rx="28" ry="30" fill="#1A1A2E"/>
+  <!-- White face patch -->
+  <ellipse cx="222" cy="150" rx="18" ry="20" fill="#F8F9FA"/>
+
+  <!-- Eyes -->
+  <circle cx="213" cy="140" r="6" fill="white"/>
+  <circle cx="233" cy="140" r="6" fill="white"/>
+  <circle cx="214" cy="140" r="4" fill="#1A1A2E"/>
+  <circle cx="234" cy="140" r="4" fill="#1A1A2E"/>
+  <!-- Eye shine -->
+  <circle cx="216" cy="138" r="1.5" fill="white"/>
+  <circle cx="236" cy="138" r="1.5" fill="white"/>
+
+  <!-- Beak -->
+  <path d="M215,155 Q222,163 229,155 Q222,168 215,155 Z" fill="#FF6B00"/>
+
+  <!-- Cheek blush -->
+  <ellipse cx="208" cy="153" rx="6" ry="4" fill="#FFB3C6" opacity="0.5"/>
+  <ellipse cx="236" cy="153" rx="6" ry="4" fill="#FFB3C6" opacity="0.5"/>
+
+  <!-- ===== SOMBRERO ===== -->
+
+  <!-- Sombrero brim (wide) -->
+  <ellipse cx="222" cy="118" rx="68" ry="14" fill="url(#sombreroGrad)"/>
+  <!-- Sombrero crown -->
+  <path d="M165,118 Q170,70 222,65 Q274,70 279,118 Z" fill="url(#sombreroGrad)"/>
+  <!-- Crown top flat -->
+  <ellipse cx="222" cy="67" rx="30" ry="8" fill="#E9C46A"/>
+  <!-- Sombrero decorative band -->
+  <rect x="170" y="105" width="104" height="10" rx="3" fill="#E76F51" opacity="0.85"/>
+  <!-- Decorative pom-poms on brim -->
+  <circle cx="162" cy="118" r="5" fill="#E76F51"/>
+  <circle cx="185" cy="130" r="4" fill="#2A9D8F"/>
+  <circle cx="210" cy="134" r="4" fill="#E76F51"/>
+  <circle cx="234" cy="134" r="4" fill="#2A9D8F"/>
+  <circle cx="258" cy="130" r="4" fill="#E76F51"/>
+  <circle cx="280" cy="118" r="5" fill="#2A9D8F"/>
+  <!-- Decorative lines on crown -->
+  <line x1="192" y1="115" x2="200" y2="75" stroke="#E76F51" stroke-width="1.5" opacity="0.6"/>
+  <line x1="210" y1="118" x2="214" y2="68" stroke="#E76F51" stroke-width="1.5" opacity="0.6"/>
+  <line x1="234" y1="118" x2="230" y2="68" stroke="#E76F51" stroke-width="1.5" opacity="0.6"/>
+  <line x1="252" y1="115" x2="244" y2="75" stroke="#E76F51" stroke-width="1.5" opacity="0.6"/>
+  <!-- Top tassel -->
+  <circle cx="222" cy="63" r="7" fill="#E76F51"/>
+  <line x1="222" y1="56" x2="218" y2="45" stroke="#E76F51" stroke-width="2"/>
+  <line x1="222" y1="56" x2="226" y2="45" stroke="#2A9D8F" stroke-width="2"/>
+  <line x1="222" y1="56" x2="222" y2="43" stroke="#E9C46A" stroke-width="2"/>
+  <circle cx="218" cy="44" r="3" fill="#E76F51"/>
+  <circle cx="226" cy="44" r="3" fill="#2A9D8F"/>
+  <circle cx="222" cy="42" r="3" fill="#E9C46A"/>
+
+  <!-- Speed lines -->
+  <line x1="390" y1="230" x2="430" y2="225" stroke="white" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  <line x1="395" y1="245" x2="445" y2="240" stroke="white" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="388" y1="215" x2="420" y2="210" stroke="white" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+</svg>

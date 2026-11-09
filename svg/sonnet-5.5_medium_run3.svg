@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3f4"/>
+      <stop offset="1" stop-color="#e6f7ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2aa4d6"/>
+      <stop offset="1" stop-color="#0b4f7a"/>
+    </linearGradient>
+    <linearGradient id="hat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8c26a"/>
+      <stop offset="1" stop-color="#b98a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="660" cy="100" r="50" fill="#ffe27a"/>
+  <rect y="360" width="800" height="240" fill="url(#sea)"/>
+  <path d="M0 380 Q50 365 100 380 T200 380 T300 380 T400 380 T500 380 T600 380 T700 380 T800 380" fill="none" stroke="#bfeaff" stroke-width="3" opacity=".7"/>
+
+  <!-- foil mast and wing underwater -->
+  <rect x="392" y="418" width="14" height="110" fill="#444"/>
+  <ellipse cx="399" cy="530" rx="85" ry="9" fill="#555"/>
+  <ellipse cx="480" cy="522" rx="26" ry="5" fill="#666"/>
+
+  <!-- board -->
+  <path d="M230 405 Q230 385 260 385 L560 385 Q600 388 620 400 Q600 420 560 420 L260 420 Q230 420 230 405Z" fill="#f2f2f2" stroke="#333" stroke-width="3"/>
+  <path d="M250 402 L590 402" stroke="#e8532b" stroke-width="6"/>
+
+  <!-- spray -->
+  <path d="M215 410 Q190 395 170 410 Q190 400 205 420Z" fill="#fff" opacity=".8"/>
+  <circle cx="180" cy="395" r="5" fill="#fff" opacity=".8"/>
+  <circle cx="195" cy="380" r="4" fill="#fff" opacity=".8"/>
+
+  <!-- feet -->
+  <path d="M370 380 q-25 0 -30 10 q15 8 40 5z" fill="#f59a1b" stroke="#a85f00" stroke-width="2"/>
+  <path d="M440 380 q25 0 30 10 q-15 8 -40 5z" fill="#f59a1b" stroke="#a85f00" stroke-width="2"/>
+
+  <!-- body -->
+  <ellipse cx="405" cy="285" rx="82" ry="108" fill="#1c2430"/>
+  <ellipse cx="410" cy="300" rx="55" ry="86" fill="#fff"/>
+
+  <!-- wings (arms) holding balance -->
+  <path d="M330 250 Q270 270 245 330 Q275 320 335 295Z" fill="#1c2430"/>
+  <path d="M480 250 Q545 235 585 195 Q590 230 540 275 Q505 295 480 295Z" fill="#1c2430"/>
+
+  <!-- head -->
+  <circle cx="405" cy="170" r="55" fill="#1c2430"/>
+  <ellipse cx="415" cy="182" rx="38" ry="34" fill="#fff"/>
+  <circle cx="398" cy="172" r="9" fill="#fff"/>
+  <circle cx="432" cy="172" r="9" fill="#fff"/>
+  <circle cx="400" cy="173" r="4.5" fill="#111"/>
+  <circle cx="434" cy="173" r="4.5" fill="#111"/>
+  <path d="M400 186 L448 186 L424 208Z" fill="#f59a1b" stroke="#a85f00" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="385" cy="190" r="7" fill="#ff9aa2" opacity=".6"/>
+
+  <!-- sombrero -->
+  <ellipse cx="405" cy="128" rx="125" ry="22" fill="url(#hat)" stroke="#8a6212" stroke-width="3"/>
+  <path d="M350 126 Q352 70 405 62 Q458 70 460 126Z" fill="url(#hat)" stroke="#8a6212" stroke-width="3"/>
+  <path d="M351 116 Q405 130 459 116 L460 126 Q405 140 350 126Z" fill="#d9362b"/>
+  <circle cx="300" cy="136" r="4" fill="#d9362b"/>
+  <circle cx="340" cy="147" r="4" fill="#2a9d4a"/>
+  <circle cx="405" cy="150" r="4" fill="#d9362b"/>
+  <circle cx="470" cy="147" r="4" fill="#2a9d4a"/>
+  <circle cx="510" cy="136" r="4" fill="#d9362b"/>
+</svg>

@@ -1,0 +1,152 @@
+Prompt: Generate an SVG of a penguin wearing a sombrero riding an e-foil.
+Meta: rc=0 wall=51.7s svg=yes
+SVG source: agy tool call write_file in the agent workspace
+--- stdout ---
+Here's your **Penguin on an E-Foil** SVG! 🐧🏄‍♂️
+
+![Penguin riding an e-foil with sombrero](<agent-workspace>/penguin_efoil.svg)
+
+**What's in the scene:**
+
+| Element | Details |
+|---|---|
+| 🐧 Penguin | Black body, white belly patch, expressive eyes, yellow beak |
+| 🌴 Sombrero | Orange gradient crown, wide brim, pom-poms, chin strap |
+| 🏄 E-foil board | Red board with traction pad & foot straps |
+| ⚙️ Foil assembly | Mast, fuselage, front wing, rear wing + motor pod with prop |
+| 🌊 Scene | Sky, sun with rays, ocean gradient, waves, speed lines & spray |
+
+You can grab the SVG file at [`penguin_efoil.svg`](<agent-workspace>/penguin_efoil.svg).
+
+[Nov 9 : 11:07am]
+--- stderr ---
+--- SVG from tool call ---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+  <!-- Sky & Water Background -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F7FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0077B6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#023E8A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E63946;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C1121F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sombreroGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4A261;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E76F51;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="500" height="260" fill="url(#skyGrad)" />
+
+  <!-- Sun -->
+  <circle cx="430" cy="60" r="35" fill="#FFD60A" opacity="0.9"/>
+  <line x1="430" y1="15" x2="430" y2="5" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="430" y1="105" x2="430" y2="115" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="385" y1="60" x2="375" y2="60" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="475" y1="60" x2="485" y2="60" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="398" y1="28" x2="391" y2="21" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="462" y1="92" x2="469" y2="99" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="462" y1="28" x2="469" y2="21" stroke="#FFD60A" stroke-width="3"/>
+  <line x1="398" y1="92" x2="391" y2="99" stroke="#FFD60A" stroke-width="3"/>
+
+  <!-- Water -->
+  <rect y="260" width="500" height="140" fill="url(#waterGrad)" />
+
+  <!-- Water waves -->
+  <path d="M0 265 Q30 258 60 265 Q90 272 120 265 Q150 258 180 265 Q210 272 240 265 Q270 258 300 265 Q330 272 360 265 Q390 258 420 265 Q450 272 480 265 Q500 260 500 265" fill="none" stroke="#48CAE4" stroke-width="2" opacity="0.7"/>
+  <path d="M0 280 Q40 273 80 280 Q120 287 160 280 Q200 273 240 280 Q280 287 320 280 Q360 273 400 280 Q440 287 480 280" fill="none" stroke="#48CAE4" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- === E-FOIL === -->
+  <!-- Mast (vertical strut under board) -->
+  <rect x="230" y="265" width="12" height="55" rx="4" fill="#6B6B6B"/>
+  <!-- Fuselage (horizontal) -->
+  <rect x="175" y="316" width="110" height="8" rx="4" fill="#888"/>
+  <!-- Front Wing (larger) -->
+  <ellipse cx="210" cy="320" rx="55" ry="8" fill="#555" opacity="0.9"/>
+  <!-- Rear Wing (smaller) -->
+  <ellipse cx="275" cy="320" rx="28" ry="5" fill="#555" opacity="0.9"/>
+  <!-- Motor pod on rear wing -->
+  <ellipse cx="295" cy="320" rx="10" ry="6" fill="#333"/>
+  <!-- Propeller hint -->
+  <line x1="300" y1="315" x2="308" y2="313" stroke="#aaa" stroke-width="2"/>
+  <line x1="300" y1="325" x2="308" y2="327" stroke="#aaa" stroke-width="2"/>
+  <!-- Motor glow / wake -->
+  <ellipse cx="310" cy="320" rx="12" ry="4" fill="#48CAE4" opacity="0.4"/>
+
+  <!-- Board (tilted slightly, riding position) -->
+  <path d="M120 258 Q150 250 236 253 Q310 250 360 258 Q370 263 360 268 Q310 268 236 265 Q150 268 120 268 Z" fill="url(#boardGrad)" />
+  <!-- Board shine -->
+  <path d="M140 253 Q200 248 280 252" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+  <!-- Board traction pad -->
+  <rect x="195" y="257" width="70" height="8" rx="3" fill="#8B0000" opacity="0.5"/>
+  <!-- Foot straps -->
+  <rect x="205" y="255" width="18" height="4" rx="2" fill="#222" opacity="0.7"/>
+  <rect x="240" y="255" width="18" height="4" rx="2" fill="#222" opacity="0.7"/>
+
+  <!-- === PENGUIN === -->
+  <!-- Body -->
+  <ellipse cx="236" cy="210" rx="38" ry="50" fill="#1A1A2E"/>
+  <!-- White belly -->
+  <ellipse cx="236" cy="218" rx="24" ry="36" fill="#F5F5F5"/>
+  <!-- Left wing (flapping out for balance) -->
+  <path d="M198 200 Q170 215 165 240 Q172 242 180 230 Q195 218 203 212 Z" fill="#1A1A2E"/>
+  <!-- Right wing (raised, holding paddle/balance) -->
+  <path d="M274 195 Q305 180 318 165 Q315 158 308 162 Q294 174 268 190 Z" fill="#1A1A2E"/>
+  <!-- Head -->
+  <ellipse cx="236" cy="162" rx="28" ry="30" fill="#1A1A2E"/>
+  <!-- White face patch -->
+  <ellipse cx="236" cy="168" rx="17" ry="18" fill="#F5F5F5"/>
+  <!-- Eyes -->
+  <circle cx="228" cy="160" r="6" fill="white"/>
+  <circle cx="244" cy="160" r="6" fill="white"/>
+  <circle cx="230" cy="160" r="3.5" fill="#1A1A2E"/>
+  <circle cx="246" cy="160" r="3.5" fill="#1A1A2E"/>
+  <!-- Eye shine -->
+  <circle cx="231" cy="158" r="1" fill="white"/>
+  <circle cx="247" cy="158" r="1" fill="white"/>
+  <!-- Beak -->
+  <path d="M230 172 Q236 182 242 172 Q236 176 230 172Z" fill="#FFB703"/>
+  <!-- Feet (on board) -->
+  <path d="M218 255 Q210 262 205 258 Q210 254 218 255Z" fill="#FFB703"/>
+  <path d="M252 255 Q260 262 265 258 Q260 254 252 255Z" fill="#FFB703"/>
+
+  <!-- === SOMBRERO === -->
+  <!-- Wide brim -->
+  <ellipse cx="236" cy="136" rx="58" ry="12" fill="url(#sombreroGrad)"/>
+  <!-- Brim underside shadow -->
+  <ellipse cx="236" cy="136" rx="58" ry="12" fill="#C1440E" opacity="0.3"/>
+  <!-- Crown -->
+  <path d="M185 136 Q188 100 236 95 Q284 100 287 136 Z" fill="url(#sombreroGrad)"/>
+  <!-- Crown top -->
+  <ellipse cx="236" cy="96" rx="20" ry="6" fill="#E76F51"/>
+  <!-- Sombrero decorative band -->
+  <path d="M188 130 Q210 124 236 123 Q262 124 284 130" fill="none" stroke="#C1440E" stroke-width="3"/>
+  <!-- Pom-pom decoration on brim -->
+  <circle cx="178" cy="137" r="4" fill="#E63946"/>
+  <circle cx="294" cy="137" r="4" fill="#E63946"/>
+  <circle cx="207" cy="130" r="3" fill="#2DC653"/>
+  <circle cx="265" cy="130" r="3" fill="#2DC653"/>
+  <circle cx="236" cy="127" r="3.5" fill="#FFD60A"/>
+  <!-- Sombrero string under chin -->
+  <path d="M185 136 Q210 148 220 165" fill="none" stroke="#C1440E" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M287 136 Q262 148 252 165" fill="none" stroke="#C1440E" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+  <!-- Speed lines (motion) -->
+  <line x1="90" y1="240" x2="50" y2="240" stroke="white" stroke-width="2" opacity="0.6"/>
+  <line x1="85" y1="250" x2="35" y2="250" stroke="white" stroke-width="1.5" opacity="0.4"/>
+  <line x1="92" y1="260" x2="55" y2="260" stroke="white" stroke-width="1" opacity="0.3"/>
+
+  <!-- Spray/wake behind foil -->
+  <path d="M120 265 Q100 270 70 268 Q50 272 30 270" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+  <path d="M118 262 Q95 255 60 258" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Label -->
+  <text x="250" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#90E0EF" font-style="italic">🐧 Shredding the foil, amigo! 🌊</text>
+</svg>

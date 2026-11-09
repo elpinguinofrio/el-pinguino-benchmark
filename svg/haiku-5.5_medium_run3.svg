@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <title>Penguin in a sombrero riding an e-foil</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3f4"/>
+      <stop offset="1" stop-color="#eaf8ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a8fd0"/>
+      <stop offset="1" stop-color="#15527f"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c9d6e0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky and sun -->
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <circle cx="710" cy="80" r="42" fill="#ffd54a"/>
+
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="150" cy="90" rx="50" ry="18"/>
+    <ellipse cx="180" cy="78" rx="34" ry="20"/>
+    <ellipse cx="560" cy="130" rx="44" ry="15"/>
+    <ellipse cx="588" cy="120" rx="28" ry="16"/>
+  </g>
+
+  <!-- Hydrofoil strut and front wing (below the surface, drawn before the water) -->
+  <rect x="395" y="362" width="14" height="52" fill="#9aa8b4"/>
+  <path d="M330 412 Q400 402 480 412 L468 422 Q400 416 342 422 Z" fill="#7d8b97"/>
+  <path d="M372 422 L384 434 L396 422 Z" fill="#7d8b97"/>
+
+  <!-- Spray trail behind the board -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="205" cy="356" r="6"/>
+    <circle cx="190" cy="366" r="5"/>
+    <circle cx="172" cy="360" r="4"/>
+    <circle cx="160" cy="372" r="3.5"/>
+    <circle cx="140" cy="366" r="3"/>
+  </g>
+
+  <!-- Water -->
+  <path d="M0 380 Q50 368 100 380 T200 380 T300 380 T400 380 T500 380 T600 380 T700 380 T800 380 L800 500 L0 500 Z" fill="url(#sea)" opacity="0.92"/>
+  <path d="M0 396 Q40 388 80 396 T160 396 T240 396 T320 396 T400 396 T480 396 T560 396 T640 396 T720 396 T800 396" fill="none" stroke="#bfe6ff" stroke-width="2" opacity="0.6"/>
+
+  <!-- E-foil board -->
+  <path d="M215 352 Q230 340 270 340 L540 340 Q580 340 585 352 Q580 364 540 364 L250 364 Q220 364 215 352 Z" fill="url(#board)" stroke="#8fa3b3" stroke-width="2"/>
+  <path d="M260 352 L545 352" stroke="#ff7a59" stroke-width="4" stroke-linecap="round"/>
+  <!-- Remote controller on the board -->
+  <rect x="515" y="331" width="22" height="9" rx="3" fill="#333"/>
+
+  <!-- Penguin body -->
+  <ellipse cx="400" cy="262" rx="58" ry="84" fill="#1d1d24"/>
+  <!-- Belly -->
+  <ellipse cx="404" cy="272" rx="36" ry="60" fill="#ffffff"/>
+
+  <!-- Raised flipper (balance) -->
+  <path d="M355 225 Q320 185 292 150 Q300 140 316 148 Q352 180 372 245 Z" fill="#1d1d24"/>
+  <!-- Front flipper -->
+  <path d="M440 255 Q462 285 458 306 Q448 304 436 290 Z" fill="#1d1d24"/>
+
+  <!-- Feet on the board -->
+  <ellipse cx="378" cy="346" rx="18" ry="7" fill="#ff9f1c"/>
+  <ellipse cx="428" cy="346" rx="18" ry="7" fill="#ff9f1c"/>
+
+  <!-- Head -->
+  <circle cx="405" cy="178" r="42" fill="#1d1d24"/>
+  <!-- Face patch -->
+  <ellipse cx="420" cy="186" rx="18" ry="22" fill="#ffffff"/>
+  <!-- Eye -->
+  <circle cx="420" cy="168" r="7" fill="#ffffff"/>
+  <circle cx="422" cy="168" r="3.5" fill="#111"/>
+  <!-- Beak -->
+  <path d="M438 176 L472 186 L438 194 Z" fill="#ff9f1c"/>
+
+  <!-- Sombrero: brim, crown and band -->
+  <ellipse cx="405" cy="140" rx="84" ry="16" fill="#d9a441" stroke="#8a5a1c" stroke-width="2"/>
+  <path d="M368 138 Q370 84 384 80 Q405 74 428 80 Q442 86 444 138 Q405 148 368 138 Z" fill="#e8b657" stroke="#8a5a1c" stroke-width="2"/>
+  <path d="M368 122 Q405 132 444 122 L444 130 Q405 140 368 130 Z" fill="#d7263d"/>
+
+  <!-- Splash where the board meets the water -->
+  <path d="M540 380 Q552 366 566 378 Q556 372 548 384 Z" fill="#ffffff" opacity="0.8"/>
+</svg>

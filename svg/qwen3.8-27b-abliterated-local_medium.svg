@@ -1,0 +1,105 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aee7ff"/>
+      <stop offset="1" stop-color="#e8f9ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f9fe0"/>
+      <stop offset="1" stop-color="#155f96"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+
+  <!-- Sun -->
+  <circle cx="680" cy="90" r="48" fill="#ffd94d"/>
+  <circle cx="680" cy="90" r="62" fill="#ffd94d" opacity="0.3"/>
+
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="150" cy="100" rx="60" ry="22"/>
+    <ellipse cx="190" cy="85" rx="45" ry="20"/>
+    <ellipse cx="500" cy="140" rx="55" ry="20"/>
+  </g>
+
+  <!-- Sea -->
+  <rect y="440" width="800" height="160" fill="url(#sea)"/>
+  <path d="M0 440 Q40 430 80 440 T160 440 T240 440 T320 440 T400 440 T480 440 T560 440 T640 440 T720 440 T800 440 V460 H0 Z" fill="#7fd4ff"/>
+
+  <!-- Ripples under foil -->
+  <g stroke="#bfeaff" stroke-width="4" fill="none" opacity="0.7">
+    <path d="M300 470 Q340 462 380 470"/>
+    <path d="M430 485 Q470 477 510 485"/>
+    <path d="M240 500 Q290 492 340 500"/>
+  </g>
+
+  <!-- Spray / bubbles from water jet -->
+  <g fill="#ffffff">
+    <circle cx="395" cy="455" r="8"/>
+    <circle cx="420" cy="450" r="6"/>
+    <circle cx="375" cy="448" r="5"/>
+    <circle cx="440" cy="443" r="4"/>
+  </g>
+
+  <!-- E-FOIL -->
+  <g>
+    <!-- Rear hydrofoil wing -->
+    <path d="M330 505 Q400 475 470 505 L460 512 Q400 488 340 512 Z" fill="#e6494f"/>
+    <!-- Rear strut (mast) -->
+    <line x1="400" y1="400" x2="400" y2="492" stroke="#5a6b7a" stroke-width="12" stroke-linecap="round"/>
+    <!-- Front strut -->
+    <line x1="510" y1="398" x2="510" y2="452" stroke="#5a6b7a" stroke-width="9" stroke-linecap="round"/>
+    <!-- Front wing -->
+    <path d="M470 458 Q510 442 550 458 L543 464 Q510 452 477 464 Z" fill="#e6494f"/>
+    <!-- Battery / motor box -->
+    <rect x="368" y="378" width="64" height="26" rx="8" fill="#37424e"/>
+    <circle cx="382" cy="391" r="4" fill="#7cf29c"/>
+    <!-- Board -->
+    <path d="M270 372 Q400 340 640 372 Q660 378 640 388 Q400 412 280 388 Q258 380 270 372 Z" fill="#f5a623"/>
+    <path d="M280 378 Q400 352 630 378" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.7"/>
+    <!-- Treadle pads -->
+    <rect x="380" y="360" width="70" height="12" rx="6" fill="#37424e"/>
+  </g>
+
+  <!-- PENGUIN -->
+  <g>
+    <!-- Tail -->
+    <path d="M330 350 L290 385 L345 380 Z" fill="#1c2530"/>
+    <!-- Body -->
+    <ellipse cx="395" cy="290" rx="78" ry="95" fill="#1c2530"/>
+    <!-- Belly -->
+    <ellipse cx="408" cy="300" rx="52" ry="78" fill="#ffffff"/>
+    <!-- Flippers -->
+    <path d="M325 250 Q290 300 318 350 Q336 340 338 285 Z" fill="#1c2530"/>
+    <path d="M462 245 Q500 300 470 345 Q452 335 452 282 Z" fill="#1c2530"/>
+    <!-- Feet on board -->
+    <path d="M370 372 L405 372 L400 388 L375 388 Z" fill="#ff8c1a"/>
+    <path d="M415 372 L448 372 L445 388 L420 388 Z" fill="#ff8c1a"/>
+    <!-- Head -->
+    <circle cx="410" cy="195" r="48" fill="#1c2530"/>
+    <!-- Face patch -->
+    <ellipse cx="424" cy="205" rx="26" ry="30" fill="#ffffff"/>
+    <!-- Beak -->
+    <path d="M442 200 L492 210 L444 224 Z" fill="#ff8c1a"/>
+    <!-- Eye -->
+    <circle cx="430" cy="192" r="7" fill="#1c2530"/>
+    <circle cx="432" cy="190" r="2.5" fill="#ffffff"/>
+    <!-- Blush -->
+    <circle cx="418" cy="216" r="8" fill="#ff9aa8" opacity="0.5"/>
+  </g>
+
+  <!-- SOMBRERO -->
+  <g>
+    <!-- Brim -->
+    <path d="M290 178 Q410 118 530 178 Q410 218 290 178 Z" fill="#8b4513"/>
+    <path d="M300 176 Q410 126 520 176 Q410 210 300 176 Z" fill="#c96a2b"/>
+    <!-- Decorative zigzag on brim edge -->
+    <path d="M296 178 L316 168 L336 178 L356 168 L376 178 L396 168 L416 178 L436 168 L456 178 L476 168 L496 178 L516 168" stroke="#ffd23f" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    <!-- Crown -->
+    <path d="M368 172 Q366 118 384 104 Q410 92 436 104 Q454 118 452 172 Q410 188 368 172 Z" fill="#c96a2b"/>
+    <!-- Crown band -->
+    <path d="M366 158 Q410 176 454 158 L454 172 Q410 190 366 172 Z" fill="#e63946"/>
+    <path d="M366 158 Q410 176 454 158 L454 172 Q410 190 366 172 Z" fill="none" stroke="#ffd23f" stroke-width="3"/>
+  </g>
+</svg>

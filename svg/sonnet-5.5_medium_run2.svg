@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3ff"/>
+      <stop offset="1" stop-color="#e6f7ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2aa6d6"/>
+      <stop offset="1" stop-color="#0b5f8f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="660" cy="100" r="50" fill="#ffe27a"/>
+  <rect y="350" width="800" height="250" fill="url(#sea)"/>
+  <path d="M0 350 Q100 335 200 350 T400 350 T600 350 T800 350" fill="none" stroke="#bfe9ff" stroke-width="3"/>
+
+  <!-- wake spray -->
+  <path d="M120 440 Q60 430 20 450 Q70 445 120 455Z" fill="#e9f8ff" opacity="0.8"/>
+  <path d="M130 455 Q80 470 30 480 Q90 480 140 465Z" fill="#e9f8ff" opacity="0.7"/>
+  <path d="M600 440 Q680 430 760 455 Q690 450 610 458Z" fill="#e9f8ff" opacity="0.6"/>
+
+  <!-- foil mast and wing (underwater) -->
+  <rect x="388" y="448" width="14" height="95" fill="#555d66"/>
+  <ellipse cx="395" cy="548" rx="85" ry="9" fill="#444b54"/>
+  <ellipse cx="395" cy="548" rx="85" ry="9" fill="none" stroke="#2c3238" stroke-width="2"/>
+  <ellipse cx="480" cy="540" rx="30" ry="5" fill="#444b54"/>
+
+  <!-- board -->
+  <path d="M215 430 Q215 412 245 412 L560 412 Q610 414 625 432 Q610 452 560 452 L245 452 Q215 452 215 430Z" fill="#f2f4f6" stroke="#2c3238" stroke-width="3"/>
+  <path d="M230 430 L610 430" stroke="#ff6b3d" stroke-width="6"/>
+  <rect x="375" y="450" width="40" height="10" fill="#555d66"/>
+
+  <!-- tail feather -->
+  <path d="M300 340 Q270 372 262 400 Q300 385 322 360Z" fill="#1b2430"/>
+
+  <!-- feet -->
+  <path d="M345 410 Q330 400 320 410 Q335 418 350 414Z" fill="#ff9a1f" stroke="#c46a00" stroke-width="2"/>
+  <path d="M415 410 Q400 400 390 410 Q405 418 420 414Z" fill="#ff9a1f" stroke="#c46a00" stroke-width="2"/>
+
+  <!-- body -->
+  <ellipse cx="380" cy="320" rx="76" ry="100" fill="#1b2430"/>
+  <ellipse cx="392" cy="330" rx="50" ry="82" fill="#ffffff"/>
+
+  <!-- flippers (arms out for balance) -->
+  <path d="M312 290 Q250 270 215 300 Q250 305 310 330Z" fill="#1b2430"/>
+  <path d="M450 290 Q515 265 555 285 Q520 305 452 330Z" fill="#1b2430"/>
+
+  <!-- head -->
+  <circle cx="390" cy="215" r="48" fill="#1b2430"/>
+  <ellipse cx="400" cy="225" rx="34" ry="30" fill="#ffffff"/>
+  <!-- eyes -->
+  <circle cx="388" cy="213" r="8" fill="#fff"/>
+  <circle cx="415" cy="213" r="8" fill="#fff"/>
+  <circle cx="390" cy="214" r="4" fill="#000"/>
+  <circle cx="417" cy="214" r="4" fill="#000"/>
+  <!-- beak -->
+  <path d="M392 228 Q415 224 440 236 Q415 252 394 244Z" fill="#ff9a1f" stroke="#c46a00" stroke-width="2"/>
+  <path d="M394 236 Q415 236 436 237" stroke="#c46a00" stroke-width="1.5" fill="none"/>
+  <!-- cheeks -->
+  <circle cx="372" cy="232" r="6" fill="#ff9aa8" opacity="0.7"/>
+
+  <!-- sombrero -->
+  <ellipse cx="390" cy="180" rx="115" ry="22" fill="#e0b25a" stroke="#8a5a1a" stroke-width="3"/>
+  <path d="M340 178 Q340 110 390 105 Q440 110 440 178Z" fill="#e8bf68" stroke="#8a5a1a" stroke-width="3"/>
+  <path d="M341 168 Q390 182 439 168 L440 178 Q390 192 340 178Z" fill="#c8312b"/>
+  <circle cx="352" cy="181" r="4" fill="#ffd23f"/>
+  <circle cx="378" cy="187" r="4" fill="#ffd23f"/>
+  <circle cx="404" cy="187" r="4" fill="#ffd23f"/>
+  <circle cx="430" cy="181" r="4" fill="#ffd23f"/>
+  <path d="M290 185 Q390 210 490 185" fill="none" stroke="#8a5a1a" stroke-width="2" stroke-dasharray="6 5"/>
+  <!-- brim pompoms -->
+  <circle cx="276" cy="184" r="5" fill="#c8312b"/>
+  <circle cx="504" cy="184" r="5" fill="#c8312b"/>
+
+  <!-- splash at board -->
+  <path d="M215 452 Q200 470 185 468 Q205 455 215 445Z" fill="#e9f8ff"/>
+  <path d="M625 450 Q640 468 655 466 Q640 452 630 445Z" fill="#e9f8ff"/>
+</svg>

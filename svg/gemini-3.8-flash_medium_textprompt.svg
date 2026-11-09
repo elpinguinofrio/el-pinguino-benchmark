@@ -1,0 +1,376 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Sky & Environment Gradients -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="45%" stop-color="#bae6fd"/>
+      <stop offset="70%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#fbcfe8"/>
+    </linearGradient>
+
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbeb" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#fef08a" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#f59e0b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ocean Gradients -->
+    <linearGradient id="seaDeep" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+
+    <linearGradient id="waveHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#e0f2fe" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Hydrofoil / E-Foil Gradients -->
+    <linearGradient id="carbonDeck" x1="0%" y1="0%" x2="100%" y2="30%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="neonStripe" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <linearGradient id="mastMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="40%" stop-color="#475569"/>
+      <stop offset="70%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Penguin Shading -->
+    <linearGradient id="penguinBody" x1="20%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <linearGradient id="penguinBelly" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Sombrero Gradients & Patterns -->
+    <linearGradient id="strawGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="sombreroBand" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="25%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="75%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+
+    <!-- Beak & Feet -->
+    <linearGradient id="beakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="sprayBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="softGaze" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+
+  <!-- ================= BACKGROUND ================= -->
+  <!-- Sky -->
+  <rect width="800" height="600" fill="url(#skyGrad)"/>
+
+  <!-- Sun -->
+  <circle cx="660" cy="150" r="110" fill="url(#sunGlow)"/>
+  <circle cx="660" cy="150" r="42" fill="#fffbeb"/>
+
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.75">
+    <path d="M 80 180 q 25 -30 60 -15 q 35 -35 75 -10 q 35 -10 55 25 q -10 35 -45 35 l -120 0 q -30 0 -25 -35 z"/>
+    <path d="M 450 120 q 20 -20 45 -10 q 25 -25 55 -10 q 25 -10 40 15 q -10 25 -35 25 l -90 0 q -20 0 -15 -20 z" opacity="0.6"/>
+  </g>
+
+  <!-- Distant Birds -->
+  <g stroke="#0369a1" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6">
+    <path d="M 230 110 q 10 -12 20 0 q 10 -12 20 0"/>
+    <path d="M 275 95 q 8 -9 15 0 q 8 -9 15 0"/>
+    <path d="M 330 130 q 6 -8 13 0 q 6 -8 13 0"/>
+  </g>
+
+  <!-- Distant Swells -->
+  <path d="M 0 420 C 150 410, 250 435, 450 415 C 650 395, 720 425, 800 420 L 800 600 L 0 600 Z" fill="#0284c7" opacity="0.45"/>
+
+  <!-- ================= SUBMERGED HYDROFOIL ASSEMBLY ================= -->
+  <!-- Under-water Mast section -->
+  <path d="M 402 445 L 388 515 L 404 517 L 416 445 Z" fill="#0f172a" opacity="0.7"/>
+
+  <!-- Submerged Torpedo Motor & Hydrofoil Wing -->
+  <g opacity="0.85">
+    <!-- Fuselage / Motor Bulb -->
+    <ellipse cx="396" cy="517" rx="34" ry="7" fill="#1e293b"/>
+    <!-- Propeller & Jet Flow -->
+    <path d="M 362 514 L 358 520 L 362 521 Z" fill="#06b6d4"/>
+    <path d="M 358 517 C 320 515, 280 528, 220 522" stroke="#e0f2fe" stroke-width="4" stroke-dasharray="8 4" fill="none" opacity="0.6"/>
+    <!-- Front Hydrofoil Wing (carving lift) -->
+    <path d="M 370 520 C 405 528, 445 525, 475 510 C 445 518, 410 518, 385 515 Z" fill="#06b6d4"/>
+    <!-- Rear Stabilizer Wing -->
+    <path d="M 345 513 C 330 510, 315 512, 305 515 C 318 516, 332 516, 345 515 Z" fill="#10b981"/>
+  </g>
+
+  <!-- ================= OCEAN SURFACE & FOIL SPLASH ================= -->
+  <!-- Mid Water Layer -->
+  <path d="M 0 450 C 180 435, 270 470, 400 455 C 550 435, 680 465, 800 450 L 800 600 L 0 600 Z" fill="url(#seaDeep)"/>
+
+  <!-- Wake and Water Carve from Hydrofoil Mast -->
+  <!-- Frothing V-wake sliced by the strut -->
+  <path d="M 405 450 L 340 475 L 180 495 L 350 482 L 408 456 Z" fill="#e0f2fe" opacity="0.75"/>
+  <path d="M 405 452 C 370 455, 300 472, 190 480" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.9"/>
+  
+  <!-- Dynamic Spray / Rooster Tail behind the e-foil mast -->
+  <g fill="#e0f2fe" opacity="0.85">
+    <!-- Spray feathers cutting out of water -->
+    <path d="M 400 450 C 370 430, 345 420, 320 422 C 345 432, 365 444, 395 454 Z"/>
+    <path d="M 398 448 C 360 415, 320 405, 285 410 C 320 425, 355 442, 392 453 Z" opacity="0.7"/>
+    <!-- Water droplets / mist -->
+    <circle cx="330" cy="415" r="4.5" fill="#ffffff"/>
+    <circle cx="310" cy="408" r="3" fill="#e0f2fe"/>
+    <circle cx="285" cy="402" r="2.5" fill="#bae6fd"/>
+    <circle cx="350" cy="425" r="3.5" fill="#ffffff"/>
+    <circle cx="260" cy="412" r="2" fill="#e0f2fe"/>
+    <circle cx="300" cy="395" r="3" fill="#ffffff"/>
+    <circle cx="240" cy="418" r="2" fill="#bae6fd"/>
+  </g>
+
+  <!-- ================= THE E-FOIL BOARD ================= -->
+  <!-- Above-water Mast / Hydrofoil Strut -->
+  <g id="aboveWaterMast">
+    <!-- Main Hydrodynamic Carbon Strut -->
+    <path d="M 436 345 L 398 456 L 413 454 L 452 346 Z" fill="url(#mastMetal)"/>
+    <!-- Leading Edge Neon Accent -->
+    <path d="M 452 346 L 413 454" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- E-Foil Board (Sleek aerodynamic surfboard hovering in the air) -->
+  <!-- Tilted slightly upward in flight stance: angle ~ -8 deg -->
+  <g id="boardGroup" transform="rotate(-8 450 340)">
+    <!-- Board Drop Shadow on Water simulated via angle -->
+    <!-- Board Hull Bottom -->
+    <path d="M 280 348 C 360 354, 520 352, 600 328 C 610 325, 615 328, 608 335 C 530 365, 370 368, 280 355 Z" fill="#090d16"/>
+    
+    <!-- Board Main Body / Rail -->
+    <path d="M 275 344 C 360 347, 530 342, 612 322 C 622 319, 622 325, 610 332 C 530 358, 360 358, 275 348 Z" fill="url(#carbonDeck)"/>
+    
+    <!-- Board Deck (Traction Pad & Top View curve) -->
+    <path d="M 276 343 C 350 336, 520 326, 610 318 C 616 322, 614 326, 604 329 C 520 346, 350 352, 276 346 Z" fill="#334155"/>
+    
+    <!-- High-Grip Deck Pad (EVA foam traction) -->
+    <path d="M 330 341 C 390 335, 490 328, 545 325 C 550 328, 545 333, 535 335 C 485 341, 385 347, 330 345 Z" fill="#1e293b"/>
+    <path d="M 345 342 L 530 328" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Dual Neon Sport Racing Stripes -->
+    <path d="M 290 345 C 380 345, 520 335, 595 324" stroke="url(#neonStripe)" stroke-width="2.5" fill="none"/>
+    <path d="M 310 347 C 390 347, 500 339, 570 330" stroke="#f59e0b" stroke-width="1.2" fill="none"/>
+
+    <!-- LED Battery / Power Status Indicator on Nose of Board -->
+    <circle cx="575" cy="326" r="2.5" fill="#10b981"/>
+    <circle cx="583" cy="325" r="2.5" fill="#10b981"/>
+    <circle cx="591" cy="323" r="2.5" fill="#06b6d4"/>
+  </g>
+
+  <!-- ================= THE COOL SURFING PENGUIN ================= -->
+  <!-- Center of penguin: X~440, Y~260, posed dynamically leaning back against carve -->
+  <g id="penguinCharacter">
+    
+    <!-- Back Foot (Gripping board back deck) -->
+    <g id="backFoot">
+      <path d="M 370 332 C 355 332, 345 336, 348 340 C 354 343, 375 341, 382 336 Z" fill="url(#beakGrad)"/>
+      <path d="M 350 338 L 343 342" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 356 340 L 350 344" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 363 340 L 360 345" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Tail Feathers -->
+    <path d="M 368 298 C 342 305, 335 315, 352 322 C 362 318, 372 310, 376 302 Z" fill="#090d16"/>
+
+    <!-- Left Wing (Trailing back for athletic wind/balance pose) -->
+    <!-- Extends dynamically behind him -->
+    <path d="M 405 235 C 360 230, 315 210, 280 185 C 295 215, 340 250, 388 260 Z" fill="url(#penguinBody)"/>
+    <!-- Wing White/Silver Underside Accent -->
+    <path d="M 300 200 C 335 228, 365 242, 388 252" stroke="#e2e8f0" stroke-width="2" fill="none" opacity="0.6"/>
+
+    <!-- Penguin Main Torso / Body -->
+    <!-- Athletic, chubby yet aerodynamic posture leaning into the turn -->
+    <path d="M 385 315 C 370 295, 375 235, 400 180 C 415 150, 445 150, 465 175 C 490 205, 495 260, 475 305 C 460 330, 405 332, 385 315 Z" fill="url(#penguinBody)"/>
+
+    <!-- Front Foot (Front foot carving forward on traction pad) -->
+    <g id="frontFoot">
+      <path d="M 452 324 C 445 325, 436 332, 442 336 C 452 341, 472 334, 478 327 C 474 324, 462 323, 452 324 Z" fill="url(#beakGrad)"/>
+      <path d="M 462 332 L 472 336" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 466 329 L 477 332" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 458 334 L 467 339" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Penguin White Belly / Chest -->
+    <path d="M 420 188 C 405 215, 408 265, 420 300 C 430 316, 455 312, 465 292 C 480 262, 478 215, 460 190 C 448 178, 430 176, 420 188 Z" fill="url(#penguinBelly)"/>
+
+    <!-- Golden Imperial Penguin Neck/Ear Feather Glow -->
+    <path d="M 440 178 C 456 182, 468 195, 466 210 C 458 205, 450 195, 445 190 Z" fill="#f59e0b" opacity="0.95"/>
+    <path d="M 442 182 C 450 185, 458 194, 458 202 C 452 198, 448 192, 442 182 Z" fill="#fef08a"/>
+
+    <!-- Right Wing (Extended Forward & Holding the Wireless E-Foil Remote) -->
+    <!-- Flipper curved forward toward viewer -->
+    <g id="frontFlipperAndRemote">
+      <path d="M 445 225 C 475 235, 505 255, 532 278 C 522 284, 498 276, 475 262 C 455 248, 442 238, 445 225 Z" fill="url(#penguinBody)"/>
+      
+      <!-- Flipper Tip / "Hand" Clamping Remote -->
+      <!-- Waterproof Bluetooth Throttle Controller (Essential for e-foiling!) -->
+      <g id="remoteController" transform="rotate(-15 528 278)">
+        <!-- Lanyard around wrist -->
+        <path d="M 508 270 C 512 288, 520 292, 528 280" stroke="#06b6d4" stroke-width="2.5" fill="none"/>
+        <!-- Ergonomic Handgrip -->
+        <rect x="522" y="266" width="12" height="24" rx="4" fill="#0f172a"/>
+        <path d="M 524 268 L 524 286" stroke="#475569" stroke-width="1.5"/>
+        <!-- Trigger & Thumb Wheel -->
+        <path d="M 522 274 C 518 274, 516 278, 522 280 Z" fill="#ef4444"/> <!-- Throttle Trigger -->
+        <circle cx="528" cy="270" r="3" fill="#10b981"/> <!-- Digital Cruise Control / Power LED -->
+        <!-- Antenna Tip -->
+        <line x1="530" y1="266" x2="534" y2="258" stroke="#334155" stroke-width="2"/>
+        <circle cx="534" cy="258" r="1.5" fill="#06b6d4"/>
+      </g>
+    </g>
+
+    <!-- Penguin Head & Face -->
+    <path d="M 425 155 C 418 165, 418 185, 432 192 C 445 198, 465 192, 468 178 C 472 162, 455 145, 438 145 C 430 145, 426 150, 425 155 Z" fill="url(#penguinBody)"/>
+
+    <!-- Penguin Beak (Facing proudly forward with a cool confident smirk) -->
+    <path d="M 460 168 L 492 174 C 485 182, 468 186, 456 182 Z" fill="url(#beakGrad)"/>
+    <path d="M 460 173 L 490 175" stroke="#9a3412" stroke-width="1.5"/>
+
+    <!-- ================= SUNGLASSES ================= -->
+    <!-- Super Cool Oceanic Mirrored Sport Shades -->
+    <g id="sunglasses" transform="rotate(-6 450 165)">
+      <!-- Frame -->
+      <path d="M 436 158 Q 452 153 472 161 L 474 169 Q 452 163 434 167 Z" fill="#0f172a"/>
+      <!-- Right Lens (Mirrored with Sun Reflection) -->
+      <path d="M 454 162 Q 468 162 472 168 Q 465 178 452 174 Q 448 168 454 162 Z" fill="#06b6d4"/>
+      <!-- Lens Glare Strip -->
+      <path d="M 456 164 L 468 167 L 464 172 L 454 167 Z" fill="#ffffff" opacity="0.8"/>
+      <!-- Left Brow Frame / Strap around head -->
+      <path d="M 434 164 Q 426 166 422 171" stroke="#0f172a" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- ================= THE MEXICAN SOMBRERO ================= -->
+    <!-- Jauntily tilted atop penguin head: angle ~ -12 deg -->
+    <g id="sombrero" transform="translate(435, 140) rotate(-14)">
+      
+      <!-- Sombrero Chin Strap (blowing stylishly in the wind) -->
+      <path d="M -30 12 C -22 36, -5 45, 10 32" stroke="#b45309" stroke-width="2.5" fill="none"/>
+      <!-- Little wooden toggle on chin strap -->
+      <ellipse cx="-6" cy="36" rx="4" ry="2.5" fill="#fef08a"/>
+
+      <!-- Sombrero Back Brim Underside (provides 3D depth) -->
+      <ellipse cx="0" cy="5" rx="100" ry="26" fill="#92400e"/>
+      <ellipse cx="0" cy="8" rx="96" ry="22" fill="#b45309"/>
+
+      <!-- Sombrero Crown / Cone (Tall peaked top) -->
+      <path d="M -38 2 C -32 -40, -22 -68, 0 -72 C 22 -68, 32 -40, 38 2 Z" fill="url(#strawGold)"/>
+      
+      <!-- Sombrero Crown Indentation / Crease at the very top -->
+      <path d="M -8 -71 C -2 -75, 4 -75, 8 -71 C 4 -68, -4 -68, -8 -71 Z" fill="#78350f"/>
+
+      <!-- Decorative Serape Ribbon Bands on Crown -->
+      <!-- Band 1: Deep Red -->
+      <path d="M -35 -14 C -15 -19, 15 -19, 35 -14 L 36 -6 C 15 -11, -15 -11, -36 -6 Z" fill="#dc2626"/>
+      <!-- Band 2: Vibrant Mexican Green with Zig-Zag Embroidery -->
+      <path d="M -32 -30 C -15 -35, 15 -35, 32 -30 L 34 -22 C 15 -27, -15 -27, -34 -22 Z" fill="#16a34a"/>
+      <path d="M -28 -25 L -22 -29 L -16 -25 L -10 -29 L -4 -25 L 2 -29 L 8 -25 L 14 -29 L 20 -25 L 26 -29" stroke="#fef08a" stroke-width="1.8" fill="none"/>
+      <!-- Band 3: Aztec Gold / Turquoise Band -->
+      <path d="M -27 -46 C -12 -51, 12 -51, 27 -46 L 29 -39 C 12 -44, -12 -44, -29 -39 Z" fill="#0891b2"/>
+      <!-- Little golden stitches -->
+      <circle cx="-15" cy="-43" r="1.5" fill="#fef08a"/>
+      <circle cx="0" cy="-45" r="1.5" fill="#fef08a"/>
+      <circle cx="15" cy="-43" r="1.5" fill="#fef08a"/>
+
+      <!-- Sombrero Huge Wide Front Brim (Upturned curled edges) -->
+      <path d="M -110 5 C -75 -12, 75 -12, 110 5 C 120 10, 115 26, 92 28 C 45 32, -45 32, -92 28 C -115 26, -120 10, -110 5 Z" fill="url(#strawGold)"/>
+      
+      <!-- Inner Rolled Rim Layer -->
+      <path d="M -102 6 C -68 -8, 68 -8, 102 6 C 85 20, -85 20, -102 6 Z" fill="#d97706"/>
+
+      <!-- Colorful Woven Trim Pattern around Brim Edge -->
+      <path d="M -96 16 C -60 25, 60 25, 96 16" stroke="url(#sombreroBand)" stroke-width="5" stroke-linecap="round" fill="none"/>
+      
+      <!-- Embroidered Zig-Zags along the Brim Edge -->
+      <path d="M -88 16 L -82 20 L -76 16 L -70 21 L -64 17 L -58 22 L -52 18 L -46 22 L -40 18 L -34 22 L -28 19 L -22 23 L -16 19 L -10 23 L -4 19 L 2 23 L 8 19 L 14 23 L 20 19 L 26 23 L 32 19 L 38 23 L 44 19 L 50 23 L 56 19 L 62 23 L 68 19 L 74 23 L 80 18 L 86 21" 
+            stroke="#ffffff" stroke-width="1.8" fill="none"/>
+
+      <!-- Festive Dangling Ball Pom-Poms / Tassels around the Brim -->
+      <g id="pompoms">
+        <!-- Pom-pom 1 -->
+        <line x1="-90" y1="20" x2="-92" y2="28" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="-92" cy="30" r="3.5" fill="#ef4444"/>
+
+        <!-- Pom-pom 2 -->
+        <line x1="-65" y1="23" x2="-66" y2="32" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="-66" cy="34" r="3.5" fill="#10b981"/>
+
+        <!-- Pom-pom 3 -->
+        <line x1="-40" y1="25" x2="-41" y2="35" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="-41" cy="37" r="3.5" fill="#f59e0b"/>
+
+        <!-- Pom-pom 4 -->
+        <line x1="-15" y1="26" x2="-15" y2="37" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="-15" cy="39" r="3.5" fill="#3b82f6"/>
+
+        <!-- Pom-pom 5 (Center) -->
+        <line x1="12" y1="26" x2="13" y2="37" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="13" cy="39" r="3.5" fill="#ec4899"/>
+
+        <!-- Pom-pom 6 -->
+        <line x1="38" y1="25" x2="40" y2="35" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="40" cy="37" r="3.5" fill="#eab308"/>
+
+        <!-- Pom-pom 7 -->
+        <line x1="65" y1="23" x2="67" y2="32" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="67" cy="34" r="3.5" fill="#10b981"/>
+
+        <!-- Pom-pom 8 -->
+        <line x1="90" y1="20" x2="93" y2="28" stroke="#fef08a" stroke-width="1.5"/>
+        <circle cx="93" cy="30" r="3.5" fill="#ef4444"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= FOREGROUND WATER & SPEED SPLASHES ================= -->
+  <!-- Crisp Foreground Swell Layer -->
+  <path d="M 0 520 C 120 505, 240 530, 380 515 C 510 500, 680 535, 800 515 L 800 600 L 0 600 Z" fill="#082f49" opacity="0.8"/>
+  <path d="M 0 550 C 180 535, 340 565, 520 545 C 660 530, 740 550, 800 540 L 800 600 L 0 600 Z" fill="#031d30"/>
+
+  <!-- High-Speed Hydrofoil Droplets flying near viewer -->
+  <g fill="#ffffff" opacity="0.9">
+    <ellipse cx="430" cy="442" rx="6" ry="3" transform="rotate(-30 430 442)"/>
+    <ellipse cx="452" cy="436" rx="4" ry="2" transform="rotate(-40 452 436)"/>
+    <circle cx="380" cy="435" r="3"/>
+    <circle cx="465" cy="425" r="2.5"/>
+    <circle cx="360" cy="448" r="2"/>
+  </g>
+
+  <!-- Glistening Sun Highlights on Wave Tops -->
+  <path d="M 540 515 C 580 512, 630 516, 680 512" stroke="#fed7aa" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <path d="M 120 530 C 180 526, 230 532, 290 528" stroke="#bae6fd" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M 330 558 C 390 555, 460 558, 510 554" stroke="#7dd3fc" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>

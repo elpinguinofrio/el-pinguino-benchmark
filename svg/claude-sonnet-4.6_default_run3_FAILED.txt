@@ -1,0 +1,5 @@
+FAILED - no SVG produced
+Prompt: Generate an SVG of a penguin wearing a sombrero riding an e-foil.
+rc=0 wall=54.4s svg=no
+Cause: model delegated to the agy image-generator sub-agent, which produced a raster JPG, not SVG code. Full reply in raw/claude-sonnet-4.6_default_run3.txt
+Replaced by the next run (counts as 1 failure for this model).
