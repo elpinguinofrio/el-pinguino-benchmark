@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="alternate" hreflang="en" href="../">
+<title>Penguin E-Foil Benchmark</title>
+<meta name="description" content="Generate an SVG of a penguin wearing a sombrero riding an e-foil.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: hero with prompt and diagram, short takeaways, then a wide gallery of model sections. */
+:root {
+  --sea: #eaf3f2;        /* page ground: pale sea glass */
+  --foam: #ffffff;       /* cards */
+  --ink: #0f2b33;        /* text */
+  --muted: #4c6670;      /* secondary text */
+  --line: #cfe0de;       /* hairlines */
+  --board: #d9561f;      /* accent: e-foil board orange */
+  --straw: #b7861c;      /* sombrero straw */
+  --deep: #0e4f63;       /* deep water */
+  --chip: #dcebe9;
+  --f-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body: "Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --sea: #0a1a20; --foam: #112830; --ink: #e2eeec; --muted: #9db4b9; --line: #23414a;
+  --board: #f07a45; --straw: #e0b24e; --deep: #5fb7cf; --chip: #17343d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --sea: #0a1a20; --foam: #112830; --ink: #e2eeec; --muted: #9db4b9; --line: #23414a;
+  --board: #f07a45; --straw: #e0b24e; --deep: #5fb7cf; --chip: #17343d; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--sea); color: var(--ink); font: 400 16px/1.6 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px }
+.wrap { max-width: 1180px; margin: 0 auto }
+.read { max-width: 68ch }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em }
+h1 { font-weight: 800; font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: 0.98 }
+h2 { font-weight: 800; font-size: clamp(1.5rem, 3.5vw, 2.1rem); line-height: 1.1 }
+h3 { font-weight: 600; font-size: 1.3rem; line-height: 1.2 }
+p { margin: 0 }
+a { color: var(--deep) }
+:focus-visible { outline: 3px solid var(--board); outline-offset: 2px; border-radius: 4px }
+.eyebrow { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted) }
+
+/* hero */
+.hero { padding-block: 28px 32px; display: grid; gap: 28px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center }
+.hero-text { display: grid; gap: 18px; min-width: 0 }
+.lead { font-size: 1.12rem; color: var(--muted); max-width: 56ch }
+.lead strong { color: var(--ink); font-weight: 600 }
+.prompt { background: var(--foam); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px }
+.prompt code { font: 500 0.98rem/1.5 var(--f-mono); color: var(--ink); overflow-wrap: anywhere }
+.prompt-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap }
+.copy { font: 600 0.85rem var(--f-body); background: var(--ink); color: var(--sea); border: 0; border-radius: 999px; padding: 7px 14px; cursor: pointer }
+.stats { display: flex; gap: 28px; flex-wrap: wrap }
+.stat b { display: block; font: 800 1.9rem/1 var(--f-display); font-variant-numeric: tabular-nums }
+.stat span { font-size: 0.85rem; color: var(--muted) }
+
+/* anatomy diagram */
+.anatomy { background: var(--foam); border: 1px solid var(--line); border-radius: 14px; padding: 14px; min-width: 0 }
+.anatomy svg { display: block; width: 100%; height: auto }
+.anatomy figcaption { font-size: 0.85rem; color: var(--muted); padding: 6px 4px 0 }
+.a-label { font: 500 12px var(--f-mono); fill: var(--ink) }
+.a-lead { stroke: var(--muted); stroke-width: 1; fill: none }
+
+/* findings */
+.section { padding-block: 36px; border-top: 1px solid var(--line); display: grid; gap: 20px }
+.findings { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) }
+.findings li { background: var(--foam); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; min-width: 0 }
+.findings b { font-family: var(--f-display); font-weight: 600; font-size: 1.08rem }
+.findings p { color: var(--muted); font-size: 0.95rem }
+
+/* nav chips */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--sea); padding-block: 10px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line) }
+.nav::-webkit-scrollbar { display: none }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sea) }
+.chip { flex: 0 0 auto; text-decoration: none; color: var(--ink); background: var(--chip); border-radius: 999px; padding: 6px 12px; font-size: 0.85rem; font-weight: 500; white-space: nowrap }
+.chip:hover { background: var(--line) }
+
+/* models */
+.models { display: grid; gap: 44px; padding-top: 28px }
+.model { display: grid; gap: 14px; scroll-margin-top: 64px }
+.mh { display: grid; gap: 6px; max-width: 76ch }
+.mh-top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap }
+.fam { font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted) }
+.fam-claude { color: var(--board); border-color: var(--board) }
+.fam-claude-old { color: var(--straw); border-color: var(--straw) }
+.harness { font: 400 0.8rem var(--f-mono); color: var(--muted) }
+.note { font-size: 0.98rem }
+.shots { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(46%, 220px), 1fr)) }
+.shot { margin: 0; background: var(--foam); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto auto }
+.zoom { all: unset; cursor: zoom-in; display: block; aspect-ratio: 4 / 3; background: var(--foam) }
+.zoom img { width: 100%; height: 100%; object-fit: contain; display: block }
+.shot figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 8px; padding: 8px 10px; border-top: 1px solid var(--line); font-size: 0.85rem }
+.run { font-weight: 600 }
+.meta { color: var(--muted); font-family: var(--f-mono); font-size: 0.78rem; font-variant-numeric: tabular-nums }
+
+/* method */
+.method { display: grid; gap: 10px; color: var(--muted); font-size: 0.95rem }
+.method ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px }
+.method b { color: var(--ink) }
+
+/* lightbox */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(96vw, 1000px); width: 100% }
+dialog::backdrop { background: rgba(5, 18, 24, 0.82) }
+.lb { background: var(--foam); border-radius: 12px; overflow: hidden; display: grid }
+.lb img { width: 100%; max-height: 78vh; object-fit: contain; background: var(--foam) }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font-size: 0.9rem }
+.lb-close { font: 600 0.85rem var(--f-body); background: var(--chip); color: var(--ink); border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 32px 20px }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .zoom img { transition: transform .25s ease }
+  .zoom:hover img { transform: scale(1.03) }
+}
+
+/* top bar, takeaways, details, footer */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; font-size: 0.9rem }
+.top .links { display: flex; gap: 8px; flex-wrap: wrap }
+.top a { text-decoration: none }
+.pill { color: var(--ink); background: var(--chip); border-radius: 999px; padding: 6px 12px; font-weight: 600 }
+.pelican { font-size: 0.92rem; color: var(--muted) }
+.takes { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)) }
+.takes li { background: var(--foam); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px }
+.takes b { font: 800 1.15rem/1.15 var(--f-display) }
+.takes span { color: var(--muted); font-size: 0.92rem }
+details.method summary { cursor: pointer; font: 800 1.3rem var(--f-display); color: var(--ink) }
+details.method ul { margin-top: 12px }
+footer { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 36px; font-size: 0.85rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="eyebrow">2026-11-09</span><span class="links"><a class="pill" href="../" hreflang="en">English</a></span></div>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Penguin <span style="white-space:nowrap">E-Foil</span> Benchmark</h1>
+      <p class="lead">Один промпт. 12 моделей. Все рисунки без отбора.</p>
+      <div class="prompt">
+        <div class="prompt-row"><span class="eyebrow">Промпт</span><button class="copy" id="copy-prompt" type="button" data-done="Скопировано">Копировать</button></div>
+        <code id="prompt-text">Generate an SVG of a penguin wearing a sombrero riding an <span style="white-space:nowrap">e-foil</span>.</code>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>12</b><span>моделей</span></div>
+        <div class="stat"><b>44</b><span>рисунка</span></div>
+        <div class="stat"><b>1</b><span>промпт</span></div>
+      </div>
+      <p class="pelican">Альтернатива тесту Саймона Уиллисона <a href="https://github.com/simonw/pelican-bicycle">«пеликан на велосипеде»</a>, который модели, скорее всего, уже видели при обучении.</p>
+    </div>
+    <figure class="anatomy">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Diagram of an e-foil: board above the water, one mast down to a fuselage with front wing, rear wing and propeller, rider holding a hand remote">
+  <rect x="0" y="150" width="420" height="150" fill="var(--deep)" opacity="0.16"/>
+  <path d="M0 150 Q35 144 70 150 T140 150 T210 150 T280 150 T350 150 T420 150" fill="none" stroke="var(--deep)" stroke-width="2"/>
+  <path d="M110 112 H300 Q318 112 320 120 Q318 126 300 126 H118 Q106 126 106 119 Q106 112 110 112 Z" fill="var(--board)"/>
+  <rect x="206" y="126" width="7" height="104" rx="2" fill="var(--ink)"/>
+  <rect x="150" y="228" width="140" height="8" rx="4" fill="var(--ink)"/>
+  <path d="M232 232 Q270 220 304 232 Q270 242 232 236 Z" fill="var(--ink)"/>
+  <path d="M146 232 Q160 226 174 232 Q160 238 146 234 Z" fill="var(--ink)"/>
+  <rect x="190" y="196" width="34" height="13" rx="6.5" fill="var(--muted)"/>
+  <ellipse cx="187" cy="202.5" rx="3" ry="12" fill="var(--straw)"/>
+  <rect x="236" y="64" width="12" height="8" rx="2" fill="var(--board)"/>
+  <path d="M252 60 L300 40" class="a-lead"/><text x="304" y="44" class="a-label">пульт</text>
+  <path d="M300 112 L330 92" class="a-lead"/><text x="334" y="96" class="a-label">доска</text>
+  <path d="M213 170 L262 170" class="a-lead"/><text x="266" y="174" class="a-label">одна мачта</text>
+  <path d="M186 192 L120 176" class="a-lead"/><text x="38" y="180" class="a-label">винт</text>
+  <path d="M300 236 L330 262" class="a-lead"/><text x="296" y="278" class="a-label">крыло</text>
+  <path d="M150 236 L104 262" class="a-lead"/><text x="40" y="278" class="a-label">стабилизатор</text>
+  <path d="M60 150 L60 132" class="a-lead"/><text x="16" y="126" class="a-label">ватерлиния</text>
+</svg>
+
+      <figcaption>Из чего состоит правильный e-foil</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <h2>Пингвина рисуют все. Отличает их e-foil.</h2>
+    <ul class="takes"><li><b>Opus 5.5</b><span>полный e-foil в каждом прогоне</span></li><li><b>Grok</b><span>лучшие картинки, но детали то есть, то нет</span></li><li><b>Claude 4.6 → 5.5</b><span>большой скачок</span></li><li><b>Локальный Qwen</b><span>справляется только на xhigh, за 29 мин</span></li></ul>
+  </section>
+
+  <nav class="nav" aria-label="Models"><a class="chip" href="#opus-5.5">Claude Opus 5.5</a><a class="chip" href="#sonnet-5.5">Claude Sonnet 5.5</a><a class="chip" href="#haiku-5.5">Claude Haiku 5.5</a><a class="chip" href="#opus-4.6">Claude Opus 4.6</a><a class="chip" href="#sonnet-4.6">Claude Sonnet 4.6</a><a class="chip" href="#grok-4.7">Grok 4.7</a><a class="chip" href="#grok-4.7-build-fast">Grok 4.7 Build Fast</a><a class="chip" href="#grok-4.6">Grok 4.6</a><a class="chip" href="#grok-4.5">Grok 4.5</a><a class="chip" href="#gemini-3.8-flash">Gemini 3.8 Flash</a><a class="chip" href="#gpt-oss-120b">GPT-OSS 120B</a><a class="chip" href="#qwen3.8-27b-abliterated">Qwen3.8-27B abliterated</a></nav>
+
+  <div class="models"><section class="model" id="opus-5.5"><header class="mh"><div class="mh-top"><h3>Claude Opus 5.5</h3><span class="fam fam-claude">Claude 5.5</span><span class="harness">Claude Code</span></div><p class="note">Полный e-foil в каждом прогоне: мачта, мотор, винт, крыло, пульт.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-5.5_medium_run1.jpg" data-cap="Claude Opus 5.5 · medium 1 · medium (23 с)" aria-label="Claude Opus 5.5 medium 1"><img src="../img/opus-5.5_medium_run1.jpg" alt="Claude Opus 5.5, medium 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 1</span><span class="meta">medium · <span class="t">23 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-5.5_medium_run2.jpg" data-cap="Claude Opus 5.5 · medium 2 · medium (36 с)" aria-label="Claude Opus 5.5 medium 2"><img src="../img/opus-5.5_medium_run2.jpg" alt="Claude Opus 5.5, medium 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 2</span><span class="meta">medium · <span class="t">36 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-5.5_medium_run3.jpg" data-cap="Claude Opus 5.5 · medium 3 · medium (34 с)" aria-label="Claude Opus 5.5 medium 3"><img src="../img/opus-5.5_medium_run3.jpg" alt="Claude Opus 5.5, medium 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 3</span><span class="meta">medium · <span class="t">34 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-5.5_default_run1.jpg" data-cap="Claude Opus 5.5 · default 1 · default (n/a)" aria-label="Claude Opus 5.5 default 1"><img src="../img/opus-5.5_default_run1.jpg" alt="Claude Opus 5.5, default 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">default 1</span><span class="meta">default · <span class="t">n/a</span></span></figcaption></figure></div></section><section class="model" id="sonnet-5.5"><header class="mh"><div class="mh-top"><h3>Claude Sonnet 5.5</h3><span class="fam fam-claude">Claude 5.5</span><span class="harness">Claude Code</span></div><p class="note">Каждый раз один плоский стиль. Мачта и крыло; ни мотора, ни пульта.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-5.5_medium_run1.jpg" data-cap="Claude Sonnet 5.5 · Прогон 1 · medium (14 с)" aria-label="Claude Sonnet 5.5 Прогон 1"><img src="../img/sonnet-5.5_medium_run1.jpg" alt="Claude Sonnet 5.5, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">14 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-5.5_medium_run2.jpg" data-cap="Claude Sonnet 5.5 · Прогон 2 · medium (19 с)" aria-label="Claude Sonnet 5.5 Прогон 2"><img src="../img/sonnet-5.5_medium_run2.jpg" alt="Claude Sonnet 5.5, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">19 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-5.5_medium_run3.jpg" data-cap="Claude Sonnet 5.5 · Прогон 3 · medium (17 с)" aria-label="Claude Sonnet 5.5 Прогон 3"><img src="../img/sonnet-5.5_medium_run3.jpg" alt="Claude Sonnet 5.5, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">17 с</span></span></figcaption></figure></div></section><section class="model" id="haiku-5.5"><header class="mh"><div class="mh-top"><h3>Claude Haiku 5.5</h3><span class="fam fam-claude">Claude 5.5</span><span class="harness">Claude Code</span></div><p class="note">Ковбойские шляпы, утонувшие доски, крыло над водой.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/haiku-5.5_medium_run1.jpg" data-cap="Claude Haiku 5.5 · Прогон 1 · medium (23 с)" aria-label="Claude Haiku 5.5 Прогон 1"><img src="../img/haiku-5.5_medium_run1.jpg" alt="Claude Haiku 5.5, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">23 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/haiku-5.5_medium_run2.jpg" data-cap="Claude Haiku 5.5 · Прогон 2 · medium (18 с)" aria-label="Claude Haiku 5.5 Прогон 2"><img src="../img/haiku-5.5_medium_run2.jpg" alt="Claude Haiku 5.5, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">18 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/haiku-5.5_medium_run3.jpg" data-cap="Claude Haiku 5.5 · Прогон 3 · medium (25 с)" aria-label="Claude Haiku 5.5 Прогон 3"><img src="../img/haiku-5.5_medium_run3.jpg" alt="Claude Haiku 5.5, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">25 с</span></span></figcaption></figure></div></section><section class="model" id="opus-4.6"><header class="mh"><div class="mh-top"><h3>Claude Opus 4.6</h3><span class="fam fam-claude-old">Claude 4.6</span><span class="harness">Antigravity</span></div><p class="note">Крошечный пингвин на голой палке. Ни мотора, ни пульта.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-4.6_default_run1.jpg" data-cap="Claude Opus 4.6 · Прогон 1 · default (48 с)" aria-label="Claude Opus 4.6 Прогон 1"><img src="../img/opus-4.6_default_run1.jpg" alt="Claude Opus 4.6, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">default · <span class="t">48 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-4.6_default_run2.jpg" data-cap="Claude Opus 4.6 · Прогон 2 · default (38 с)" aria-label="Claude Opus 4.6 Прогон 2"><img src="../img/opus-4.6_default_run2.jpg" alt="Claude Opus 4.6, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">default · <span class="t">38 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/opus-4.6_default_run3.jpg" data-cap="Claude Opus 4.6 · Прогон 3 · default (41 с)" aria-label="Claude Opus 4.6 Прогон 3"><img src="../img/opus-4.6_default_run3.jpg" alt="Claude Opus 4.6, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">default · <span class="t">41 с</span></span></figcaption></figure></div></section><section class="model" id="sonnet-4.6"><header class="mh"><div class="mh-top"><h3>Claude Sonnet 4.6</h3><span class="fam fam-claude-old">Claude 4.6</span><span class="harness">Antigravity</span></div><p class="note">Живее, чем 5.5, но сомбреро похожи на абажуры. Прогон 3 вызвал генератор картинок вместо SVG.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-4.6_default_run1.jpg" data-cap="Claude Sonnet 4.6 · Прогон 1 · default (57 с)" aria-label="Claude Sonnet 4.6 Прогон 1"><img src="../img/sonnet-4.6_default_run1.jpg" alt="Claude Sonnet 4.6, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">default · <span class="t">57 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-4.6_default_run2.jpg" data-cap="Claude Sonnet 4.6 · Прогон 2 · default (235 с)" aria-label="Claude Sonnet 4.6 Прогон 2"><img src="../img/sonnet-4.6_default_run2.jpg" alt="Claude Sonnet 4.6, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">default · <span class="t">235 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/sonnet-4.6_default_run4.jpg" data-cap="Claude Sonnet 4.6 · Прогон 4 · default (52 с)" aria-label="Claude Sonnet 4.6 Прогон 4"><img src="../img/sonnet-4.6_default_run4.jpg" alt="Claude Sonnet 4.6, Прогон 4: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 4</span><span class="meta">default · <span class="t">52 с</span></span></figcaption></figure></div></section><section class="model" id="grok-4.7"><header class="mh"><div class="mh-top"><h3>Grok 4.7</h3><span class="fam fam-grok">Grok</span><span class="harness">grok CLI</span></div><p class="note">Закаты, брызги, свет. Железо — как повезёт.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7_medium_run1.jpg" data-cap="Grok 4.7 · Прогон 1 · medium (233 с)" aria-label="Grok 4.7 Прогон 1"><img src="../img/grok-4.7_medium_run1.jpg" alt="Grok 4.7, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">233 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7_medium_run2.jpg" data-cap="Grok 4.7 · Прогон 2 · medium (383 с)" aria-label="Grok 4.7 Прогон 2"><img src="../img/grok-4.7_medium_run2.jpg" alt="Grok 4.7, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">383 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7_medium_run3.jpg" data-cap="Grok 4.7 · Прогон 3 · medium (276 с)" aria-label="Grok 4.7 Прогон 3"><img src="../img/grok-4.7_medium_run3.jpg" alt="Grok 4.7, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">276 с</span></span></figcaption></figure></div></section><section class="model" id="grok-4.7-build-fast"><header class="mh"><div class="mh-top"><h3>Grok 4.7 Build Fast</h3><span class="fam fam-grok">Grok</span><span class="harness">grok CLI</span></div><p class="note">Прогон 2 — самый полный e-foil во всём наборе.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7-build-fast_medium_run1.jpg" data-cap="Grok 4.7 Build Fast · Прогон 1 · medium (276 с)" aria-label="Grok 4.7 Build Fast Прогон 1"><img src="../img/grok-4.7-build-fast_medium_run1.jpg" alt="Grok 4.7 Build Fast, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">276 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7-build-fast_medium_run2.jpg" data-cap="Grok 4.7 Build Fast · Прогон 2 · medium (139 с)" aria-label="Grok 4.7 Build Fast Прогон 2"><img src="../img/grok-4.7-build-fast_medium_run2.jpg" alt="Grok 4.7 Build Fast, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">139 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.7-build-fast_medium_run3.jpg" data-cap="Grok 4.7 Build Fast · Прогон 3 · medium (302 с)" aria-label="Grok 4.7 Build Fast Прогон 3"><img src="../img/grok-4.7-build-fast_medium_run3.jpg" alt="Grok 4.7 Build Fast, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">302 с</span></span></figcaption></figure></div></section><section class="model" id="grok-4.6"><header class="mh"><div class="mh-top"><h3>Grok 4.6</h3><span class="fam fam-grok">Grok</span><span class="harness">grok CLI</span></div><p class="note">Живописно. Мачта и подводное крыло каждый раз.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.6_medium_run1.jpg" data-cap="Grok 4.6 · Прогон 1 · medium (98 с)" aria-label="Grok 4.6 Прогон 1"><img src="../img/grok-4.6_medium_run1.jpg" alt="Grok 4.6, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">98 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.6_medium_run2.jpg" data-cap="Grok 4.6 · Прогон 2 · medium (115 с)" aria-label="Grok 4.6 Прогон 2"><img src="../img/grok-4.6_medium_run2.jpg" alt="Grok 4.6, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">115 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.6_medium_run3.jpg" data-cap="Grok 4.6 · Прогон 3 · medium (116 с)" aria-label="Grok 4.6 Прогон 3"><img src="../img/grok-4.6_medium_run3.jpg" alt="Grok 4.6, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">116 с</span></span></figcaption></figure></div></section><section class="model" id="grok-4.5"><header class="mh"><div class="mh-top"><h3>Grok 4.5</h3><span class="fam fam-grok">Grok</span><span class="harness">grok CLI</span></div><p class="note">Клипарт. Доска — вид сверху, море — сбоку.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.5_medium_run1.jpg" data-cap="Grok 4.5 · Прогон 1 · medium (64 с)" aria-label="Grok 4.5 Прогон 1"><img src="../img/grok-4.5_medium_run1.jpg" alt="Grok 4.5, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">64 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.5_medium_run2.jpg" data-cap="Grok 4.5 · Прогон 2 · medium (65 с)" aria-label="Grok 4.5 Прогон 2"><img src="../img/grok-4.5_medium_run2.jpg" alt="Grok 4.5, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">65 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/grok-4.5_medium_run3.jpg" data-cap="Grok 4.5 · Прогон 3 · medium (76 с)" aria-label="Grok 4.5 Прогон 3"><img src="../img/grok-4.5_medium_run3.jpg" alt="Grok 4.5, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">76 с</span></span></figcaption></figure></div></section><section class="model" id="gemini-3.8-flash"><header class="mh"><div class="mh-top"><h3>Gemini 3.8 Flash</h3><span class="fam fam-gemini">Gemini</span><span class="harness">Antigravity</span></div><p class="note">Динамичные виражи, одна мачта. Понадобилась строка «без инструментов».</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_low_run1.jpg" data-cap="Gemini 3.8 Flash · low 1 · low (35 с)" aria-label="Gemini 3.8 Flash low 1"><img src="../img/gemini-3.8-flash_low_run1.jpg" alt="Gemini 3.8 Flash, low 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">low 1</span><span class="meta">low · <span class="t">35 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_low_run2.jpg" data-cap="Gemini 3.8 Flash · low 2 · low (70 с)" aria-label="Gemini 3.8 Flash low 2"><img src="../img/gemini-3.8-flash_low_run2.jpg" alt="Gemini 3.8 Flash, low 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">low 2</span><span class="meta">low · <span class="t">70 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_low_run3.jpg" data-cap="Gemini 3.8 Flash · low 3 · low (55 с)" aria-label="Gemini 3.8 Flash low 3"><img src="../img/gemini-3.8-flash_low_run3.jpg" alt="Gemini 3.8 Flash, low 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">low 3</span><span class="meta">low · <span class="t">55 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_medium_run1.jpg" data-cap="Gemini 3.8 Flash · medium 1 · medium (94 с)" aria-label="Gemini 3.8 Flash medium 1"><img src="../img/gemini-3.8-flash_medium_run1.jpg" alt="Gemini 3.8 Flash, medium 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 1</span><span class="meta">medium · <span class="t">94 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_medium_run2.jpg" data-cap="Gemini 3.8 Flash · medium 2 · medium (96 с)" aria-label="Gemini 3.8 Flash medium 2"><img src="../img/gemini-3.8-flash_medium_run2.jpg" alt="Gemini 3.8 Flash, medium 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 2</span><span class="meta">medium · <span class="t">96 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_medium_run3.jpg" data-cap="Gemini 3.8 Flash · medium 3 · medium (90 с)" aria-label="Gemini 3.8 Flash medium 3"><img src="../img/gemini-3.8-flash_medium_run3.jpg" alt="Gemini 3.8 Flash, medium 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 3</span><span class="meta">medium · <span class="t">90 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_high_run1.jpg" data-cap="Gemini 3.8 Flash · high 1 · high (112 с)" aria-label="Gemini 3.8 Flash high 1"><img src="../img/gemini-3.8-flash_high_run1.jpg" alt="Gemini 3.8 Flash, high 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">high 1</span><span class="meta">high · <span class="t">112 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_high_run2.jpg" data-cap="Gemini 3.8 Flash · high 2 · high (153 с)" aria-label="Gemini 3.8 Flash high 2"><img src="../img/gemini-3.8-flash_high_run2.jpg" alt="Gemini 3.8 Flash, high 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">high 2</span><span class="meta">high · <span class="t">153 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gemini-3.8-flash_high_run3.jpg" data-cap="Gemini 3.8 Flash · high 3 · high (171 с)" aria-label="Gemini 3.8 Flash high 3"><img src="../img/gemini-3.8-flash_high_run3.jpg" alt="Gemini 3.8 Flash, high 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">high 3</span><span class="meta">high · <span class="t">171 с</span></span></figcaption></figure></div></section><section class="model" id="gpt-oss-120b"><header class="mh"><div class="mh-top"><h3>GPT-OSS 120B</h3><span class="fam fam-open">Открытые веса</span><span class="harness">Antigravity</span></div><p class="note">Красивые сомбреро, крыла почти нет. В прогоне 3 нет моря.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/gpt-oss-120b_medium_run1.jpg" data-cap="GPT-OSS 120B · Прогон 1 · medium (310 с)" aria-label="GPT-OSS 120B Прогон 1"><img src="../img/gpt-oss-120b_medium_run1.jpg" alt="GPT-OSS 120B, Прогон 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 1</span><span class="meta">medium · <span class="t">310 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gpt-oss-120b_medium_run2.jpg" data-cap="GPT-OSS 120B · Прогон 2 · medium (151 с)" aria-label="GPT-OSS 120B Прогон 2"><img src="../img/gpt-oss-120b_medium_run2.jpg" alt="GPT-OSS 120B, Прогон 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 2</span><span class="meta">medium · <span class="t">151 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/gpt-oss-120b_medium_run3.jpg" data-cap="GPT-OSS 120B · Прогон 3 · medium (15 с)" aria-label="GPT-OSS 120B Прогон 3"><img src="../img/gpt-oss-120b_medium_run3.jpg" alt="GPT-OSS 120B, Прогон 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">Прогон 3</span><span class="meta">medium · <span class="t">15 с</span></span></figcaption></figure></div></section><section class="model" id="qwen3.8-27b-abliterated"><header class="mh"><div class="mh-top"><h3>Qwen3.8-27B abliterated</h3><span class="fam fam-open">Открытые веса</span><span class="harness">MTPLX (local)</span></div><p class="note">Medium: каждый раз другое крыло. Xhigh: правильно, но 29 минут.</p></header><div class="shots"><figure class="shot"><button class="zoom" type="button" data-src="../img/qwen3.8-27b-abliterated_medium_run1.jpg" data-cap="Qwen3.8-27B abliterated · medium 1 · medium (113 с)" aria-label="Qwen3.8-27B abliterated medium 1"><img src="../img/qwen3.8-27b-abliterated_medium_run1.jpg" alt="Qwen3.8-27B abliterated, medium 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 1</span><span class="meta">medium · <span class="t">113 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/qwen3.8-27b-abliterated_medium_run2.jpg" data-cap="Qwen3.8-27B abliterated · medium 2 · medium (145 с)" aria-label="Qwen3.8-27B abliterated medium 2"><img src="../img/qwen3.8-27b-abliterated_medium_run2.jpg" alt="Qwen3.8-27B abliterated, medium 2: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 2</span><span class="meta">medium · <span class="t">145 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/qwen3.8-27b-abliterated_medium_run3.jpg" data-cap="Qwen3.8-27B abliterated · medium 3 · medium (159 с)" aria-label="Qwen3.8-27B abliterated medium 3"><img src="../img/qwen3.8-27b-abliterated_medium_run3.jpg" alt="Qwen3.8-27B abliterated, medium 3: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">medium 3</span><span class="meta">medium · <span class="t">159 с</span></span></figcaption></figure><figure class="shot"><button class="zoom" type="button" data-src="../img/qwen3.8-27b-abliterated_xhigh_run1.jpg" data-cap="Qwen3.8-27B abliterated · xhigh 1 · xhigh (29 мин)" aria-label="Qwen3.8-27B abliterated xhigh 1"><img src="../img/qwen3.8-27b-abliterated_xhigh_run1.jpg" alt="Qwen3.8-27B abliterated, xhigh 1: Generate an SVG of a penguin wearing a sombrero riding an e-foil." loading="lazy"></button><figcaption><span class="run">xhigh 1</span><span class="meta">xhigh · <span class="t">29 мин</span></span></figcaption></figure></div></section></div>
+
+  <section class="section">
+    <details class="method"><summary>Как проводился тест</summary><ul><li>Один и тот же промпт, одна попытка, без нашего системного промпта.</li><li>Средний уровень рассуждений (medium), где он настраивается; иначе по умолчанию.</li><li>Показан каждый рисунок. Неудачные попытки сохранены в репозитории.</li><li>Разные среды запуска: Claude Code, grok CLI, Antigravity, MTPLX. Время включает запуск.</li><li>Gemini понадобилась одна лишняя строка: «не используй инструменты».</li><li>Каждый SVG проверен на скрипты и ссылки до рендера.</li></ul></details>
+  </section>
+  <footer><span>MIT License</span><span><a href="https://github.com/simonw/pelican-bicycle">simonw/pelican-bicycle</a></span></footer>
+</div>
+
+<dialog id="lightbox" aria-label="Drawing">
+  <div class="lb">
+    <img id="lb-img" alt="">
+    <div class="lb-bar"><span id="lb-cap"></span><button class="lb-close" id="lb-close" type="button">Закрыть</button></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById("lightbox"), img = document.getElementById("lb-img"), cap = document.getElementById("lb-cap");
+  document.querySelectorAll(".zoom").forEach(function (b) {
+    b.addEventListener("click", function () {
+      img.src = b.dataset.src; img.alt = b.querySelector("img").alt; cap.textContent = b.dataset.cap;
+      if (dlg.showModal) dlg.showModal();
+    });
+  });
+  document.getElementById("lb-close").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  var btn = document.getElementById("copy-prompt"), txt = document.getElementById("prompt-text");
+  btn.addEventListener("click", function () {
+    var done = function () { var o = btn.textContent; btn.textContent = btn.dataset.done; setTimeout(function () { btn.textContent = o; }, 1600); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(txt); var s = getSelection(); s.removeAllRanges(); s.addRange(r);  };
+    try { navigator.clipboard.writeText(txt.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>

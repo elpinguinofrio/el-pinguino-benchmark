@@ -1,0 +1,11 @@
+{
+  "name": "Grok 4.7 Build Fast",
+  "family": "grok",
+  "harness": "grok-cli",
+  "harness_label": "grok CLI",
+  "note_long": "Run 2 is the single most complete e-foil in the whole set: angled mast, fuselage, propeller, and a remote in hand. Runs 1 and 3 crop the penguin at the edge of the frame.",
+  "note": {
+    "en": "Run 2 is the most complete e-foil in the set.",
+    "ru": "Прогон 2 — самый полный e-foil во всём наборе."
+  }
+}

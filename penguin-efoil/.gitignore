@@ -1,0 +1,10 @@
+# secrets
+.env
+.env/
+*.key
+*api-key*
+
+# local clutter
+.DS_Store
+__pycache__/
+*.pyc

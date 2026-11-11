@@ -1,0 +1,11 @@
+{
+  "name": "Claude Sonnet 5.5",
+  "family": "claude",
+  "harness": "claude-code-subagent",
+  "harness_label": "Claude Code",
+  "note_long": "Same flat style every time: mast and wing, board skimming the water. No propeller and no remote in any run; run 1 hangs a kite-style cable from the flipper instead.",
+  "note": {
+    "en": "Same flat style each time. Mast and wing; no motor, no remote.",
+    "ru": "Каждый раз один плоский стиль. Мачта и крыло; ни мотора, ни пульта."
+  }
+}

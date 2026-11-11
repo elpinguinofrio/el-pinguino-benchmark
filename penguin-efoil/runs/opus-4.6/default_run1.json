@@ -1,0 +1,10 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "claude-opus-4-6-thinking",
+  "harness": "antigravity",
+  "effort": "default",
+  "run": 1,
+  "wall_time_s": 48,
+  "date": "2026-11-09",
+  "prompt_variant": "plain"
+}

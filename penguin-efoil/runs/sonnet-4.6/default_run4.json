@@ -1,0 +1,10 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "claude-sonnet-4-6",
+  "harness": "antigravity",
+  "effort": "default",
+  "run": 4,
+  "wall_time_s": 52,
+  "date": "2026-11-09",
+  "prompt_variant": "plain"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Claude Opus 5.5",
+  "family": "claude",
+  "harness": "claude-code-subagent",
+  "harness_label": "Claude Code",
+  "note_long": "The most consistent model in the test. Every medium run has the full e-foil: one mast, a motor pod with a propeller, an underwater wing, and a throttle remote in the penguin's flipper. The four drawings look almost interchangeable.",
+  "note": {
+    "en": "Full e-foil in every run: mast, motor, propeller, wing, remote.",
+    "ru": "Полный e-foil в каждом прогоне: мачта, мотор, винт, крыло, пульт."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Qwen3.8-27B abliterated",
+  "family": "open",
+  "harness": "mtplx-local",
+  "harness_label": "MTPLX (local)",
+  "note_long": "At medium the e-foil changes shape every run: two masts, a board sunk to the waterline, a wing above the surface. At extra-high effort it gets a clean single-mast foil flying over the water, after 29 minutes and 29,587 thinking tokens.",
+  "note": {
+    "en": "Medium: a different foil every run. Xhigh: correct, but 29 minutes.",
+    "ru": "Medium: каждый раз другое крыло. Xhigh: правильно, но 29 минут."
+  }
+}

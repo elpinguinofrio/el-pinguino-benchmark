@@ -1,0 +1,10 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "grok-4.6",
+  "harness": "grok-cli",
+  "effort": "medium",
+  "run": 3,
+  "wall_time_s": 116,
+  "date": "2026-11-09",
+  "prompt_variant": "plain"
+}

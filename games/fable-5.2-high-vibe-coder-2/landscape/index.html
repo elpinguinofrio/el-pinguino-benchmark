@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunset Meadow</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1a1030; }
+  #c { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+  #glow { position: fixed; left: 0; top: 0; width: 150vmax; height: 150vmax; margin: -75vmax 0 0 -75vmax; pointer-events: none;
+    mix-blend-mode: screen; will-change: transform, opacity; opacity: 0;
+    background: radial-gradient(circle, rgba(255,214,150,.8) 0%, rgba(255,150,70,.42) 8%, rgba(255,110,60,.17) 22%, rgba(255,90,60,0) 52%); }
+  #vig { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(30,8,40,.55) 100%); }
+  #title { position: fixed; top: 28px; left: 30px; color: #fff3e0; pointer-events: none; transition: opacity 2s;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; text-shadow: 0 2px 14px rgba(120,30,10,.6); }
+  #title .jp { writing-mode: vertical-rl; font-size: 40px; letter-spacing: 10px; }
+  #title .en { font-size: 12px; letter-spacing: 6px; margin-top: 12px; opacity: .85; }
+  #hint { position: fixed; bottom: 16px; left: 0; right: 0; text-align: center; color: #ffe9d0; opacity: .75;
+    font: 12px Menlo, monospace; letter-spacing: 1px; pointer-events: none; text-shadow: 0 1px 6px #000; }
+</style>
+<script type="importmap">{ "imports": { "three": "../vendor/three.module.min.js" } }</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="glow"></div><div id="vig"></div>
+<div id="title"><div class="jp">夕暮れの草原</div><div class="en">SUNSET MEADOW</div></div>
+<div id="hint">WASD / arrows move · Shift run · Space jump · drag to look · wheel zoom</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

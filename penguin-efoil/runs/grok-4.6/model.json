@@ -1,0 +1,11 @@
+{
+  "name": "Grok 4.6",
+  "family": "grok",
+  "harness": "grok-cli",
+  "harness_label": "grok CLI",
+  "note_long": "Warm, painterly scenes with a mast and an underwater wing every time. Run 1 is one of the few drawings outside Opus 5.5 with a remote.",
+  "note": {
+    "en": "Painterly. Mast and underwater wing every time.",
+    "ru": "Живописно. Мачта и подводное крыло каждый раз."
+  }
+}

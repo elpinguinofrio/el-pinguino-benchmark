@@ -1,0 +1,11 @@
+{
+  "name": "Gemini 3.8 Flash",
+  "family": "gemini",
+  "harness": "antigravity",
+  "harness_label": "Antigravity",
+  "note_long": "Lively action poses, boards tilted mid-carve, a single mast every time, and a very stable style across low, medium and high effort. With the plain prompt it tried to run shell commands first and produced nothing, so these used the prompt plus “Output the SVG code as text in your reply; do not use any tools.”",
+  "note": {
+    "en": "Dynamic carving poses, one mast. Needed an extra “no tools” line.",
+    "ru": "Динамичные виражи, одна мачта. Понадобилась строка «без инструментов»."
+  }
+}

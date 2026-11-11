@@ -1,0 +1,11 @@
+{
+  "name": "Grok 4.5",
+  "family": "grok",
+  "harness": "grok-cli",
+  "harness_label": "grok CLI",
+  "note_long": "Flat clip-art. The board is drawn as an oval seen from above while the sea is seen from the side, a perspective mix-up that repeats in all three runs.",
+  "note": {
+    "en": "Clip-art. Board seen from above, sea from the side.",
+    "ru": "Клипарт. Доска — вид сверху, море — сбоку."
+  }
+}

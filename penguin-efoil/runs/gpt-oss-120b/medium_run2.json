@@ -1,0 +1,10 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "gpt-oss-120b-medium",
+  "harness": "antigravity",
+  "effort": "medium",
+  "run": 2,
+  "wall_time_s": 151,
+  "date": "2026-11-09",
+  "prompt_variant": "plain"
+}

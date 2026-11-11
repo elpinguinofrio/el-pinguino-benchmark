@@ -1,0 +1,19 @@
+<svg viewBox="0 0 420 300" role="img" aria-label="Diagram of an e-foil: board above the water, one mast down to a fuselage with front wing, rear wing and propeller, rider holding a hand remote">
+  <rect x="0" y="150" width="420" height="150" fill="var(--deep)" opacity="0.16"/>
+  <path d="M0 150 Q35 144 70 150 T140 150 T210 150 T280 150 T350 150 T420 150" fill="none" stroke="var(--deep)" stroke-width="2"/>
+  <path d="M110 112 H300 Q318 112 320 120 Q318 126 300 126 H118 Q106 126 106 119 Q106 112 110 112 Z" fill="var(--board)"/>
+  <rect x="206" y="126" width="7" height="104" rx="2" fill="var(--ink)"/>
+  <rect x="150" y="228" width="140" height="8" rx="4" fill="var(--ink)"/>
+  <path d="M232 232 Q270 220 304 232 Q270 242 232 236 Z" fill="var(--ink)"/>
+  <path d="M146 232 Q160 226 174 232 Q160 238 146 234 Z" fill="var(--ink)"/>
+  <rect x="190" y="196" width="34" height="13" rx="6.5" fill="var(--muted)"/>
+  <ellipse cx="187" cy="202.5" rx="3" ry="12" fill="var(--straw)"/>
+  <rect x="236" y="64" width="12" height="8" rx="2" fill="var(--board)"/>
+  <path d="M252 60 L300 40" class="a-lead"/><text x="304" y="44" class="a-label">remote</text>
+  <path d="M300 112 L330 92" class="a-lead"/><text x="334" y="96" class="a-label">board</text>
+  <path d="M213 170 L262 170" class="a-lead"/><text x="266" y="174" class="a-label">one mast</text>
+  <path d="M186 192 L120 176" class="a-lead"/><text x="38" y="180" class="a-label">propeller</text>
+  <path d="M300 236 L330 262" class="a-lead"/><text x="296" y="278" class="a-label">front wing</text>
+  <path d="M150 236 L104 262" class="a-lead"/><text x="40" y="278" class="a-label">rear wing</text>
+  <path d="M60 150 L60 132" class="a-lead"/><text x="16" y="126" class="a-label">waterline</text>
+</svg>

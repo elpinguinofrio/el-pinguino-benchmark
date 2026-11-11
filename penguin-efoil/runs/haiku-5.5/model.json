@@ -1,0 +1,11 @@
+{
+  "name": "Claude Haiku 5.5",
+  "family": "claude",
+  "harness": "claude-code-subagent",
+  "harness_label": "Claude Code",
+  "note_long": "The weakest Claude. The hats drift toward cowboy and sun hats, the board sits in the water in two runs, and run 1 lifts the whole foil out of the sea.",
+  "note": {
+    "en": "Cowboy hats, sunken boards, a wing lifted out of the sea.",
+    "ru": "Ковбойские шляпы, утонувшие доски, крыло над водой."
+  }
+}

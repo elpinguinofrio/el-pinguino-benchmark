@@ -1,0 +1,11 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "claude-opus-5-5",
+  "harness": "claude-code-subagent",
+  "effort": "default",
+  "run": 1,
+  "wall_time_s": null,
+  "date": "2026-11-09",
+  "prompt_variant": "plain",
+  "note": "First drawing, made before effort was fixed at medium; untimed."
+}

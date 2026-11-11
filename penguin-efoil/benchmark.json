@@ -1,0 +1,158 @@
+{
+  "prompt": "Generate an SVG of a penguin wearing a sombrero riding an e-foil.",
+  "first_run": "2026-11-09",
+  "pelican_url": "https://github.com/simonw/pelican-bicycle",
+  "model_order": [
+    "opus-5.5",
+    "sonnet-5.5",
+    "haiku-5.5",
+    "opus-4.6",
+    "sonnet-4.6",
+    "grok-4.7",
+    "grok-4.7-build-fast",
+    "grok-4.6",
+    "grok-4.5",
+    "gemini-3.8-flash",
+    "gpt-oss-120b",
+    "qwen3.8-27b-abliterated"
+  ],
+  "en": {
+    "title": "Penguin E-Foil Benchmark",
+    "tagline": "One prompt. {N_MODELS}. Every drawing shown.",
+    "pelican": "An alternative to Simon Willison’s <a href=\"{PELICAN}\">pelican riding a bicycle</a>, which models have likely already seen in training.",
+    "prompt_label": "The prompt",
+    "copy": "Copy",
+    "copied": "Copied",
+    "models": [
+      "model",
+      "models"
+    ],
+    "drawings": [
+      "drawing",
+      "drawings"
+    ],
+    "diagram_caption": "What a correct e-foil needs",
+    "diagram_labels": {},
+    "takeaways_head": "Everyone draws the penguin. The e-foil separates them.",
+    "takeaways": [
+      [
+        "Opus 5.5",
+        "full e-foil in every run"
+      ],
+      [
+        "Grok",
+        "best pictures, hardware comes and goes"
+      ],
+      [
+        "Claude 4.6 → 5.5",
+        "a big jump"
+      ],
+      [
+        "Local Qwen",
+        "correct only at xhigh, after 29 min"
+      ]
+    ],
+    "run": "Run",
+    "time_s": "s",
+    "time_min": "min",
+    "method_head": "How it was run",
+    "method": [
+      "Same prompt, one shot, no system prompt from us.",
+      "Medium reasoning effort where a model has the setting; otherwise its default.",
+      "Every drawing is shown. Failed attempts are kept in the repo.",
+      "Harnesses differ: Claude Code, grok CLI, Antigravity, MTPLX. Times include start-up.",
+      "Gemini needed one extra line: “do not use any tools”.",
+      "Every SVG is checked for scripts and links before rendering."
+    ],
+    "source": "Source and raw SVGs on GitHub",
+    "close": "Close",
+    "other_lang": "Русский",
+    "other_href": "ru/",
+    "family": {
+      "claude": "Claude 5.5",
+      "claude-old": "Claude 4.6",
+      "grok": "Grok",
+      "gemini": "Gemini",
+      "open": "Open weights"
+    },
+    "prompts": [
+      "prompt",
+      "prompts"
+    ]
+  },
+  "ru": {
+    "title": "Penguin E-Foil Benchmark",
+    "tagline": "Один промпт. {N_MODELS}. Все рисунки без отбора.",
+    "pelican": "Альтернатива тесту Саймона Уиллисона <a href=\"{PELICAN}\">«пеликан на велосипеде»</a>, который модели, скорее всего, уже видели при обучении.",
+    "prompt_label": "Промпт",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "models": [
+      "модель",
+      "модели",
+      "моделей"
+    ],
+    "drawings": [
+      "рисунок",
+      "рисунка",
+      "рисунков"
+    ],
+    "diagram_caption": "Из чего состоит правильный e-foil",
+    "diagram_labels": {
+      "remote": "пульт",
+      "board": "доска",
+      "one mast": "одна мачта",
+      "propeller": "винт",
+      "front wing": "крыло",
+      "rear wing": "стабилизатор",
+      "waterline": "ватерлиния"
+    },
+    "takeaways_head": "Пингвина рисуют все. Отличает их e-foil.",
+    "takeaways": [
+      [
+        "Opus 5.5",
+        "полный e-foil в каждом прогоне"
+      ],
+      [
+        "Grok",
+        "лучшие картинки, но детали то есть, то нет"
+      ],
+      [
+        "Claude 4.6 → 5.5",
+        "большой скачок"
+      ],
+      [
+        "Локальный Qwen",
+        "справляется только на xhigh, за 29 мин"
+      ]
+    ],
+    "run": "Прогон",
+    "time_s": "с",
+    "time_min": "мин",
+    "method_head": "Как проводился тест",
+    "method": [
+      "Один и тот же промпт, одна попытка, без нашего системного промпта.",
+      "Средний уровень рассуждений (medium), где он настраивается; иначе по умолчанию.",
+      "Показан каждый рисунок. Неудачные попытки сохранены в репозитории.",
+      "Разные среды запуска: Claude Code, grok CLI, Antigravity, MTPLX. Время включает запуск.",
+      "Gemini понадобилась одна лишняя строка: «не используй инструменты».",
+      "Каждый SVG проверен на скрипты и ссылки до рендера."
+    ],
+    "source": "Код и исходные SVG на GitHub",
+    "close": "Закрыть",
+    "other_lang": "English",
+    "other_href": "../",
+    "family": {
+      "claude": "Claude 5.5",
+      "claude-old": "Claude 4.6",
+      "grok": "Grok",
+      "gemini": "Gemini",
+      "open": "Открытые веса"
+    },
+    "prompts": [
+      "промпт",
+      "промпта",
+      "промптов"
+    ]
+  }
+}

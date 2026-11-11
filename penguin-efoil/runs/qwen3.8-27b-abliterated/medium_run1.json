@@ -1,0 +1,11 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "PocketAiHub/Qwen3.8-27B-Abliterated-MTPLX-Optimized-Speed",
+  "harness": "mtplx-local",
+  "effort": "medium",
+  "run": 1,
+  "wall_time_s": 113,
+  "date": "2026-11-09",
+  "prompt_variant": "plain",
+  "reasoning_tokens": 196
+}

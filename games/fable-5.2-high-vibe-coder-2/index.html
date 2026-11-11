@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibe Coder Simulator</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #07060f; color: #fff;
+    font-family: Menlo, Consolas, monospace; user-select: none; -webkit-user-select: none; }
+  #c { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
+  #hud { position: fixed; inset: 0; pointer-events: none; display: none; }
+  .panel { position: absolute; background: rgba(12, 8, 28, .72); border: 2px solid rgba(255,255,255,.15);
+    border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(4px); }
+  #tl { top: 14px; left: 14px; width: 300px; }
+  #tr { top: 14px; right: 14px; text-align: right; }
+  .bar { height: 14px; background: #1b1530; border-radius: 7px; overflow: hidden; margin: 6px 0 8px; }
+  .bar > div { height: 100%; width: 0%; border-radius: 7px; }
+  #ship { background: linear-gradient(90deg, #22d3a6, #7cf); }
+  #rage { background: linear-gradient(90deg, #ff9a2e, #ff2d55); }
+  #bans { font-size: 22px; letter-spacing: 4px; color: #ff3355; }
+  #combo { font-size: 28px; font-weight: bold; color: #ffe14a; text-shadow: 0 0 12px #f80; min-height: 34px; }
+  #hint { bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 12px; opacity: .8; white-space: nowrap; }
+  #toast { position: absolute; top: 22%; left: 0; right: 0; text-align: center; font-size: 34px; font-weight: bold;
+    text-shadow: 0 0 18px #f0f, 0 3px 0 #000; opacity: 0; transition: opacity .25s; }
+  #vig { position: absolute; inset: 0; box-shadow: inset 0 0 180px 40px rgba(0,0,0,.75); }
+  #red { position: absolute; inset: 0; background: radial-gradient(transparent 50%, rgba(255,0,40,.5)); opacity: 0; }
+  .overlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: radial-gradient(rgba(30,10,60,.55), rgba(5,3,12,.92)); text-align: center; }
+  h1 { font-size: clamp(34px, 7vw, 84px); margin: 0; letter-spacing: 2px;
+    background: linear-gradient(90deg, #7cf, #f6f, #fc6); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 22px rgba(255,80,255,.5)); }
+  .sub { opacity: .85; margin: 12px 0 26px; font-size: 16px; line-height: 1.6; max-width: 720px; }
+  button { font: bold 22px Menlo, monospace; padding: 14px 34px; border-radius: 12px; border: 0; cursor: pointer;
+    background: linear-gradient(90deg, #22d3a6, #7cf); color: #0a0618; margin: 6px; box-shadow: 0 6px 0 #0a5a50; }
+  button:active { transform: translateY(4px); box-shadow: 0 2px 0 #0a5a50; }
+  button.alt { background: #2a2244; color: #fff; box-shadow: 0 6px 0 #120c26; }
+  #end { display: none; overflow: auto; }
+  #cardWrap canvas { height: min(74vh, 780px); width: auto; border-radius: 12px; }
+  kbd { background: #2a2244; padding: 2px 6px; border-radius: 4px; border-bottom: 2px solid #120c26; }
+</style>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">
+  <div id="vig"></div><div id="red"></div>
+  <div class="panel" id="tl">
+    <div>SHIP <b id="shipTxt">0%</b> &mdash; <span id="clock">0:00</span></div>
+    <div class="bar"><div id="ship"></div></div>
+    <div>RAGE <span id="focusTxt"></span></div>
+    <div class="bar"><div id="rage"></div></div>
+    <div id="peng">🐧 squeeze ready (Q)</div>
+  </div>
+  <div class="panel" id="tr">
+    <div>HALL MONITOR STRIKES</div>
+    <div id="bans"></div>
+    <div id="combo"></div>
+  </div>
+  <div id="toast"></div>
+  <div class="panel" id="hint">
+    <kbd>click</kbd> appeal &nbsp; <kbd>right-click</kbd> punch &nbsp; <kbd>Q</kbd> penguin &nbsp; <kbd>B</kbd> beer &nbsp;
+    <kbd>V</kbd> vape &nbsp; <kbd>E</kbd> throw &nbsp; <kbd>WASD</kbd> walk &nbsp; <kbd>Space</kbd> lean back
+  </div>
+</div>
+<div class="overlay" id="title">
+  <h1>VIBE CODER SIMULATOR</h1>
+  <div class="sub">It is 2 AM. Your AI agents are shipping your app.<br>
+    PARABLE's <b>Hall Monitor</b> wants to ban them for extremely silly reasons.<br>
+    <b>Click a red screen to APPEAL before the timer runs out.</b> Reach 100% SHIP before you get banned.<br>
+    Right-click to punch things. Squeeze the penguin when it gets too much.</div>
+  <button id="start">START VIBING</button>
+</div>
+<div class="overlay" id="end">
+  <div id="cardWrap"></div>
+  <div><button id="save">SAVE PNG</button><button class="alt" id="again">RUN IT BACK</button></div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

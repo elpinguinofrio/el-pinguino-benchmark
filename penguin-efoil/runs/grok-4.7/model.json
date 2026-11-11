@@ -1,0 +1,11 @@
+{
+  "name": "Grok 4.7",
+  "family": "grok",
+  "harness": "grok-cli",
+  "harness_label": "grok CLI",
+  "note_long": "The most ambitious illustrations: sunsets, lighting, spray and texture. The hardware is hit and miss: run 3 has a pod and propeller under water, run 2 loses the mast entirely.",
+  "note": {
+    "en": "Sunsets, spray, light. The hardware is hit and miss.",
+    "ru": "Закаты, брызги, свет. Железо — как повезёт."
+  }
+}

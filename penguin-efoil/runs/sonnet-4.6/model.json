@@ -1,0 +1,11 @@
+{
+  "name": "Claude Sonnet 4.6",
+  "family": "claude-old",
+  "harness": "antigravity",
+  "harness_label": "Antigravity",
+  "note_long": "More varied than Sonnet 5.5: one dynamic carving shot, one with a motor pod. The sombreros come out as lampshades or bonnets. Run 3 called an image generator instead of writing SVG and is not shown.",
+  "note": {
+    "en": "Livelier than 5.5, but the sombreros look like lampshades. Run 3 called an image tool instead.",
+    "ru": "Живее, чем 5.5, но сомбреро похожи на абажуры. Прогон 3 вызвал генератор картинок вместо SVG."
+  }
+}

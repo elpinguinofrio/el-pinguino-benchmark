@@ -1,0 +1,10 @@
+{
+  "benchmark": "penguin-efoil",
+  "model_id": "gemini-3.8-flash-low",
+  "harness": "antigravity",
+  "effort": "low",
+  "run": 2,
+  "wall_time_s": 70,
+  "date": "2026-11-09",
+  "prompt_variant": "no-tools"
+}

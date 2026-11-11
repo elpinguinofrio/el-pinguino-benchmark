@@ -1,0 +1,11 @@
+{
+  "name": "GPT-OSS 120B",
+  "family": "open",
+  "harness": "antigravity",
+  "harness_label": "Antigravity",
+  "note_long": "Two pleasant illustrations with bold, patterned sombreros, but the foil is barely there. Run 3 collapses: a penguin in a grey box with no water at all.",
+  "note": {
+    "en": "Nice sombreros, barely any foil. Run 3 forgot the sea.",
+    "ru": "Красивые сомбреро, крыла почти нет. В прогоне 3 нет моря."
+  }
+}

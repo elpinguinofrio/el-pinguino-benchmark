@@ -1,0 +1,11 @@
+{
+  "name": "Claude Opus 4.6",
+  "family": "claude-old",
+  "harness": "antigravity",
+  "harness_label": "Antigravity",
+  "note_long": "Small penguin, simple scene, a thin mast with a wing. No propeller, no remote. Next to Opus 5.5 this is the clearest generation gap in the test.",
+  "note": {
+    "en": "Tiny penguin on a bare stick. No motor, no remote.",
+    "ru": "Крошечный пингвин на голой палке. Ни мотора, ни пульта."
+  }
+}
