@@ -1,20 +1,32 @@
 # El Pinguino Benchmark
 
-My own AI model benchmarks, in the spirit of the "pelican riding a bicycle" test.
+[Русская версия](penguin-efoil-benchmark/README.ru.md)
 
-**Live site:** https://elpinguinofrio.github.io/el-pinguino-benchmark/
+My take on Simon Willison's [pelican riding a bicycle](https://github.com/simonw/pelican-bicycle): small, fun prompts that show what AI models can and can't do. **Live site:** https://elpinguinofrio.github.io/el-pinguino-benchmark/
 
-## Penguin E-Foil Benchmark
+## 🐧 Penguin E-Foil Benchmark
 
-One prompt, 12 models, 44 SVG drawings: *"Generate an SVG of a penguin wearing a sombrero riding an e-foil."*
-Gallery in English and Russian: [https://elpinguinofrio.github.io/el-pinguino-benchmark/penguin-efoil/docs/](https://elpinguinofrio.github.io/el-pinguino-benchmark/penguin-efoil/docs/) · details in [`penguin-efoil/`](penguin-efoil/).
+> Generate an SVG of a penguin wearing a sombrero riding an e-foil.
 
-## Games
+12 models, 44 drawings, every one published. [Gallery](https://elpinguinofrio.github.io/el-pinguino-benchmark/penguin-efoil-benchmark/docs/) · [Русский](https://elpinguinofrio.github.io/el-pinguino-benchmark/penguin-efoil-benchmark/docs/ru/) · [Details](penguin-efoil-benchmark/)
 
-Games built by AI models in one session each. Folder names start with the model and effort.
+<table>
+<tr>
+<td align="center"><img src="penguin-efoil-benchmark/runs/opus-5.5/medium_run1.jpg" width="260" alt="Claude Opus 5.5"><br><sub><b>Claude Opus 5.5</b></sub></td>
+<td align="center"><img src="penguin-efoil-benchmark/runs/grok-4.7-build-fast/medium_run2.jpg" width="260" alt="Grok 4.7 Build Fast"><br><sub><b>Grok 4.7 Build Fast</b></sub></td>
+<td align="center"><img src="penguin-efoil-benchmark/runs/qwen3.8-27b-abliterated/xhigh_run1.jpg" width="260" alt="Qwen3.8-27B abliterated"><br><sub><b>Qwen3.8-27B (local)</b></sub></td>
+</tr>
+</table>
 
-| Game | Model | Effort | Play | Notes |
-|---|---|---|---|---|
-| [Voxel Titanic](games/fable-5.2-high-voxel-titanic/) | Fable 5.2 | high | [play](https://elpinguinofrio.github.io/el-pinguino-benchmark/games/fable-5.2-high-voxel-titanic/) | Single-file browser game |
-| [Vibe Coder 2](games/fable-5.2-high-vibe-coder-2/) | Fable 5.2 | high | [play](https://elpinguinofrio.github.io/el-pinguino-benchmark/games/fable-5.2-high-vibe-coder-2/) | Built in Claude Code with a hard deadline |
-| [ASCII Tetris](games/qwen3.8-27b-abliterated-ascii-tetris/) | Qwen3.8-27B abliterated (local, MTPLX) | default | `python3 tetris.py` | Unfinished. Terminal game, written through the pi agent; the write was blocked, so the code was recovered from the session log and has never been run |
+## 🎮 One-Prompt Games
+
+Games an AI model built in a single session. Folder names start with the model and effort.
+
+| Game | Model | Effort | Play |
+|---|---|---|---|
+| [Voxel Titanic](one-prompt-games/fable-5.2-high-voxel-titanic/) | Fable 5.2 | high | [play](https://elpinguinofrio.github.io/el-pinguino-benchmark/one-prompt-games/fable-5.2-high-voxel-titanic/) |
+| [Vibecoder Simulator](one-prompt-games/fable-5.2-high-vibecoder-simulator/) | Fable 5.2 | high | [play](https://elpinguinofrio.github.io/el-pinguino-benchmark/one-prompt-games/fable-5.2-high-vibecoder-simulator/) |
+| [Sunset Meadow](one-prompt-games/fable-5.2-high-sunset-meadow/) | Fable 5.2 | high | [play](https://elpinguinofrio.github.io/el-pinguino-benchmark/one-prompt-games/fable-5.2-high-sunset-meadow/) |
+| [ASCII Tetris](one-prompt-games/qwen3.8-27b-abliterated-ascii-tetris/) | Qwen3.8-27B abliterated (local) | default | `python3 tetris.py` in a terminal |
+
+ASCII Tetris is unfinished: the agent's file write was blocked, so the code was recovered from its session log and has never been run.

@@ -1,5 +1,5 @@
 // Sunset Meadow — a small Japanese-style sunset grass field you can run around in.
-// Run: serve the project root (python3 -m http.server 8137) and open /landscape/
+// Run: python3 -m http.server 8137 in this folder and open http://127.0.0.1:8137/
 import * as THREE from 'three';
 
 const canvas = document.getElementById('c');
